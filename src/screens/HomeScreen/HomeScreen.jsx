@@ -1,26 +1,26 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { GET } from '../../fetching/http.fetching';
 import useProducts from '../../Hooks/UseProducts';
+import "./Home.css";
 
 const HomeScreen = () => {
     const user_info = JSON.parse(sessionStorage.getItem('user_info')) || {};
     const { products, isLoadingProducts } = useProducts();
 
     return (
-        <div>
+        <div className="home-container">
             {user_info.name ? (
                 <>
-                    <h1>Bienvenido {user_info.name}</h1>
-                    <Link to={'/product/new'}>Crear producto</Link>
+                    <h1 className="welcome-title">Bienvenido {user_info.name}</h1>
+                    <Link to={'/product/new'} className="create-product-link">Crear producto</Link>
                     {isLoadingProducts ? (
-                        <span>Cargando....</span>
+                        <span className="loading-text">Cargando....</span>
                     ) : (
                         <ProductsList products={products} />
                     )}
                 </>
             ) : (
-                <p>Por favor, inicie sesión para ver los productos.</p>
+                <p className="login-message">Por favor, inicie sesión para ver los productos.</p>
             )}
         </div>
     );
@@ -28,7 +28,7 @@ const HomeScreen = () => {
 
 const ProductsList = ({ products }) => {
     return (
-        <div>
+        <div className="products-list">
             {products.map((product) => (
                 <Product key={product.id} {...product} />
             ))}
@@ -36,16 +36,15 @@ const ProductsList = ({ products }) => {
     );
 };
 
-const Product = ({ title, price, stock, description, image, id }) => {
+const Product = ({ title, price, image_base_64, id }) => {
     return (
-        <div>
-
-            <h2>{title}</h2>
-            {image && <img src={image_base_64} width={200} />}
-            <p>Precio: ${price}</p>
-            <Link to={`/product/${id}`}>Ir a detalle</Link>
+        <div className="product-card">
+            <h2 className="product-title">{title}</h2>
+            <img src={image_base_64} className="product-image" />
+            <p className="product-price">Precio: ${price}</p>
+            <Link to={`/product/${id}`} className="product-detail-link">Ir a detalle</Link>
             <hr />
-            <Link to={`/product/update/:product_id`}>Actualizar Producto </Link>
+            <Link to={`/product/update/${id}`} className="product-update-link">Actualizar Producto</Link>
         </div>
     );
 };

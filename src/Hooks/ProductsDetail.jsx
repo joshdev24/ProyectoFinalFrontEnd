@@ -1,11 +1,12 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 
 const useProductDetail = (product_id) =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-
+    const navigate = useNavigate()
     const getProductDetail = async (product_id) =>{
         const product_detail_response = await GET(
             `http://localhost:3000/api/products/${product_id}`, 
@@ -19,8 +20,9 @@ const useProductDetail = (product_id) =>{
             setProductDetailState(product_detail_response.payload.product)
         }   
         else{
+            //navigate('/home')
             //Aca les dejo el centro para manejar los errores
-            //setProductDetailError(product_detail_response.payload.error)
+            setProductDetailError(product_detail_response.payload.detail)
         }
     }
 
@@ -37,12 +39,7 @@ const useProductDetail = (product_id) =>{
     }
 }
 
+
 export default useProductDetail
 
- //     if (!product) {
-                //         console.error("useProductDetails: No se encontro el producto o hubo un error al obtenerlo");
-                //         setError("No se encontro el producto o hubo un error al obtenerlo");
-                //     } else {
-                //         setProductDetails(product);
-                //     }
-                // }
+    

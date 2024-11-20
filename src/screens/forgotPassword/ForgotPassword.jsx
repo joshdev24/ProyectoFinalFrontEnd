@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
 import { POST } from '../../fetching/http.fetching'
@@ -6,6 +6,8 @@ import { POST } from '../../fetching/http.fetching'
 
 
 const ForgotPassword = () => {
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
     const handleSubmitLoginForm = async (e) => {
         try {
             e.preventDefault();
@@ -26,35 +28,40 @@ const ForgotPassword = () => {
                 body: JSON.stringify(form_values_object)
             });
 
-            const body = await response.json();
-            
-            if (!response.ok) {
-                console.error('Error sending email:', body);
-                // setError('Error sending email');
-                return;
+
+
+            if (response) {
+                setSuccess('Revisa tu correo electrónico para restablecer tu contraseña');
             }
 
-            console.log('Email sent successfully:', body);
         } catch (error) {
-            console.error('An error occurred:', error);
-            // setError('An error occurred');
+            setError('Un error inesperado ocurrio al procesar tu solicitud.');
         }
     };
 
     return (
-        <div>
-            <h1>Olvide mi contraseña</h1>
-            <p>Enviaremos un mail a tu email de usuario para enviarte los pasos de restablecimiento de la contraseña.</p>
-            <form onSubmit={handleSubmitLoginForm}>
-                <div>
-                    <label htmlFor='email'>Ingrese su email:</label>
-                    <input name='email' id='email' placeholder='pepe@gmail.com' required />
-                </div>
-                <button type='submit'>Enviar mail</button>
-            </form>
-            <span>Si tienes cuenta puedes <Link to='/login'>iniciar sesion</Link></span>
-            <span>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></span>
-        </div>
+        <>
+            <div>
+                <h1>Olvide mi contraseña</h1>
+                <p>Enviaremos un mail a tu email de usuario para enviarte los pasos de restablecimiento de la contraseña.</p>
+                <form onSubmit={handleSubmitLoginForm}>
+                    <div>
+                        <label htmlFor='email'>Ingrese su email:</label>
+                        <input name='email' id='email' placeholder='pepe@gmail.com' required />
+                    </div>
+                    <button type='submit'>Enviar mail</button>
+                    <br/>
+                    <itemize>
+                <li> Si tienes cuenta puedes <Link to='/login'>iniciar sesion</Link></li>
+                <li>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></li>
+            </itemize>
+                </form>
+                {error && <p style={{ color: 'red' }}>{error}</p>} 
+                {success && <p style={{ color: 'green' }}>{success}</p>} 
+
+            </div>
+            
+        </>
     );
 };
 

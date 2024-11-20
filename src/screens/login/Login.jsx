@@ -1,58 +1,96 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { extractFormData } from '../../utils/extractFormData'
-import { getUnnauthenticatedHeaders, POST, } from '../../fetching/http.fetching'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { extractFormData } from '../../utils/extractFormData';
+import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
+import './Login.css';
 
-const Login = () => {	
-	const navigate = useNavigate()
+const Login = () => {
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-	const handleSubmitLoginForm = async (e) => {
-		try{
-			e.preventDefault()
-			const form_HTML = e.target
-			const form_Values = new FormData(form_HTML)
-			const form_fields = {
-				'email': '',
-				'password': ''
-			}
-			const form_values_object = extractFormData(form_fields, form_Values)
-			const response = await POST(
-				'http://localhost:3000/api/auth/login',
-				{
-					headers: getUnnauthenticatedHeaders(),
-					body: JSON.stringify(form_values_object)
-				} 
-			)
-			const access_token = response.payload.token
-			sessionStorage.setItem('access_token', access_token)
-			sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
-			navigate('/home')
-		}
-		catch(error){
-			//manejan sus errores
-		}
-	}
+    const handleSubmitLoginForm = async (e) => {
+        e.preventDefault();
+        setError(''); 
+        setLoading(true); 
 
-	return (
-		<div>
-			<h1>Inicia sesion</h1>
-			<form onSubmit={handleSubmitLoginForm}>
-				<div>
-					<label htmlFor='email'>Ingrese su email:</label>
-					<input name='email' id='email' placeholder='pepe@gmail.com' />
-				</div>
-				<div>
-					<label htmlFor='password'>Ingrese su contraseña:</label>
-					<input name='password' id='password' placeholder='pepe@gmail.com' />
-				</div>
-				<button type='submit'>Iniciar sesion</button>
-			</form>
-			<span>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></span>
-			<br />
-			<span>Has olvidado la contraseña? <Link to='/forgot-password'>Restablecer</Link></span>
+        const form_HTML = e.target;
+        const form_Values = new FormData(form_HTML);
+        const form_fields = {
+            email: '',
+            password: ''
+        };
+        const form_values_object = extractFormData(form_fields, form_Values);
 
-		</div>
-	)
-}
+       
+        if (!form_values_object.email || !form_values_object.password) {
+            setError('Por favor, complete todos los campos.');
+            setLoading(false);
+            return;
+        }
 
-export default Login
+        try {
+            const response = await POST(
+                'http://localhost:3000/api/auth/login',
+                {
+                    headers: getUnnauthenticatedHeaders(),
+                    body: JSON.stringify(form_values_object)
+                }
+            );
+
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                setError(errorData.message || 'Error al iniciar sesión.');
+                setLoading(false);
+                return;
+            }
+
+            
+            console.log('Login Response:', response);
+
+            const access_token = response.payload.token;
+            if (!access_token) {
+                setError('Error al cargar el token de acceso.');
+                setLoading(false);
+                return;
+            }
+
+            sessionStorage.setItem('access_token', access_token);
+            sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
+            navigate('/home'); 
+        } catch (error) {
+            console.log('Error:', error);
+            setError('Ocurrió un error al intentar iniciar sesión.');
+        } finally {
+            setLoading(false); 
+        }
+    };
+
+    return (
+        <div className="login-container">
+            <h1 className="login-title">Inicia sesión</h1>
+            <form onSubmit={handleSubmitLoginForm} className="login-form">
+                <div className="input-group">
+                    <label htmlFor="email" className="input-label">Ingrese su email:</label>
+                    <input name="email" id="email" placeholder="pepe@gmail.com" className="input-field" required />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="password" className="input-label">Ingrese su contraseña:</label>
+                    <input name="password" id="password" type="password" placeholder="Ingrese su contraseña" className="input-field" required />
+                </div>
+                {error && <p style={{ color: 'red' }}>{error}</p>} 
+                <button type="submit" className="submit-button" disabled={loading}>
+                    {loading ? 'Cargando...' : 'Iniciar sesión'}
+                </button>
+                
+            </form>
+            <itemize className="register-link">
+                <li> Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
+                <li>¿Has olvidado la contraseña? <Link to="/forgot-password">Restablecer</Link></li>
+            </itemize>
+        </div>
+    );
+};
+
+export default Login;

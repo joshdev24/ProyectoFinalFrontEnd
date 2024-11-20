@@ -9,6 +9,7 @@ import Home from "./screens/HomeScreen/HomeScreen"
 import CreateProductScreen from "./screens/CreateProductScreen/CreateProductScreen"
 import UpdateProduct from "./screens/UpdateProductScreen/UpdateProduct"
 import ProductDetails from "./screens/ProductDetailScreen/ProductDetail"
+import ProtectedRoute from "./Components/ProtectedRoute"
 
 
 
@@ -22,9 +23,11 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
         <Route path='/home' element={<Home/>}/>
+        <Route element={<ProtectedRoute/>}> 
         <Route path='/product/new' element={<CreateProductScreen/>}/>
         <Route path="/product/:product_id" element={<ProductDetails />} />
         <Route path='/product/update/:product_id' element={<UpdateProduct/>}/>
+        </Route>
       </Routes>
     </>
   )

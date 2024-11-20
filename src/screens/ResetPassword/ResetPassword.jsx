@@ -2,9 +2,13 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
 import { PUT,  getAuthenticatedHeaders } from '../../fetching/http.fetching'
+import "./ResetPassword.css"
+import { useState } from 'react'
 
 
 const ResetPassword = () => {
+    const [success, setSuccess] = useState(false)
+    const [error, setError] = useState('')
     const { reset_token } = useParams()
 
     const handleSubmitResetForm = async (e) => {
@@ -20,29 +24,46 @@ const ResetPassword = () => {
             headers: getAuthenticatedHeaders(),
 				body: JSON.stringify(form_values_object)
 			})
+            if (response.ok) {
+                setSuccess('Contraseña restablecida con exito')
+            }
 			console.log({response})
 		}
 		catch(error){
-			//manejan sus errores
-			console.error(error)
+			setError('Error al restablecer contraseña')
+			
 		}
     }
 
     return (
-        <div>
-            <h1>Restablecer contraseña</h1>
-            <p>Completa el formulario con la nueva contraseña para restablecerla.</p>
-            <form onSubmit={handleSubmitResetForm}>
-                <div>
-                    <label htmlFor='password'>Ingrese su nueva contraseña:</label>
-                    <input name='password' id='password' placeholder='contraseña' />
-                </div>
-                <button type='submit'>Restablecer contraseña</button>
-            </form>
-            <span>Si recuerdas tu contraseña <Link to='/login'>iniciar sesion</Link></span>
-            <span>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></span>
-
-        </div>
+        <div class="reset-password-container">
+    <h1 class="reset-password-title">Restablecer Contraseña</h1>
+    <p class="reset-password-subtitle">
+        Ingresa tu nueva contraseña para recuperar el acceso.
+    </p>
+    <form class="reset-password-form">
+        <label for="password" class="input-label">Nueva Contraseña</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="input-field" 
+            placeholder="Escribe tu nueva contraseña" 
+            required 
+        />
+        <button type="submit" class="reset-button">Restablecer Contraseña</button>
+    </form>
+    <div class="additional-links">
+        <p>
+            <a href="/login">Volver a Iniciar Sesión</a>
+            <span> | </span>
+            <a href="/register">Crear una cuenta</a>
+        </p>
+    </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>} 
+				{success && <p style={{ color: 'green' }}>{success}</p>} 
+    
+    </div>
     )
 }
 

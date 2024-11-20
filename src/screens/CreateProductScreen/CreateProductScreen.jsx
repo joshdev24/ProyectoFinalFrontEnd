@@ -1,103 +1,118 @@
-import React, { useState } from 'react'
-import { getAuthenticatedHeaders, POST } from '../../fetching/http.fetching'
-import { extractFormData } from '../../utils/extractFormData'
+import React, { useState,  } from 'react';
+import { getAuthenticatedHeaders, POST } from '../../fetching/http.fetching';
+import { extractFormData } from '../../utils/extractFormData';
+import './CreateProduct.css';
+import { Link } from 'react-router-dom';
 
 const CreateProductScreen = () => {
-	
-    const [image, setImage] = useState('')
-    const handleSubmitNewProduct = async (e) => {
-        try{
-			
-			e.preventDefault()
-			const form_HTML = e.target
-			const form_Values = new FormData(form_HTML)
-			const form_fields = {
-				title: '',
-				price: '',
-				stock: '',
-				description: '',
-				category: ''
-			}
-			const form_values_object = extractFormData(form_fields, form_Values)
+    const [image, setImage] = useState('');
+    const [error, setError] = useState('');
+	const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-			//Agregamos la image al objeto con los valores de mi form
-			form_values_object.image = image
-			console.log('evento submit')
-			const response = await POST('http://localhost:3000/api/products', {
-				headers: getAuthenticatedHeaders(),
-				body: JSON.stringify(form_values_object)
-			})
-			console.log({response})
-		}
-		catch(error){
-			//manejan sus errores
-			console.error(error)
-		}
-    }
+    const handleSubmitNewProduct = async (e) => {
+        e.preventDefault();
+        setError(''); 
+
+        const form_HTML = e.target;
+        const form_Values = new FormData(form_HTML);
+        const form_fields = {
+            title: '',
+            price: '',
+            stock: '',
+            description: '',
+            category: ''
+        };
+        const form_values_object = extractFormData(form_fields, form_Values);
+
+        
+        form_values_object.image = image;
+
+       
+        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description || !form_values_object.category) {
+            setError('All fields are required.');
+            return;
+        }
+
+        setLoading(true); 
+
+        try {
+            const response = await POST('http://localhost:3000/api/products', {
+                headers: getAuthenticatedHeaders(),
+                body: JSON.stringify(form_values_object)
+            });
+
+            if (!response.ok) {
+                setError(errorData.message || 'Error al crear el producto'); 
+            } 
+			setSuccess('Se ha creado el producto con exito');
+        } catch (error) {
+            console.error(error);
+            setError('Error inesperado'); 
+        } finally {
+            setLoading(false); 
+        }
+    };
 
     const handleChangeFile = (evento) => {
+        const file_found = evento.target.files[0];
+        const FILE_MB_LIMIT = 2;
 
-		
-        //Buscar el archivo que fue subido por ese input
-
-        const file_found = evento.target.files[0]
-		const FILE_MB_LIMIT = 2
-		if(file_found && file_found.size > FILE_MB_LIMIT * 1024 * 1024){
-			//TODO: cambiar a estado de error
-			alert(`Error el archivo es muy grande (limite ${FILE_MB_LIMIT} mb)`)
-			return //Cancela la operacion
-		}
-
-        const lector_archivos = new FileReader()
-
-        //Le decimos al lector de archivos que cuando termine de cargar nos ejecute x callback
-        lector_archivos.onloadend = () => {
-                console.log('carga finalizada')
-                console.log(lector_archivos.result)
-                setImage(lector_archivos.result)
-            }
-        
-
-        //Si hay archivo leelo
-        if(file_found){
-            lector_archivos.readAsDataURL(file_found)
+        if (file_found && file_found.size > FILE_MB_LIMIT * 1024 * 1024) {
+            setError(`Error: The file is too large (limit ${FILE_MB_LIMIT} MB)`);
+            return; 
         }
-    }
-  return (
-    <div>
-        <form onSubmit={handleSubmitNewProduct}>
-                <div>
-					<label htmlFor='titulo'>Ingrese el titulo:</label>
-					<input name='title' id='titulo' placeholder='pepe@gmail.com' />
-				</div>
-				<div>
-					<label htmlFor='precio'>Ingrese el precio:</label>
-					<input name='price' id='precio' />
-				</div>
-                <div>
-					<label htmlFor='stock'>Ingrese el stock:</label>
-					<input name='stock' id='stock'  />
-				</div>
-                <div>
-					<label htmlFor='descripcion'>Ingrese la descripcion:</label>
-					<textarea name="description" id="descripcion"></textarea>
-				</div>
-                <div>
-					<label htmlFor='category'>Ingrese la categoria:</label>
-					<input name='category' id='category'  />
-				</div>
-                <div>
-                    {
-                        image && <img src={image} />
-                    }
-					<label htmlFor='imagen'>Seleccione una imagen:</label>
-					<input name='imagen' id='imagen' type='file' onChange={handleChangeFile} accept='image/*'/>
-				</div>
 
-				<button type='submit'>Crear producto</button>
-        </form>
-    </div>
-  )
-}
+        const lector_archivos = new FileReader();
 
-export default CreateProductScreen
+        lector_archivos.onloadend = () => {
+            console.log('File loading completed');
+            setImage(lector_archivos.result);
+        };
+
+        if (file_found) {
+            lector_archivos.readAsDataURL(file_found);
+        }
+    };
+
+    return (
+        <>
+        <div>
+            <form onSubmit={handleSubmitNewProduct}>
+                <div>
+                    <label htmlFor='titulo'>Ingrese el titulo:</label>
+                    <input name='title' id='titulo'  required />
+                </div>
+                <div>
+                    <label htmlFor='precio'>Ingrese el precio:</label>
+                    <input name='price' id='precio' required />
+                </div>
+                <div>
+                    <label htmlFor='stock'>Ingrese el stock:</label>
+                    <input name='stock' id='stock' required />
+                </div>
+                <div>
+                    <label htmlFor='descripcion'>Ingrese la descripcion:</label>
+                    <textarea name="description" id="descripcion" required></textarea>
+                </div>
+                <div>
+                    <label htmlFor='category'>Ingrese la categoria:</label>
+                    <input name='category' id='category' required />
+                </div>
+                <div>
+                    {image && <img src={image} alt="Selected" />}
+                    <label htmlFor='imagen'>Seleccione una imagen:</label>
+                    <input name='imagen' id='imagen' type='file' onChange={handleChangeFile} accept='image/*' />
+                </div>
+                {error && <p style={{ color: 'red' }}>{error}</p>} 
+				{success && <p style={{ color: 'green' }}>{success}</p>}
+                <button type='submit' disabled={loading}>{loading ? 'Creating...' : 'Crear producto'}</button>
+                <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
+            </form>
+        </div>
+
+       </>
+    );
+};
+
+export default CreateProductScreen;

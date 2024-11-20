@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { PUT, GET, getAuthenticatedHeaders } from "../../fetching/http.fetching";
 import { extractFormData } from "../../utils/extractFormData";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
-    const { id } = useParams();
+    const { product_id } = useParams();
     const [product, setProduct] = useState({
         title: '',
         price: '',
@@ -13,7 +13,9 @@ const UpdateProduct = () => {
         category: '',
     });
     const [image, setImage] = useState(null);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState('');
 
     useEffect(() => {
         getProduct();
@@ -21,15 +23,16 @@ const UpdateProduct = () => {
 
     const getProduct = async () => {
         try {
-            const response = await GET(`http://localhost:3000/api/products/${id}`, {
-                headers: getAuthenticatedHeaders
-
+            const response = await GET(`http://localhost:3000/api/products/${product_id}`, {
+                headers: getAuthenticatedHeaders()
             });
 
             if (response.ok) {
-                const productFromServer = await response.json();
+                const productFromServer = response.payload.product;
                 setProduct(productFromServer);
-            } 
+            } else {
+                setError("Error al obtener el producto.");
+            }
         } catch (error) {
             console.error("Error al obtener el producto:", error);
             setError("Error al obtener el producto.");
@@ -38,42 +41,56 @@ const UpdateProduct = () => {
 
     const handleSubmitUpdatedProduct = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
+        setLoading(true); 
+        setError(''); 
 
-        // Añadir todos los campos del producto al FormData
-        for (const [key, value] of Object.entries(product)) {
-            formData.append(key, value);
-        }
+        const form_HTML = e.target;
+        const form_Values = new FormData(form_HTML);
+        const form_fields = {
+            title: '',
+            price: '',
+            stock: '',
+            description: '',
+            category: ''
+        };
+        const form_values_object = extractFormData(form_fields, form_Values);
 
-        // Añadir la imagen si existe una nueva o la que ya está guardada
-        if (image) {
-            formData.append("image", image);
-        } else if (product?.image) {
-            formData.append("image", product.image);
+        
+        form_values_object.image = image;
+
+       
+        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description || !form_values_object.category) {
+            setError('All fields are required.');
+            return;
         }
 
         try {
-            const response = await PUT(`http://localhost:3000/api/products/${id}`, {
-                headers: 
-                    getAuthenticatedHeaders(),
-                body: formData,
+            const response = await PUT(`http://localhost:3000/api/products/${product_id}`, {
+                headers: getAuthenticatedHeaders(),
+                body: JSON.stringify(form_values_object),
             });
+
             if (response.ok) {
-                console.log("Producto actualizado:", await response.json());
+                setSuccess("Producto actualizado correctamente.");
             } else {
                 setError("Error actualizando el producto.");
             }
         } catch (error) {
-            console.error("Error actualizando pruducto:", error);
+            console.error("Error actualizando producto:", error);
             setError("Error actualizando el producto.");
+        } finally {
+            setLoading(false); 
         }
+        console.log(form_values_object);
     };
+
+    
 
     const handleChangeFile = (e) => {
         const file = e.target.files?.[0];
         const FILE_MB_LIMIT = 2;
         if (file && file.size > FILE_MB_LIMIT * 1024 * 1024) {
-            alert(`Error: el archivo es muy grande (limite ${FILE_MB_LIMIT} MB)`);
+            setError(`Error: el archivo es muy grande (limite ${FILE_MB_LIMIT} MB)`);
             return;
         }
 
@@ -92,7 +109,6 @@ const UpdateProduct = () => {
 
     return (
         <div>
-            {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmitUpdatedProduct}>
                 <div>
                     <label htmlFor="titulo">Ingrese el titulo:</label>
@@ -100,8 +116,9 @@ const UpdateProduct = () => {
                         name="title"
                         id="titulo"
                         placeholder="Nombre del producto"
-                        value={product?.title || ''}
+                        value={product.title}
                         onChange={handleInputChange}
+                        required
                     />
                 </div>
                 <div>
@@ -109,8 +126,9 @@ const UpdateProduct = () => {
                     <input
                         name="price"
                         id="precio"
-                        value={product?.price || ''}
+                        value={product.price}
                         onChange={handleInputChange}
+                        required
                     />
                 </div>
                 <div>
@@ -118,17 +136,19 @@ const UpdateProduct = () => {
                     <input
                         name="stock"
                         id="stock"
-                        value={product?.stock || ''}
+                        value={product.stock}
                         onChange={handleInputChange}
+                        required
                     />
                 </div>
                 <div>
-                    <label htmlFor="descripcion">Ingrese la descripcion:</label>
+                <label htmlFor="descripcion">Ingrese la descripcion:</label>
                     <textarea
                         name="description"
                         id="descripcion"
-                        value={product?.description || ''}
+                        value={product.description}
                         onChange={handleInputChange}
+                        required
                     ></textarea>
                 </div>
                 <div>
@@ -136,8 +156,9 @@ const UpdateProduct = () => {
                     <input
                         name="category"
                         id="category"
-                        value={product?.category || ''}
+                        value={product.category}
                         onChange={handleInputChange}
+                        required
                     />
                 </div>
                 <div>
@@ -151,10 +172,16 @@ const UpdateProduct = () => {
                         accept="image/*"
                     />
                 </div>
-                <button type="submit">Actualizar producto</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Actualizando...' : 'Actualizar producto'}
+                </button>
+                {error && <p className="error" style={{ color: 'red' }}>{error}</p>}
+            {success && <p className="success" style={{ color: 'green' }}>{success}</p>}
             </form>
+            <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
+
         </div>
     );
 };
 
-export default UpdateProduct;
+export default UpdateProduct; 

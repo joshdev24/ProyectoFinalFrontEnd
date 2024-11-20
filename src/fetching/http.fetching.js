@@ -1,7 +1,4 @@
 
-
-
-
 export const POST = async (URL_API, params) => {
 	try{
 		const response = await fetch(URL_API, {
@@ -25,6 +22,7 @@ export const GET = async (URL_API, params) => {
             method: 'GET',
             ...params
         });
+        
         return response.json();
     } catch (error) {
         console.log(error);
