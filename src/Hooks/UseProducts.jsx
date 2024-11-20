@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
+import ENVIOROMENT from "../utils/enviroment"
 
 const useProducts = () => {
     const [products, setProducts] = useState([])
     const [isLoadingProducts, setIsLoadingProducts] = useState(true)
 
     const getProducts = async () => {
-        const response = await GET('http://localhost:3000/api/products', {
+        const response = await GET(`${ENVIOROMENT.URL_BACKEND}/api/products`, {
             headers: getAuthenticatedHeaders(),
         })
     
