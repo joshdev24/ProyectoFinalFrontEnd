@@ -3,7 +3,6 @@ import { getAuthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import { extractFormData } from '../../utils/extractFormData';
 import './CreateProduct.css';
 import { Link } from 'react-router-dom';
-import ENVIOROMENT from '../../utils/enviroment';
 
 const CreateProductScreen = () => {
     const [image, setImage] = useState('');
@@ -38,7 +37,7 @@ const CreateProductScreen = () => {
         setLoading(true); 
 
         try {
-            const response = await POST(`${ENVIOROMENT.URL_BACKEND}/api/products`, {
+            const response = await POST('http://localhost:3000/api/products', {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_values_object)
             });

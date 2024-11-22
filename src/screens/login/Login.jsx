@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { extractFormData } from '../../utils/extractFormData';
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import './Login.css';
-import ENVIOROMENT from '../../utils/enviroment';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -23,7 +22,7 @@ const Login = () => {
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
-       
+
         if (!form_values_object.email || !form_values_object.password) {
             setError('Por favor, complete todos los campos.');
             setLoading(false);
@@ -32,7 +31,7 @@ const Login = () => {
 
         try {
             const response = await POST(
-                `${ENVIOROMENT.URL_BACKEND}/api/auth/login`,
+                'http://localhost:3000/api/auth/login',
                 {
                     headers: getUnnauthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)
@@ -41,8 +40,7 @@ const Login = () => {
 
             
             if (!response.ok) {
-                const errorData = await response.json();
-                setError(errorData.message || 'Error al iniciar sesión.');
+                setError('Error al iniciar sesión.', error);
                 setLoading(false);
                 return;
             }
