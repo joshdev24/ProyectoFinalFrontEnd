@@ -4,6 +4,7 @@ import { extractFormData } from '../../utils/extractFormData'
 import { PUT,  getAuthenticatedHeaders } from '../../fetching/http.fetching'
 import "./ResetPassword.css"
 import { useState } from 'react'
+import ENVIROMENT from '../../../enviroment'
 
 
 const ResetPassword = () => {
@@ -20,7 +21,7 @@ const ResetPassword = () => {
             'password': ''
         }
         const form_values_object = extractFormData(form_fields, form_Values)
-        const response = await PUT('http://localhost:3000/api/auth/reset-password/' + reset_token, {
+        const response = await PUT(`http://localhost:3000/apiauth/reset-password/` + reset_token, {
             headers: getAuthenticatedHeaders(),
 				body: JSON.stringify(form_values_object)
 			})

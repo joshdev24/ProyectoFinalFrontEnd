@@ -6,6 +6,7 @@ import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 
 
 
+
 const Register = () => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState(false)
@@ -44,7 +45,6 @@ const Register = () => {
             } else {
                 setError("Error al registrarte")
             }
-            console.log(body)
         } catch (error) {
             console.error(error);
         }

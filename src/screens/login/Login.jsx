@@ -31,7 +31,7 @@ const Login = () => {
 
         try {
             const response = await POST(
-                'http://localhost:3000/api/auth/login',
+                `http://localhost:3000/api/auth/login`,
                 {
                     headers: getUnnauthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)
@@ -44,8 +44,8 @@ const Login = () => {
                 setLoading(false);
                 return;
             }
+            navigate('/home'); 
 
-            
             console.log('Login Response:', response);
 
             const access_token = response.payload.token;
@@ -57,7 +57,7 @@ const Login = () => {
 
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
-            navigate('/home'); 
+           
         } catch (error) {
             console.log('Error:', error);
             setError('Ocurrió un error al intentar iniciar sesión.');
