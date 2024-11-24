@@ -4,7 +4,6 @@ import { extractFormData } from '../../utils/extractFormData'
 import { PUT,  getAuthenticatedHeaders } from '../../fetching/http.fetching'
 import "./ResetPassword.css"
 import { useState } from 'react'
-import ENVIROMENT from '../../../enviroment'
 
 
 const ResetPassword = () => {
@@ -42,7 +41,7 @@ const ResetPassword = () => {
     <p class="reset-password-subtitle">
         Ingresa tu nueva contraseña para recuperar el acceso.
     </p>
-    <form class="reset-password-form">
+    <form class="reset-password-form" onSubmit={handleSubmitResetForm}>
         <label for="password" class="input-label">Nueva Contraseña</label>
         <input 
             type="password" 
