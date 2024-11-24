@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PUT, GET, getAuthenticatedHeaders } from "../../fetching/http.fetching";
 import { extractFormData } from "../../utils/extractFormData";
 import { Link, useParams } from "react-router-dom";
-import ENVIROMENT from "../../../enviroment";
+
 
 const UpdateProduct = () => {
     const { product_id } = useParams();
