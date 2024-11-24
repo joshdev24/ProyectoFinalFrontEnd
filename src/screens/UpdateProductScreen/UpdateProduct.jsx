@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PUT, GET, getAuthenticatedHeaders } from "../../fetching/http.fetching";
 import { extractFormData } from "../../utils/extractFormData";
 import { Link, useParams } from "react-router-dom";
+import ENVIROMENT from "../../../enviroment";
 
 const UpdateProduct = () => {
     const { product_id } = useParams();
@@ -65,7 +66,7 @@ const UpdateProduct = () => {
         }
 
         try {
-            const response = await PUT(`http://localhost:3000/api/products/${product_id}`, {
+            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_values_object),
             });
