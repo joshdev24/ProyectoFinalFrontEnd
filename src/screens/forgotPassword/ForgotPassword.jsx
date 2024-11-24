@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
 import { POST } from '../../fetching/http.fetching'
-import ENVIROMENT from '../../../enviroment';
 
 
 
