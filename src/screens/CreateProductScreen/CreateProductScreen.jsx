@@ -110,7 +110,6 @@ const CreateProductScreen = () => {
                 <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
             </form>
         </div>
-
        </>
     );
 };
