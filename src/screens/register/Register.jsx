@@ -44,7 +44,6 @@ const Register = () => {
             } else {
                 setError("Error al registrarte")
             }
-            console.log(body)
         } catch (error) {
             console.error(error);
         }
