@@ -32,7 +32,7 @@ const Login = () => {
 
         try {
             const response = await POST(
-                `${ENVIROMENT.URL_BACKEND}api/auth/login`,
+                `${ENVIROMENT.URL_BACKEND}/api/auth/login`,
                 {
                     headers: getUnnauthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)
