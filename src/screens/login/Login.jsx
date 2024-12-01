@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { extractFormData } from '../../utils/extractFormData';
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
-import './Login.css';
 import ENVIROMENT from '../../../enviroment';
+import './Login.css';
+
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -45,7 +47,7 @@ const Login = () => {
                 setLoading(false);
                 return;
             }
-            navigate('/home'); 
+            
 
             console.log('Login Response:', response);
 
@@ -58,7 +60,10 @@ const Login = () => {
 
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
-           
+            const GoHome = () => {
+                navigate('/home');
+            }
+            GoHome();
         } catch (error) {
             console.log('Error:', error);
             setError('Ocurrió un error al intentar iniciar sesión.');

@@ -43,27 +43,34 @@ const ForgotPassword = () => {
 
     return (
         <>
-            <div>
-                <h1>Olvide mi contraseña</h1>
-                <p>Enviaremos un mail a tu email de usuario para enviarte los pasos de restablecimiento de la contraseña.</p>
-                <form onSubmit={handleSubmitLoginForm}>
-                    <div>
-                        <label htmlFor='email'>Ingrese su email:</label>
-                        <input name='email' id='email' placeholder='pepe@gmail.com' required />
-                    </div>
-                    <button type='submit'>Enviar mail</button>
-                    <br/>
-                    <itemize>
-                <li> Si tienes cuenta puedes <Link to='/login'>iniciar sesion</Link></li>
-                <li>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></li>
-            </itemize>
-                </form>
-                {error && <p style={{ color: 'red' }}>{error}</p>} 
-                {success && <p style={{ color: 'green' }}>{success}</p>} 
-
-            </div>
-            
-        </>
+        <div className="password-reset-container">
+            <h1 className="password-reset-title">Olvidé mi contraseña</h1>
+            <p className="password-reset-description">
+                Enviaremos un mail a tu email de usuario para enviarte los pasos de restablecimiento de la contraseña.
+            </p>
+            <form onSubmit={handleSubmitLoginForm} className="password-reset-form">
+                <div className="input-group">
+                    <label htmlFor="email" className="input-label">Ingrese su email:</label>
+                    <input 
+                        name="email" 
+                        id="email" 
+                        className="input-field" 
+                        placeholder="pepe@gmail.com" 
+                        required 
+                    />
+                </div>
+                <button type="submit" className="reset-button">Enviar mail</button>
+                <br />
+                <ul className="additional-links">
+                    <li>Si tienes cuenta puedes <Link to="/login" className="link">iniciar sesión</Link></li>
+                    <li>Si aún no tienes cuenta puedes <Link to="/register" className="link">registrarte</Link></li>
+                </ul>
+            </form>
+            {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
+        </div>
+    </>
+    
     );
 };
 

@@ -3,6 +3,7 @@ import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 import ENVIROMENT from "../../enviroment"
 
 
+
 const useProducts = () => {
     const [products, setProducts] = useState([])
     const [isLoadingProducts, setIsLoadingProducts] = useState(true)

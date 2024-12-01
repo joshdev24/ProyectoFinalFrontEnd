@@ -54,7 +54,9 @@ export const DELETE = async (URL_API, params) => {
     } catch (error) {
         throw error;
     }
+
 };
+
 
 const getUnnauthenticatedHeaders = () =>{
 	const unnauthenticatedHeaders = new Headers()
