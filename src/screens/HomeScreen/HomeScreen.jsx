@@ -41,10 +41,6 @@ const HomeScreen = () => {
 
 
 const ProductsList = ({ products }) => {
-    if (!products.length) {
-        return <p className="no-products-message">No hay productos disponibles.</p>;
-    }
-
     return (
         <div className="products-list">
             {products.map((product) => (
