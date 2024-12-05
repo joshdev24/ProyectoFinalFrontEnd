@@ -15,8 +15,8 @@ const Login = () => {
 
     const handleSubmitLoginForm = async (e) => {
         e.preventDefault();
-        setError(''); 
-        setLoading(true); 
+        setError('');
+        setLoading(true);
 
         const form_HTML = e.target;
         const form_Values = new FormData(form_HTML);
@@ -25,7 +25,6 @@ const Login = () => {
             password: ''
         };
         const form_values_object = extractFormData(form_fields, form_Values);
-
 
         if (!form_values_object.email || !form_values_object.password) {
             setError('Por favor, complete todos los campos.');
@@ -42,16 +41,14 @@ const Login = () => {
                 }
             );
 
-            
-            if (!response.ok) {
-                setError('Error al iniciar sesión.', response.payload.detail);
+            if (!response || !response.ok) {
+                setError('Error al iniciar sesión.');
                 setLoading(false);
                 return;
             }
 
             setSuccess('Inicio de sesión exitoso.');
-            console.log('Login Response:', response);
-            const access_token = response.payload.token;
+            const access_token = response.payload?.token;
             if (!access_token) {
                 setError('Error al cargar el token de acceso.');
                 setLoading(false);
@@ -60,11 +57,9 @@ const Login = () => {
 
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
-            navigate('/home')
-            
-            
+            navigate('/home');
         } catch (error) {
-            console.log('Error:', error);
+            console.error('Error:', error);
             setError('Ocurrió un error al intentar iniciar sesión.');
         } finally {
             setLoading(false);
@@ -83,17 +78,16 @@ const Login = () => {
                     <label htmlFor="password" className="input-label">Ingrese su contraseña:</label>
                     <input name="password" id="password" type="password" placeholder="Ingrese su contraseña" className="input-field" required />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>} 
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
                 <button type="submit" className="submit-button" disabled={loading}>
                     {loading ? 'Cargando...' : 'Iniciar sesión'}
                 </button>
-                
             </form>
-            <itemize className="register-link">
-                <li> Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
+            <ul className="register-link">
+                <li>Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
                 <li>¿Has olvidado la contraseña? <Link to="/forgot-password">Restablecer</Link></li>
-            </itemize>
+            </ul>
         </div>
     );
 };
