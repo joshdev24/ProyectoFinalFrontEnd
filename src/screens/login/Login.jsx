@@ -50,10 +50,7 @@ const Login = () => {
             }
 
             setSuccess('Inicio de sesión exitoso.');
-            
-
             console.log('Login Response:', response);
-
             const access_token = response.payload.token;
             if (!access_token) {
                 setError('Error al cargar el token de acceso.');
@@ -63,14 +60,14 @@ const Login = () => {
 
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
-             navigate('/home');
+            navigate('/home')
             
             
         } catch (error) {
             console.log('Error:', error);
             setError('Ocurrió un error al intentar iniciar sesión.');
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
