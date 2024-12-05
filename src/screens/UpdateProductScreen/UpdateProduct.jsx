@@ -172,7 +172,7 @@ const UpdateProduct = () => {
             {(image || product?.image) && (
                 <img src={image || product?.image} alt="Producto" className="form-image" />
             )}
-            <label htmlFor="imagen" className="form-label-file">Seleccione una imagen:</label>
+            <label htmlFor="imagen" className="form-label-file">Click aqui para subir la imagen</label>
             <input
                 name="imagen"
                 id="imagen"
@@ -180,6 +180,7 @@ const UpdateProduct = () => {
                 className="form-file"
                 onChange={handleChangeFile}
                 accept="image/*"
+                required
             />
         </div>
         <button type="submit" className="form-button" disabled={loading}>

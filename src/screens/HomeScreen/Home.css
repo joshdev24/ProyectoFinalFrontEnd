@@ -10,12 +10,11 @@
 
 /* General */
 body {
-    background-image: url('./login.jpg'); /* Fondo blanco */
+    background-image: url('./tron.jpg'); /* Fondo blanco */
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 0;;
 }
-
 /* Contenedor principal */
 .home-container {
     margin: 20px auto;
@@ -31,11 +30,32 @@ body {
 
 /* Título de bienvenida */
 .welcome-title {
-    font-size: 32px;
+    font-size: 48px; /* Tamaño más grande */
+    font-weight: bold; /* Aumenta el grosor de la fuente */
     color: var(--neon-cyan);
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
-    animation: glowing 1.5s infinite alternate;
+    margin-bottom: 30px;
+    text-shadow: 
+        0 0 15px var(--neon-cyan), 
+        0 0 30px var(--neon-cyan), 
+        0 0 45px var(--neon-cyan), 
+        0 0 60px var(--neon-cyan); /* Más capas de sombra */
+    animation: glowing 1s infinite alternate; /* Animación más rápida */
+}
+
+/* Definición de la animación */
+@keyframes glowing {
+    0% {
+        text-shadow: 
+            0 0 10px var(--neon-cyan), 
+            0 0 20px var(--neon-cyan), 
+            0 0 30px var(--neon-cyan);
+    }
+    100% {
+        text-shadow: 
+            0 0 20px var(--neon-cyan), 
+            0 0 40px var(--neon-cyan), 
+            0 0 60px var(--neon-cyan);
+    }
 }
 
 /* Animación para el título */
@@ -51,6 +71,41 @@ body {
     }
 }
 
+.create-product-link {
+    display: inline-block;
+    padding: 12px 24px; /* Tamaño del botón */
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Quita el subrayado */
+    text-align: center;
+    background: #39ff14; /* Verde neón claro */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 
+        0 0 10px #39ff14, 
+        0 0 20px #39ff14, 
+        0 0 30px #39ff14; /* Brillo */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.create-product-link:hover {
+    background: #00ff40; /* Color más claro al pasar el mouse */
+    box-shadow: 
+        0 0 20px #00ff40, 
+        0 0 40px #00ff40, 
+        0 0 60px #00ff40; /* Brillo intensificado */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+.create-product-link:active {
+    background: #00cc33; /* Color más oscuro al hacer clic */
+    box-shadow: 
+        0 0 10px #00cc33, 
+        0 0 20px #00cc33;
+    transform: scale(0.95); /* Botón ligeramente comprimido */
+}
+
+
 /* Lista de productos */
 .products-list {
     display: grid;
@@ -61,7 +116,7 @@ body {
 
 /* Card de producto con fondo claro */
 .product-card {
-    background-color: var(--light-gray); /* Fondo claro para la card */
+    background-color: #948fd5; /* Fondo claro para la card */
     color: var(--dark-gray); /* Texto oscuro para buena legibilidad */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px var(--neon-cyan); /* Brillo neón en los bordes */
@@ -97,14 +152,14 @@ body {
 .product-price {
     font-size: 20px;
     font-weight: bold;
-    color: var(--neon-red);
+    color: #c00505;
     margin-bottom: 15px;
 }
 
 /* Enlace de detalles del producto */
 .product-detail-link {
     display: inline-block;
-    color: var(--neon-orange);
+    color: #00ff90;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
@@ -122,7 +177,7 @@ body {
 .product-update-link,
 .product-delete-link {
     display: block;
-    color: var(--neon-orange);
+    color: #00b7ff;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;

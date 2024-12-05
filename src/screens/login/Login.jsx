@@ -10,6 +10,7 @@ import './Login.css';
 const Login = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleSubmitLoginForm = async (e) => {
@@ -43,10 +44,12 @@ const Login = () => {
 
             
             if (!response.ok) {
-                setError('Error al iniciar sesión.', error);
+                setError('Error al iniciar sesión.', response.payload.detail);
                 setLoading(false);
                 return;
             }
+
+            setSuccess('Inicio de sesión exitoso.');
             
 
             console.log('Login Response:', response);
@@ -85,6 +88,7 @@ const Login = () => {
                     <input name="password" id="password" type="password" placeholder="Ingrese su contraseña" className="input-field" required />
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>} 
+                {success && <p style={{ color: 'green' }}>{success}</p>}
                 <button type="submit" className="submit-button" disabled={loading}>
                     {loading ? 'Cargando...' : 'Iniciar sesión'}
                 </button>
