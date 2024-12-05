@@ -62,7 +62,6 @@ const getUnnauthenticatedHeaders = () =>{
 	const unnauthenticatedHeaders = new Headers()
 	unnauthenticatedHeaders.set('Content-Type', 'application/json')
 	unnauthenticatedHeaders.set('x-api-key', 'b18fb255-e3b7-4ba9-9fc6-b52dbf69ae38')
-    unnauthenticatedHeaders.set("Access-Control-Allow-Origin", "*")
 	return unnauthenticatedHeaders
 }
 
@@ -71,7 +70,6 @@ const getAuthenticatedHeaders = () => {
 	authenticatedHeaders.set('Content-Type', 'application/json')
 	authenticatedHeaders.set('x-api-key', 'b18fb255-e3b7-4ba9-9fc6-b52dbf69ae38')
 	authenticatedHeaders.set('Authorization', 'Bearer ' + sessionStorage.getItem('access_token'))
-    authenticatedHeaders.set("Access-Control-Allow-Origin", "*")
 	return authenticatedHeaders
 }
 
