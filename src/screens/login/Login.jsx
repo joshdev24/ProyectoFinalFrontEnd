@@ -58,9 +58,11 @@ const Login = () => {
             setLoading(false);
         }
 
-        const goToHome = () => {
-            navigate('/home');
-        };
+
+    };
+
+    const goToHome = () => {
+        navigate('/home');
     };
 
     return (
