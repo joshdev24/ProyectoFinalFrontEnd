@@ -18,14 +18,9 @@ export const AuthContextProvider = ({children}) =>{
         }, 
         []
     )
-    const logout = () =>{
-        sessionStorage.removeItem('access_token')
-        setIsAuthenticatedUser(false)
-    }
-
     return (
         <AuthContext.Provider value={{
-            logout,
+    
             isAuthenticatedUser
         }} >
             {children}
