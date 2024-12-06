@@ -27,7 +27,7 @@ export const AuthContextProvider = ({ children }) => {
             setIsAuthenticatedUser(false);
             setUser_info({});
         } catch (error) {
-            console.error('Error al cerrar sesi n:', error);
+            console.error('Error al cerrar sesion:', error);
         }
     };
 
