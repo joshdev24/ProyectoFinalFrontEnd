@@ -13,6 +13,7 @@ export const AuthContextProvider = ({ children }) => {
             const access_token = sessionStorage.getItem('access_token')
             if(access_token){
                 setIsAuthenticatedUser(true)
+                console.log('isAuthenticatedUser', isAuthenticatedUser)
             }
         }, 
         []
