@@ -1,23 +1,38 @@
-import { useContext, createContext, useEffect, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext();
+export const AuthContext  = createContext()
 
-export const AuthContextProvider = ({ children }) => {
-    const access_token = sessionStorage.getItem("access_token");
-    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(Boolean(access_token));
+export const AuthContextProvider = ({children}) =>{
+    const access_token = sessionStorage.getItem('access_token')
+    //Estado booleano
+    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(
+        Boolean(access_token)
+    )
 
-    useEffect(() => {
-        const access_token = sessionStorage.getItem("access_token");
-        setIsAuthenticatedUser(access_token ? true : false);
-    }, []);
+    useEffect(
+        () => {
+            const access_token = sessionStorage.getItem('access_token')
+            if(access_token) {
+                setIsAuthenticatedUser(true)
+            }
+        }, 
+        []
+    )
+    const logout = () =>{
+        sessionStorage.removeItem('access_token')
+        setIsAuthenticatedUser(false)
+    }
 
-    const logout = () => {
-        sessionStorage.removeItem("access_token");
-        sessionStorage.removeItem("user_info");
-        setIsAuthenticatedUser(false);
-    };
+    return (
+        <AuthContext.Provider value={{
+            logout,
+            isAuthenticatedUser
+        }} >
+            {children}
+        </AuthContext.Provider>
+    )
+}
 
-    return <AuthContext.Provider value={{ isAuthenticatedUser, logout, setIsAuthenticatedUser }}>{children}</AuthContext.Provider>;
-};
-
-export const useAuthContext = () => useContext(AuthContext);
+export const useAuthContext = () => {
+    return useContext(AuthContext) // devuelve un objeto con  {logout, isAuthenticatedUser}
+}
