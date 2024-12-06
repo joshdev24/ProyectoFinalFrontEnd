@@ -3,26 +3,33 @@ import { useContext, createContext, useEffect, useState } from "react";
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
-    const access_token = sessionStorage.getItem('access_token')
-    const user_info = JSON.parse(sessionStorage.getItem('user_info'))
-    //Estado booleano
-    const  [isAuthenticatedUser, setIsAuthenticatedUser] = useState(Boolean(access_token))
+    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(false);
+    const [user_info, setUser_info] = useState({});
+    const access_token = sessionStorage.getItem('access_token');
 
     useEffect(
         ()=>{
-            const access_token = sessionStorage.getItem('access_token')
             if(access_token){
-                setIsAuthenticatedUser(true)
+                const user_info = JSON.parse(sessionStorage.getItem('user_info'))
+                if(user_info){
+                    setUser_info(user_info);
+                    setIsAuthenticatedUser(true)
+                }
             }
         }, 
         []
-    )
-    
+    );
+
     const logOut = () => {
-        sessionStorage.removeItem('access_token')
-        sessionStorage.removeItem('user_info')
-        setIsAuthenticatedUser(false)
-    }
+        try {
+            sessionStorage.removeItem('access_token');
+            sessionStorage.removeItem('user_info');
+            setIsAuthenticatedUser(false);
+            setUser_info({});
+        } catch (error) {
+            console.error('Error al cerrar sesi n:', error);
+        }
+    };
 
     return (
         <AuthContext.Provider value={{
