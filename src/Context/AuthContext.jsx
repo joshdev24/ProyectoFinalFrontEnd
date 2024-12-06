@@ -4,6 +4,9 @@ export const AuthContext  = createContext()
 
 export const AuthContextProvider = ({children}) =>{
     const access_token = sessionStorage.getItem("access_token")
+    if (access_token === null) {
+        console.log("Access token is null")
+    }
     //Estado booleano
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(
         Boolean(access_token)
@@ -11,8 +14,11 @@ export const AuthContextProvider = ({children}) =>{
 
     useEffect(
         () => {
-            const access_token = sessionStorage.getItem("access_token")
-            if(access_token) {
+            const accessToken = sessionStorage.getItem("access_token")
+            if (accessToken === null) {
+                console.log("Access token is null in useEffect")
+            }
+            if(accessToken) {
                 setIsAuthenticatedUser(true)
             }
         }, 
@@ -20,7 +26,6 @@ export const AuthContextProvider = ({children}) =>{
     )
     return (
         <AuthContext.Provider value={{
-    
             isAuthenticatedUser
         }} >
             {children}
