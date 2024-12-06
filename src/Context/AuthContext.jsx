@@ -3,7 +3,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 export const AuthContext  = createContext()
 
 export const AuthContextProvider = ({children}) =>{
-    const access_token = sessionStorage.getItem('access_token')
+    const access_token = sessionStorage.getItem("access_token")
     //Estado booleano
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(
         Boolean(access_token)
@@ -11,7 +11,7 @@ export const AuthContextProvider = ({children}) =>{
 
     useEffect(
         () => {
-            const access_token = sessionStorage.getItem('access_token')
+            const access_token = sessionStorage.getItem("access_token")
             if(access_token) {
                 setIsAuthenticatedUser(true)
             }
