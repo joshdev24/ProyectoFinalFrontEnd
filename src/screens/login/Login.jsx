@@ -26,12 +26,6 @@ const Login = () => {
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
-        if (!form_values_object.email || !form_values_object.password) {
-            setError('Por favor, complete todos los campos.');
-            setLoading(false);
-            return;
-        }
-
         try {
             const response = await POST(
                 `${ENVIROMENT.URL_BACKEND}/api/auth/login`,
@@ -41,8 +35,8 @@ const Login = () => {
                 }
             );
 
-            if (!response || !response.ok) {
-                setError('Error al iniciar sesión.');
+            if (!response) {
+                setError('Error al iniciar sesión.', error);
                 setLoading(false);
                 return;
             }
@@ -50,8 +44,9 @@ const Login = () => {
             setSuccess('Inicio de sesión exitoso.');
 
             const access_token = response.payload.token;
-            sessionStorage.setItem('access_token', access_token);
-            sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
+            sessionStorage.setItem('access_token', access_token)
+            sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
+
 
             if(response.ok) {
                 navigate('/home');
