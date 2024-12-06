@@ -10,7 +10,6 @@ const DeleteProduct = () => {
     const [loading, setLoading] = useState(false); // Estado de carga
     const [error, setError] = useState(""); // Estado de error
     const [success, setSuccess] = useState(""); // Estado de éxito
-    const navigate = useNavigate();
 
     const handleDelete = async () => {
         setLoading(true); // Indicamos que la solicitud está en progreso
