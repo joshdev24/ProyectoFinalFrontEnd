@@ -48,12 +48,11 @@ const Login = () => {
             }
 
             setSuccess('Inicio de sesión exitoso.');
-            
+
             const access_token = response.payload.token;
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
 
-            navigate('/home');
             
             
         } catch (error) {
@@ -78,7 +77,7 @@ const Login = () => {
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
-                <button type="submit" className="submit-button" disabled={loading}>
+                <button type="submit" className="submit-button" disabled={loading} onClick={() => navigate('/home')}>
                     {loading ? 'Cargando...' : 'Iniciar sesión'}
                 </button>
             </form>
