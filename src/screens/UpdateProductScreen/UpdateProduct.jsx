@@ -34,6 +34,7 @@ const UpdateProduct = () => {
             if (response.ok) {
                 const productFromServer = response.payload.product;
                 setProduct(productFromServer);
+                
             } else {
                 setError("Error al obtener el producto.");
             }

@@ -45,13 +45,15 @@ const CreateProductScreen = () => {
 
             if (response.ok) {
     setSuccess('Se ha creado el producto con exito');
+    
             } 
 			
         } catch (error) {
             console.error(error);
             setError('Error inesperado'); 
         } finally {
-            setLoading(false); 
+            setLoading(false);
+
         }
     };
 
