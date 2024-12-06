@@ -18,21 +18,33 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/forgot-password" element={<ForgotPassword />}/>
-        <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
-        <Route path='/home' element={<Home/>}/>
-        <Route element={<ProtectedRoute/>}>
-        <Route path='/product/new' element={<CreateProductScreen/>}/>
-        <Route path="/product/:product_id" element={<ProductDetails />} />
-        <Route path='/product/update/:product_id' element={<UpdateProduct/>}/>
-        <Route path='/product/delete/:product_id' element={<DeleteProduct/>}/>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route
+          path="/reset-password/:reset_token"
+          element={<ResetPassword />}
+        />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/product/new" element={<CreateProductScreen />} />
+          <Route
+            path="/product/:product_id"
+            element={<ProductDetails />}
+          />
+          <Route
+            path="/product/update/:product_id"
+            element={<UpdateProduct />}
+          />
+          <Route
+            path="/product/delete/:product_id"
+            element={<DeleteProduct />}
+          />
         </Route>
       </Routes>
     </>
-  )
+  );
 }
 
 export default App

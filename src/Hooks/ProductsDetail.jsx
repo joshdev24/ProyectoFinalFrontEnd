@@ -8,7 +8,6 @@ const useProductDetail = (product_id) =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-    const navigate = useNavigate()
     const getProductDetail = async (product_id) =>{
         const product_detail_response = await GET(
            `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 
