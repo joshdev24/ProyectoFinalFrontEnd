@@ -1,31 +1,38 @@
 import { useContext, createContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext();
+export const AuthContext  = createContext()
 
-export const AuthContextProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true); // Indicador de carga inicial
+export const AuthContextProvider = ({children}) =>{
+    const access_token = sessionStorage.getItem('access_token')
+    //Estado booleano
+    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(
+        Boolean(access_token)
+    )
 
-    useEffect(() => {
-        const checkAuth = () => {
-            const token = sessionStorage.getItem('access_token');
-            setIsAuthenticated(Boolean(token));
-            setLoading(false); // Finalizar la carga
-        };
-        
-        checkAuth();
-    }, []);
-
-    const logout = () => {
-        sessionStorage.removeItem('access_token');
-        setIsAuthenticated(false);
-    };
+    useEffect(
+        () => {
+            const access_token = sessionStorage.getItem('access_token')
+            if(access_token) {
+                setIsAuthenticatedUser(true)
+            }
+        }, 
+        []
+    )
+    const logout = () =>{
+        sessionStorage.removeItem('access_token')
+        setIsAuthenticatedUser(false)
+    }
 
     return (
-        <AuthContext.Provider value={{ logout, isAuthenticated, loading }}>
+        <AuthContext.Provider value={{
+            logout,
+            isAuthenticatedUser
+        }} >
             {children}
         </AuthContext.Provider>
-    );
-};
+    )
+}
 
-export const useAuthContext = () => useContext(AuthContext);
+export const useAuthContext = () => {
+    return useContext(AuthContext) // devuelve un objeto con  {logout, isAuthenticatedUser}
+}
