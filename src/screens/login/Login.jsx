@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { extractFormData } from '../../utils/extractFormData';
-import { getAuthenticatedHeaders, getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
+import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import ENVIROMENT from '../../../enviroment';
 import './Login.css';
 
@@ -30,7 +30,7 @@ const Login = () => {
             const response = await POST(
                 `${ENVIROMENT.URL_BACKEND}/api/auth/login`,
                 {
-                    headers: getAuthenticatedHeaders(),
+                    headers: getUnnauthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)
                 }
             );
@@ -46,8 +46,6 @@ const Login = () => {
             const access_token = response.payload.token;
             sessionStorage.setItem('access_token', access_token)
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
-            window.location.reload ()
-
 
 
             
@@ -57,13 +55,9 @@ const Login = () => {
         } finally {
             setLoading(false);
         }
-
-
     };
 
-    const goToHome = () => {
-        navigate('/home');
-    };
+    const goHome = () => navigate('/home');
 
     return (
         <div className="login-container">
@@ -79,7 +73,7 @@ const Login = () => {
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
-                <button type="submit" className="submit-button" disabled={loading} onSubmit={goToHome}>
+                <button type="submit" className="submit-button" disabled={loading} onSubmit={goHome}>
                     {loading ? 'Cargando...' : 'Iniciar sesión'}
                 </button>
             </form>
