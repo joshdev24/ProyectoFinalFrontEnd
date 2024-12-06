@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { extractFormData } from '../../utils/extractFormData';
-import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
+import { getAuthenticatedHeaders, getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import ENVIROMENT from '../../../enviroment';
 import './Login.css';
 
@@ -30,7 +30,7 @@ const Login = () => {
             const response = await POST(
                 `${ENVIROMENT.URL_BACKEND}/api/auth/login`,
                 {
-                    headers: getUnnauthenticatedHeaders(),
+                    headers: getAuthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)
                 }
             );
@@ -49,6 +49,7 @@ const Login = () => {
             window.location.reload ()
 
 
+
             
         } catch (error) {
             console.error('Error:', error);
@@ -56,6 +57,10 @@ const Login = () => {
         } finally {
             setLoading(false);
         }
+
+        const goToHome = () => {
+            navigate('/home');
+        };
     };
 
     return (
@@ -72,7 +77,7 @@ const Login = () => {
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
-                <button type="submit" className="submit-button" disabled={loading}>
+                <button type="submit" className="submit-button" disabled={loading} onSubmit={goToHome}>
                     {loading ? 'Cargando...' : 'Iniciar sesión'}
                 </button>
             </form>
