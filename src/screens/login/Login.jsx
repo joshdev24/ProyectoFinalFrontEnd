@@ -47,6 +47,8 @@ const Login = () => {
             sessionStorage.setItem('access_token', access_token)
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
 
+            navigate('/home');
+
 
             
         } catch (error) {
@@ -57,7 +59,6 @@ const Login = () => {
         }
     };
 
-    const goHome = () => navigate('/home');
 
     return (
         <div className="login-container">
@@ -73,7 +74,7 @@ const Login = () => {
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
-                <button type="submit" className="submit-button" disabled={loading} onSubmit={goHome}>
+                <button type="submit" className="submit-button" disabled={loading}>
                     {loading ? 'Cargando...' : 'Iniciar sesión'}
                 </button>
             </form>
