@@ -21,8 +21,7 @@ const CreateProductScreen = () => {
             title: '',
             price: '',
             stock: '',
-            description: '',
-            category: ''
+            description: ''
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
@@ -30,7 +29,7 @@ const CreateProductScreen = () => {
         form_values_object.image = image;
 
        
-        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description || !form_values_object.category) {
+        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description) {
             setError('All fields are required.');
             return;
         }
@@ -42,6 +41,7 @@ const CreateProductScreen = () => {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_values_object)
             });
+            console.log(form_values_object);
 
             if (response.ok) {
     setSuccess('Se ha creado el producto con exito');
@@ -56,6 +56,7 @@ const CreateProductScreen = () => {
 
         }
     };
+
 
     const handleChangeFile = (evento) => {
         const file_found = evento.target.files[0];
@@ -97,10 +98,6 @@ const CreateProductScreen = () => {
             <div className="form-group">
                 <label htmlFor="descripcion" className="form-label">Ingrese la descripción:</label>
                 <textarea name="description" id="descripcion" className="form-textarea" required></textarea>
-            </div>
-            <div className="form-group">
-                <label htmlFor="category" className="form-label">Ingrese la categoría:</label>
-                <input name="category" id="category" className="form-input" required />
             </div>
             <div className="form-group">
                 {image && <img src={image} alt="Selected" className="form-image" />}

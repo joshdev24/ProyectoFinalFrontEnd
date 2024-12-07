@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import useProducts from '../../Hooks/UseProducts';
+
 import './Home.css';
-// Hook para obtener productos
+import { GET, getAuthenticatedHeaders } from '../../fetching/http.fetching';
+import ENVIROMENT from '../../../enviroment';
 
 const getUserInfo = () => {
     try {
@@ -14,7 +15,30 @@ const getUserInfo = () => {
 
 const HomeScreen = () => {
     const user_info = getUserInfo();
-    const { products, isLoadingProducts } = useProducts();
+    const [products, setProducts] = useState([]);
+    const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+
+    const getProducts = async () => {
+        try {
+            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products`, {
+                headers: getAuthenticatedHeaders(),
+            });
+
+            if (response.ok) {
+                setProducts(response.payload.products);
+            } else {
+                console.error('Error al cargar los productos:', data.message);
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+        } finally {
+            setIsLoadingProducts(false);
+        }
+    };
+
+    useEffect(() => {
+        getProducts();
+    }, []);
 
     return (
         <div className="home-container">
@@ -39,7 +63,6 @@ const HomeScreen = () => {
     );
 };
 
-
 const ProductsList = ({ products }) => {
     return (
         <div className="products-list">
@@ -57,7 +80,6 @@ const Product = ({ title, price, image_base_64, id }) => {
             <img
                 src={image_base_64}
                 className="product-image"
-                alt={`Imagen del producto ${title}`}
             />
             <p className="product-price">Precio: ${price}</p>
             <Link to={`/product/${id}`} className="product-detail-link">
@@ -73,5 +95,6 @@ const Product = ({ title, price, image_base_64, id }) => {
         </div>
     );
 };
+
 
 export default HomeScreen;

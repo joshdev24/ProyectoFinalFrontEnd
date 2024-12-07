@@ -23,7 +23,7 @@ const DetailProductScreen = () => {
 
 
 
-const ProductDetail = ({ title, price, stock, description, category, image_base_64, id }) => {
+const ProductDetail = ({ title, price, stock, description, image_base_64, id }) => {
     return (
       <>
      
@@ -39,7 +39,6 @@ const ProductDetail = ({ title, price, stock, description, category, image_base_
             <span className="product-detail-price">Precio: ${price}</span>
             <span className="product-detail-stock">Stock: {stock}</span>
             <span className="product-detail-description">Descripción: {description}</span>
-            <span className="product-detail-description">Categoria: {category}</span>
             
         </div>
          <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link> 

@@ -12,7 +12,6 @@ const UpdateProduct = () => {
         price: '',
         stock: '',
         description: '',
-        category: '',
     });
     const [image, setImage] = useState(null);
     const [error, setError] = useState('');
@@ -55,8 +54,7 @@ const UpdateProduct = () => {
             title: '',
             price: '',
             stock: '',
-            description: '',
-            category: ''
+            description: ''
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
@@ -64,7 +62,7 @@ const UpdateProduct = () => {
         form_values_object.image = image;
 
        
-        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description || !form_values_object.category) {
+        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description) {
             setError('All fields are required.');
             return;
         }
@@ -159,17 +157,6 @@ const UpdateProduct = () => {
                 onChange={handleInputChange}
                 required
             ></textarea>
-        </div>
-        <div className="form-group">
-            <label htmlFor="category" className="form-label">Ingrese la categoría:</label>
-            <input
-                name="category"
-                id="category"
-                className="form-input"
-                value={product.category}
-                onChange={handleInputChange}
-                required
-            />
         </div>
         <div className="form-group">
             {(image || product?.image) && (
