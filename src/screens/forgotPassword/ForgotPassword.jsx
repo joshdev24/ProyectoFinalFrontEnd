@@ -5,8 +5,6 @@ import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment';
 
 
-
-
 const ForgotPassword = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
@@ -25,6 +23,8 @@ const ForgotPassword = () => {
             }
 
             const form_values_object = extractFormData(form_fields, form_Values);
+
+
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
                 headers:  getUnnauthenticatedHeaders(),
                 body: JSON.stringify(form_values_object)
