@@ -30,10 +30,8 @@ const ForgotPassword = () => {
                 body: JSON.stringify(form_values_object)
             });
 
-
-
             if (response) {
-                setSuccess('Revisa tu correo electrónico para restablecer tu contraseña');
+                setSuccess('Revisa tu correo electrónico para restablecer tu contraseña'), console.log(response);
             }
 
         } catch (error) {

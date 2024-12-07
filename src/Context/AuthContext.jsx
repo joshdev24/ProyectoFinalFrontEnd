@@ -1,4 +1,5 @@
 import { useContext, createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext()
 
@@ -6,6 +7,7 @@ export const AuthContextProvider = ({ children }) => {
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(false);
     const [user_info, setUser_info] = useState({});
     const access_token = sessionStorage.getItem('access_token');
+    const navigate = useNavigate();
 
     useEffect(
         ()=>{
@@ -26,6 +28,7 @@ export const AuthContextProvider = ({ children }) => {
             sessionStorage.removeItem('user_info');
             setIsAuthenticatedUser(false);
             setUser_info({});
+            navigate('/login');
         } catch (error) {
             console.error('Error al cerrar sesion:', error);
         }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import {useAuthContext} from "./../../Context/AuthContext";
 import './Home.css';
 import { GET, getAuthenticatedHeaders } from '../../fetching/http.fetching';
 import ENVIROMENT from '../../../enviroment';
@@ -14,9 +14,13 @@ const getUserInfo = () => {
 };
 
 const HomeScreen = () => {
+    const navigate = useNavigate();
     const user_info = getUserInfo();
     const [products, setProducts] = useState([]);
+    const [userProducts, setUserProducts] = useState([]);
     const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+    const [showUserProducts, setShowUserProducts] = useState(false);
+    const {logOut} = useAuthContext();
 
     const getProducts = async () => {
         try {
@@ -25,9 +29,16 @@ const HomeScreen = () => {
             });
 
             if (response.ok) {
-                setProducts(response.payload.products);
+                const allProducts = response.payload.products;
+                setProducts(allProducts);
+
+                // Filtrar productos del usuario actual
+                const userSpecificProducts = allProducts.filter(
+                    (product) => product.seller_id === user_info.id
+                );
+                setUserProducts(userSpecificProducts);
             } else {
-                console.error('Error al cargar los productos:', data.message);
+                console.error('Error al cargar los productos:', response.message);
             }
         } catch (error) {
             console.error('Error de red:', error);
@@ -35,6 +46,8 @@ const HomeScreen = () => {
             setIsLoadingProducts(false);
         }
     };
+
+    
 
     useEffect(() => {
         getProducts();
@@ -45,11 +58,30 @@ const HomeScreen = () => {
             {user_info.name ? (
                 <>
                     <h1 className="welcome-title">Bienvenido {user_info.name}</h1>
-                    <Link to="/product/new" className="create-product-link">
-                        Crear producto
-                    </Link>
+                    <div className="header-actions">
+                        <Link to="/product/new" className="create-product-link">
+                            Crear producto
+                        </Link>
+                        <button
+                            className="logout-button"
+                            onClick={logOut}
+                        >
+                            Cerrar sesión
+                        </button>
+                    
+                    <button
+                        className="filter-user-products-button"
+                        onClick={() => setShowUserProducts(!showUserProducts)}
+                    >
+                    
+                        {showUserProducts ? 'Ver todos los productos' : 'Ver mis productos'}
+                    </button>    
+                    </div>
+                   
                     {isLoadingProducts ? (
                         <span className="loading-text">Cargando...</span>
+                    ) : showUserProducts ? (
+                        <ProductsList products={userProducts} />
                     ) : (
                         <ProductsList products={products} />
                     )}
@@ -80,6 +112,7 @@ const Product = ({ title, price, image_base_64, id }) => {
             <img
                 src={image_base_64}
                 className="product-image"
+                alt={`Imagen de ${title}`}
             />
             <p className="product-price">Precio: ${price}</p>
             <Link to={`/product/${id}`} className="product-detail-link">
@@ -95,6 +128,5 @@ const Product = ({ title, price, image_base_64, id }) => {
         </div>
     );
 };
-
 
 export default HomeScreen;
