@@ -31,7 +31,7 @@ const ForgotPassword = () => {
             });
 
             if (response) {
-                setSuccess('Revisa tu correo electrónico para restablecer tu contraseña'), console.log(response);
+                setSuccess('Revisa tu correo electrónico para restablecer tu contraseña');
             }
 
         } catch (error) {
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
     return (
         <>
         <div className="password-reset-container">
-            <h1 className="password-reset-title">Olvidé mi contraseña</h1>
+            <h1 className="password-reset-title">Olvidé mi contraseña</h1>z
             <p className="password-reset-description">
                 Enviaremos un mail a tu email de usuario para enviarte los pasos de restablecimiento de la contraseña.
             </p>
