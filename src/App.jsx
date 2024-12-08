@@ -11,6 +11,7 @@ import UpdateProduct from "./screens/UpdateProductScreen/UpdateProduct"
 import ProductDetails from "./screens/ProductDetailScreen/ProductDetail"
 import ProtectedRoute from "./Components/ProtectedRoute"
 import DeleteProduct from "./screens/DeleteProductScreen/DeleteProduct"
+import EmailVerify from "./screens/EmailVerify"
 
 
 
@@ -22,10 +23,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path='/email-verify/:verificationToken' element={<EmailVerify/>} />
         <Route
           path="/reset-password/:reset_token"
           element={<ResetPassword />}
         />
+
+
+
         <Route element={<ProtectedRoute />}>
           <Route path="/home" element={<Home />} />
           <Route path="/product/new" element={<CreateProductScreen />} />
