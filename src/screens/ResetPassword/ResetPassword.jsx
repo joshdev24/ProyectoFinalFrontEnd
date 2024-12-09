@@ -67,8 +67,8 @@ const ResetPassword = () => {
             <a href="/register">Crear una cuenta</a>
         </p>
     </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>} 
-				{success && <p style={{ color: 'green' }}>{success}</p>} 
+        {error && <p style={{ color: 'red' }}>{errors}</p>} 
+				{success && <p style={{ color: 'green' }}>{responseFetch}</p>} 
     
     </div>
     )
