@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
-import { getUnnauthenticatedHeaders, PUT } from '../../fetching/http.fetching'
+import { PUT,  getAuthenticatedHeaders } from '../../fetching/http.fetching'
 import "./ResetPassword.css"
 import { useState } from 'react'
 import ENVIROMENT from '../../../enviroment'
@@ -21,8 +21,8 @@ const ResetPassword = () => {
             'password': ''
         }
         const form_values_object = extractFormData(form_fields, form_Values)
-        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/` + reset_token, {
-            headers: getUnnauthenticatedHeaders(),
+        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/`+ reset_token, {
+            headers: getAuthenticatedHeaders(),
 				body: JSON.stringify(form_values_object)
 			})
             if (response.ok) {
@@ -42,7 +42,7 @@ const ResetPassword = () => {
     <p class="reset-password-subtitle">
         Ingresa tu nueva contraseña para recuperar el acceso.
     </p>
-    <form class="reset-password-form" onSubmit={handleSubmitResetForm}>
+    <form class="reset-password-form">
         <label for="password" class="input-label">Nueva Contraseña</label>
         <input 
             type="password" 
