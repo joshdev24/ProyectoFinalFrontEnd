@@ -3,9 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import ENVIROMENT from '../../enviroment'
 import { GET, getUnnauthenticatedHeaders } from '../fetching/http.fetching'
 const EmailVerify = () => {
-
-    const {verificationToken} = useParams()
     const [statusMessage, setStatusMessage] = useState('')
+    const {verificationToken} = useParams()
     const [isLoading, setIsLoading] = useState(true)
     const verifyEmail = async () => {
         try {
@@ -14,7 +13,6 @@ const EmailVerify = () => {
             })
             if (!response.ok) {
                 setStatusMessage(response.payload.detail)
-                console.error(response.payload.detail || 'Error Verifying Email')
             }else{
                 setStatusMessage(response.payload.detail)
             }

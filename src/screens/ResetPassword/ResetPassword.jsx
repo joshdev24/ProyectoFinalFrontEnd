@@ -21,9 +21,9 @@ const ResetPassword = () => {
             'password': ''
         }
         const form_values_object = extractFormData(form_fields, form_Values)
-        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/`, {
+        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/` + reset_token, {
             headers: getUnnauthenticatedHeaders(),
-            "Access-Control-Allow-Origin": "*",
+            
 				body: JSON.stringify(form_values_object)
 			})
             if (response.ok) {
