@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-
 import ENVIROMENT from '../../enviroment'
 import { GET, getUnnauthenticatedHeaders } from '../fetching/http.fetching'
 const EmailVerify = () => {
 
-    const { verificationToken } = useParams()
+    const {verificationToken} = useParams()
     const [statusMessage, setStatusMessage] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const verifyEmail = async () => {

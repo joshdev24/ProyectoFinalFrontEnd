@@ -14,65 +14,58 @@ const ResetPassword = () => {
 
     const handleSubmitResetForm = async (e) => {
         try {
-            e.preventDefault()
-            const form_HTML = e.target
-            const form_Values = new FormData(form_HTML)
-            const form_fields = {
-                'password': ''
-            }
-            const form_values_object = extractFormData(form_fields, form_Values)
-
-            if (!reset_token) {
-                setError('No se encontr  el token de restablecimiento de contrase a')
-                return
-            }
-
-            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/` + reset_token, {
-                headers: getUnnauthenticatedHeaders(),
-                "Access-Control-Allow-Origin": "*",
-                body: JSON.stringify(form_values_object)
-            })
-
-            if (response.ok) {
-                setSuccess('Contrase a restablecida con  xito')
-            } else {
-                setError('Error al restablecer contrase a')
-            }
-        } catch (error) {
-            setError('Error al restablecer contrase a')
-            console.error('Error:', error)
+        e.preventDefault()
+        const form_HTML = e.target
+        const form_Values = new FormData(form_HTML)
+        const form_fields = {
+            'password': ''
         }
+        const form_values_object = extractFormData(form_fields, form_Values)
+        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/`, {
+            headers: getUnnauthenticatedHeaders(),
+            "Access-Control-Allow-Origin": "*",
+				body: JSON.stringify(form_values_object)
+			})
+            if (response.ok) {
+                setSuccess('Contraseña restablecida con exito')
+            }
+			console.log({response})
+		}
+		catch(error){
+			setError('Error al restablecer contraseña')
+			
+		}
     }
 
     return (
         <div class="reset-password-container">
-            <h1 class="reset-password-title">Restablecer Contrase a</h1>
-            <p class="reset-password-subtitle">
-                Ingresa tu nueva contrase a para recuperar el acceso.
-            </p>
-            <form class="reset-password-form" onSubmit={handleSubmitResetForm}>
-                <label for="password" class="input-label">Nueva Contrase a</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    class="input-field" 
-                    placeholder="Escribe tu nueva contrase a" 
-                    required 
-                />
-                <button type="submit" class="reset-button">Restablecer Contrase a</button>
-            </form>
-            <div class="additional-links">
-                <p>
-                    <a href="/login">Volver a Iniciar Sesien</a>
-                    <span> | </span>
-                    <a href="/register">Crear una cuenta</a>
-                </p>
-            </div>
-            {error && <p style={{ color: 'red' }}>{error}</p>} 
-            {success && <p style={{ color: 'green' }}>{success}</p>} 
-            
-        </div>
+    <h1 class="reset-password-title">Restablecer Contraseña</h1>
+    <p class="reset-password-subtitle">
+        Ingresa tu nueva contraseña para recuperar el acceso.
+    </p>
+    <form class="reset-password-form" onSubmit={handleSubmitResetForm}>
+        <label for="password" class="input-label">Nueva Contraseña</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="input-field" 
+            placeholder="Escribe tu nueva contraseña" 
+            required 
+        />
+        <button type="submit" class="reset-button">Restablecer Contraseña</button>
+    </form>
+    <div class="additional-links">
+        <p>
+            <a href="/login">Volver a Iniciar Sesión</a>
+            <span> | </span>
+            <a href="/register">Crear una cuenta</a>
+        </p>
+    </div>
+        {error && <p style={{ color: 'red' }}>{error}</p>} 
+				{success && <p style={{ color: 'green' }}>{success}</p>} 
+    
+    </div>
     )
 }
 
