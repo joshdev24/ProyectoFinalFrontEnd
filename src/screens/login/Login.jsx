@@ -31,6 +31,7 @@ const Login = () => {
                 `${ENVIROMENT.URL_BACKEND}/api/auth/login`,
                 {
                     headers: getUnnauthenticatedHeaders(),
+                    mode: 'no-cors',
                     body: JSON.stringify(form_values_object)
                 }
             );
