@@ -39,6 +39,7 @@ const CreateProductScreen = () => {
         try {
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/products`, {
                 headers: getAuthenticatedHeaders(),
+                "Access-Control-Allow-Origin": "*",
                 body: JSON.stringify(form_values_object)
             });
             console.log(form_values_object);

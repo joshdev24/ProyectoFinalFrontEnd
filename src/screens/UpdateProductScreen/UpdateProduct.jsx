@@ -70,6 +70,7 @@ const UpdateProduct = () => {
         try {
             const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
+                "Access-Control-Allow-Origin": "*",
                 body: JSON.stringify(form_values_object),
             });
 

@@ -18,7 +18,7 @@ const DeleteProduct = () => {
         try {
             const response = await DELETE(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
-                 // Ejemplo: cambiar el estado activo
+                "Access-Control-Allow-Origin": "*"
             });
 
             if (response.ok) {

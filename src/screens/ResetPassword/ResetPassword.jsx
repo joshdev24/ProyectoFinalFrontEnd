@@ -11,8 +11,6 @@ const ResetPassword = () => {
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState('')
     const { reset_token } = useParams()
-    console.log(reset_token)
-
 
     const handleSubmitResetForm = async (e) => {
         try {
