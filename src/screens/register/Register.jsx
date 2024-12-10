@@ -37,6 +37,7 @@ const Register = () => {
             `${ENVIROMENT.URL_BACKEND}/api/auth/register`,
                 {
                     headers: getUnnauthenticatedHeaders(),
+                    "Access-Control-Allow-Origin": "*",
                     body: JSON.stringify(form_values_state),
                 }
             )
