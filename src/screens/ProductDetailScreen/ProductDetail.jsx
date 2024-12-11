@@ -23,6 +23,7 @@ const DetailProductScreen = () => {
 
 
 
+
 const ProductDetail = ({ title, price, stock, description, image_base_64, id }) => {
     return (
       <>

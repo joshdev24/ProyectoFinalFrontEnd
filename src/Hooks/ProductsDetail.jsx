@@ -16,6 +16,7 @@ const useProductDetail = () =>{
                 headers: getAuthenticatedHeaders()
             }
         )
+        console.log(id)
         //Condiciones / manejo de errores de la peticion
         setProductDetailLoading(false)
         if(product_detail_response.ok){
