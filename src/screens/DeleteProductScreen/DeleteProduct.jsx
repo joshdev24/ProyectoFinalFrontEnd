@@ -18,7 +18,7 @@ const DeleteProduct = () => {
         try {
             const response = await DELETE(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
-                mode: "no-cors",
+            
             });
 
             if (response.ok) {

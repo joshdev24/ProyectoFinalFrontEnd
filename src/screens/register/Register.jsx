@@ -37,7 +37,6 @@ const Register = () => {
             `${ENVIROMENT.URL_BACKEND}/api/auth/register`,
                 {
                     headers: getUnnauthenticatedHeaders(),
-                    mode: "no-cors",
                     body: JSON.stringify(form_values_state),
                 }
             )

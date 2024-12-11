@@ -12,8 +12,8 @@ const useProductDetail = (product_id) =>{
         const product_detail_response = await GET(
            `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 
             {
-                headers: getAuthenticatedHeaders(),
-                mode: "no-cors",
+                headers: getAuthenticatedHeaders()
+                
             }
         )
         //Condiciones / manejo de errores de la peticion
