@@ -59,7 +59,7 @@ const Login = () => {
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
 
-            navigate('/home');
+            window.location.reload();
         } catch (error) {
             console.log('Error:', error);
             setError('Ocurrió un error al intentar iniciar sesión.');
