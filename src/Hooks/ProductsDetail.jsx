@@ -4,16 +4,16 @@ import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 import ENVIROMENT from "../../enviroment"
 
 
-const useProductDetail = (product_id) =>{
+const useProductDetail = (_id) =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-    const getProductDetail = async (product_id) =>{
+    const getProductDetail = async (_id) =>{
         const product_detail_response = await GET(
-           `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 
+           `${ENVIROMENT.URL_BACKEND}/api/products/${_id}`, 
             {
                 headers: getAuthenticatedHeaders()
-                
+
             }
         )
         //Condiciones / manejo de errores de la peticion
