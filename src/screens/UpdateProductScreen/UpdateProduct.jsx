@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PUT, GET, getAuthenticatedHeaders } from "../../fetching/http.fetching";
 import { extractFormData } from "../../utils/extractFormData";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ENVIROMENT from "../../../enviroment";
 
 
@@ -12,13 +12,12 @@ const UpdateProduct = () => {
         price: '',
         stock: '',
         description: '',
+        category: '',
     });
     const [image, setImage] = useState(null);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState('');
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         getProduct();
@@ -33,7 +32,6 @@ const UpdateProduct = () => {
             if (response.ok) {
                 const productFromServer = response.payload.product;
                 setProduct(productFromServer);
-                
             } else {
                 setError("Error al obtener el producto.");
             }
@@ -54,7 +52,8 @@ const UpdateProduct = () => {
             title: '',
             price: '',
             stock: '',
-            description: ''
+            description: '',
+            category: ''
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
@@ -62,7 +61,7 @@ const UpdateProduct = () => {
         form_values_object.image = image;
 
        
-        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description) {
+        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description || !form_values_object.category) {
             setError('All fields are required.');
             return;
         }
@@ -159,10 +158,21 @@ const UpdateProduct = () => {
             ></textarea>
         </div>
         <div className="form-group">
+            <label htmlFor="category" className="form-label">Ingrese la categoría:</label>
+            <input
+                name="category"
+                id="category"
+                className="form-input"
+                value={product.category}
+                onChange={handleInputChange}
+                required
+            />
+        </div>
+        <div className="form-group">
             {(image || product?.image) && (
                 <img src={image || product?.image} alt="Producto" className="form-image" />
             )}
-            <label htmlFor="imagen" className="form-label-file">Click aqui para subir la imagen</label>
+            <label htmlFor="imagen" className="form-label-file">Seleccione una imagen:</label>
             <input
                 name="imagen"
                 id="imagen"
@@ -170,7 +180,6 @@ const UpdateProduct = () => {
                 className="form-file"
                 onChange={handleChangeFile}
                 accept="image/*"
-                required
             />
         </div>
         <button type="submit" className="form-button" disabled={loading}>

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import {useAuthContext} from "./../../Context/AuthContext";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import useProducts from '../../Hooks/UseProducts';
 import './Home.css';
-import { GET, getAuthenticatedHeaders } from '../../fetching/http.fetching';
-import ENVIROMENT from '../../../enviroment';
+// Hook para obtener productos
 
 const getUserInfo = () => {
     try {
@@ -14,75 +13,19 @@ const getUserInfo = () => {
 };
 
 const HomeScreen = () => {
-    const navigate = useNavigate();
     const user_info = getUserInfo();
-    const [products, setProducts] = useState([]);
-    const [userProducts, setUserProducts] = useState([]);
-    const [isLoadingProducts, setIsLoadingProducts] = useState(true);
-    const [showUserProducts, setShowUserProducts] = useState(false);
-    const {logOut} = useAuthContext();
-
-    const getProducts = async () => {
-        try {
-            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products`, {
-                headers: getAuthenticatedHeaders(),
-                mode: "no-cors",
-            });
-
-            if (response.ok) {
-                const allProducts = response.payload.products;
-                setProducts(allProducts);
-
-                // Filtrar productos del usuario actual
-                const userSpecificProducts = allProducts.filter(
-                    (product) => product.seller_id === user_info.id
-                );
-                setUserProducts(userSpecificProducts);
-            } else {
-                console.error('Error al cargar los productos:', response.message);
-            }
-        } catch (error) {
-            console.error('Error de red:', error);
-        } finally {
-            setIsLoadingProducts(false);
-        }
-    };
-
-    
-
-    useEffect(() => {
-        getProducts();
-    }, []);
+    const { products, isLoadingProducts } = useProducts();
 
     return (
         <div className="home-container">
             {user_info.name ? (
                 <>
                     <h1 className="welcome-title">Bienvenido {user_info.name}</h1>
-                    <div className="header-actions">
-                        <Link to="/product/new" className="create-product-link">
-                            Crear producto
-                        </Link>
-                        <button
-                            className="logout-button"
-                            onClick={logOut}
-                        >
-                            Cerrar sesión
-                        </button>
-                    
-                    <button
-                        className="filter-user-products-button"
-                        onClick={() => setShowUserProducts(!showUserProducts)}
-                    >
-                    
-                        {showUserProducts ? 'Ver todos los productos' : 'Ver mis productos'}
-                    </button>    
-                    </div>
-                   
+                    <Link to="/product/new" className="create-product-link">
+                        Crear producto
+                    </Link>
                     {isLoadingProducts ? (
                         <span className="loading-text">Cargando...</span>
-                    ) : showUserProducts ? (
-                        <ProductsList products={userProducts} />
                     ) : (
                         <ProductsList products={products} />
                     )}
@@ -96,7 +39,12 @@ const HomeScreen = () => {
     );
 };
 
+
 const ProductsList = ({ products }) => {
+    if (!products.length) {
+        return <p className="no-products-message">No hay productos disponibles.</p>;
+    }
+
     return (
         <div className="products-list">
             {products.map((product) => (
@@ -113,7 +61,7 @@ const Product = ({ title, price, image_base_64, id }) => {
             <img
                 src={image_base_64}
                 className="product-image"
-                alt={`Imagen de ${title}`}
+                alt={`Imagen del producto ${title}`}
             />
             <p className="product-price">Precio: ${price}</p>
             <Link to={`/product/${id}`} className="product-detail-link">

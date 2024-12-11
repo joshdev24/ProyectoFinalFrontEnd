@@ -5,18 +5,15 @@ import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import ENVIROMENT from '../../../enviroment';
 import './Login.css';
 
-
-
 const Login = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleSubmitLoginForm = async (e) => {
         e.preventDefault();
-        setError('');
-        setLoading(true);
+        setError(''); 
+        setLoading(true); 
 
         const form_HTML = e.target;
         const form_Values = new FormData(form_HTML);
@@ -25,6 +22,13 @@ const Login = () => {
             password: ''
         };
         const form_values_object = extractFormData(form_fields, form_Values);
+
+
+        if (!form_values_object.email || !form_values_object.password) {
+            setError('Por favor, complete todos los campos.');
+            setLoading(false);
+            return;
+        }
 
         try {
             const response = await POST(
@@ -35,30 +39,34 @@ const Login = () => {
                 }
             );
 
-            if (!response) {
+            
+            if (!response.ok) {
                 setError('Error al iniciar sesión.', error);
                 setLoading(false);
                 return;
             }
+            
 
-            setSuccess('Inicio de sesión exitoso.');
+            console.log('Login Response:', response);
 
             const access_token = response.payload.token;
-            sessionStorage.setItem('access_token', access_token)
-            sessionStorage.setItem('user_info', JSON.stringify(response.payload.user))
+            if (!access_token) {
+                setError('Error al cargar el token de acceso.');
+                setLoading(false);
+                return;
+            }
 
-            navigate('/home');
+            sessionStorage.setItem('access_token', access_token);
+            sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
 
-
-            
+            window.location.reload();
         } catch (error) {
-            console.error('Error:', error);
+            console.log('Error:', error);
             setError('Ocurrió un error al intentar iniciar sesión.');
         } finally {
-            setLoading(false);
+            setLoading(false); 
         }
     };
-
 
     return (
         <div className="login-container">
@@ -72,16 +80,16 @@ const Login = () => {
                     <label htmlFor="password" className="input-label">Ingrese su contraseña:</label>
                     <input name="password" id="password" type="password" placeholder="Ingrese su contraseña" className="input-field" required />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {success && <p style={{ color: 'green' }}>{success}</p>}
+                {error && <p style={{ color: 'red' }}>{error}</p>} 
                 <button type="submit" className="submit-button" disabled={loading}>
                     {loading ? 'Cargando...' : 'Iniciar sesión'}
                 </button>
+                
             </form>
-            <ul className="register-link">
-                <li>Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
+            <itemize className="register-link">
+                <li> Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
                 <li>¿Has olvidado la contraseña? <Link to="/forgot-password">Restablecer</Link></li>
-            </ul>
+            </itemize>
         </div>
     );
 };

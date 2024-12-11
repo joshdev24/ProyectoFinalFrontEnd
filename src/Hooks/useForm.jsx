@@ -6,6 +6,7 @@ const useForm = (form_fields) => {
     const handleChangeInputValue = (event) => {
         const input_name = event.target.name;
         const input_value = event.target.value;
+        console.log("Input Name:", input_name, "Input Value:", input_value);
         setFormValuesState(
             (prev_form_values_state) => {
                 //Lo que retorne sta callback se guarda como  nuevo valor del estado

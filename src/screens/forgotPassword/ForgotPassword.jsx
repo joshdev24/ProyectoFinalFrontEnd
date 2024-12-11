@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
-import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
+import { POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment';
+
+
 
 
 const ForgotPassword = () => {
@@ -23,12 +25,12 @@ const ForgotPassword = () => {
             }
 
             const form_values_object = extractFormData(form_fields, form_Values);
-
-
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
-                headers:  getUnnauthenticatedHeaders(),
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form_values_object)
             });
+
+
 
             if (response) {
                 setSuccess('Revisa tu correo electrónico para restablecer tu contraseña');
@@ -42,7 +44,7 @@ const ForgotPassword = () => {
     return (
         <>
         <div className="password-reset-container">
-            <h1 className="password-reset-title">Olvidé mi contraseña</h1>z
+            <h1 className="password-reset-title">Olvidé mi contraseña</h1>
             <p className="password-reset-description">
                 Enviaremos un mail a tu email de usuario para enviarte los pasos de restablecimiento de la contraseña.
             </p>
