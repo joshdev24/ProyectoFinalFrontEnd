@@ -1,9 +1,10 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import useProductDetail from '../../Hooks/ProductsDetail';
 import './ProductDetail.css';
+import useProductDetail from '../../Hooks/ProductsDetail';
 
-const DetailProductScreen = (product_id) => {
+const DetailProductScreen = () => {
+    const { product_id } = useParams();
     const { product_detail_state, product_detail_loading, product_detail_error } = useProductDetail(product_id);
     return (
         <div className="detail-product-screen">
@@ -15,12 +16,9 @@ const DetailProductScreen = (product_id) => {
             ) : (
                 <ProductDetail {...product_detail_state} />
             )}
-
         </div>
     );
 };
-
-
 
 const ProductDetail = ({ title, price, stock, description, image_base_64, id }) => {
     return (
@@ -38,7 +36,6 @@ const ProductDetail = ({ title, price, stock, description, image_base_64, id }) 
             <span className="product-detail-price">Precio: ${price}</span>
             <span className="product-detail-stock">Stock: {stock}</span>
             <span className="product-detail-description">Descripción: {description}</span>
-            
         </div>
          <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link> 
 

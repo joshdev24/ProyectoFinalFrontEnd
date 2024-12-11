@@ -31,13 +31,13 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/home" element={<Home />} />
           <Route path="/product/new" element={<CreateProductScreen />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/product/:product_id" element={<ProductDetails />} />
           <Route
-            path="/product/update/:id"
+            path="/product/update/:product_id"
             element={<UpdateProduct />}
           />
           <Route
-            path="/product/delete/:id"
+            path="/product/delete/:product_id"
             element={<DeleteProduct />}
           />
         </Route>
