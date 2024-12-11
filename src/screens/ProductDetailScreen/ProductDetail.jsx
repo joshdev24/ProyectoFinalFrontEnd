@@ -33,9 +33,9 @@ const ProductDetail = ({ title, price, stock, description, image_base_64, id }) 
                 alt={title}
                 width="200"
             />
-            <span className="product-detail-price">Precio: ${price}</span>
-            <span className="product-detail-stock">Stock: {stock}</span>
-            <span className="product-detail-description">Descripción: {description}</span>
+            <div className="product-detail-price">Precio: ${price}</div>
+            <div className="product-detail-stock">Stock: {stock}</div>
+            <div className="product-detail-description">Descripción: {description}</div>
         </div>
          <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link> 
 

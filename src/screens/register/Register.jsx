@@ -4,6 +4,7 @@ import { extractFormData } from '../../utils/extractFormData'
 import useForm from '../../Hooks/useForm'
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment'
+import './Register.css'
 
 
 

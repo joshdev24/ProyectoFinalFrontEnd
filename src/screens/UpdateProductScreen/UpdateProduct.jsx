@@ -3,6 +3,7 @@ import { PUT, GET, getAuthenticatedHeaders } from "../../fetching/http.fetching"
 import { extractFormData } from "../../utils/extractFormData";
 import { Link, useParams } from "react-router-dom";
 import ENVIROMENT from "../../../enviroment";
+import "./UpdateProduct.css";
 
 const UpdateProduct = () => {
     const { product_id } = useParams();
