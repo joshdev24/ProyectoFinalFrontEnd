@@ -1,15 +1,15 @@
 import React from 'react'
-import { useAuthContext } from '../Context/AuthContext'
 
 
 //Nos llama a la ruta hija o nesteada de nuestra ruta
 import { Navigate, Outlet } from 'react-router-dom'
 
 const ProtectedRoute = () => {
-    const {isAuthenticatedUser} = useAuthContext()
+  const access_token = sessionStorage.getItem('access_token')
+  const acc = Boolean(access_token)
     
   return (
-    isAuthenticatedUser ? <Outlet/> : <Navigate to={'/login'}/>
+    acc ? <Outlet/> : <Navigate to={'/login'}/>
   )
 }
 
