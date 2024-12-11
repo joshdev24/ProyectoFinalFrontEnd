@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { PUT, GET, getAuthenticatedHeaders } from "../../fetching/http.fetching";
 import { extractFormData } from "../../utils/extractFormData";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ENVIROMENT from "../../../enviroment";
-
 
 const UpdateProduct = () => {
     const { product_id } = useParams();
@@ -18,8 +17,6 @@ const UpdateProduct = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState('');
 
-    const navigate = useNavigate();
-
     useEffect(() => {
         getProduct();
     }, []);
@@ -30,11 +27,11 @@ const UpdateProduct = () => {
                 headers: getAuthenticatedHeaders()
             });
 
-            if (response.ok && response.payload && response.payload.product) {
-                setProduct(response.payload.product);
+            if (response.ok) {
+                const productFromServer = response.payload.product;
+                setProduct(productFromServer);
             } else {
-                const errorMessage = response.payload?.message || "Error al obtener el producto.";
-                setError(errorMessage);
+                setError("Error al obtener el producto.");
             }
         } catch (error) {
             console.error("Error al obtener el producto:", error);
@@ -53,7 +50,7 @@ const UpdateProduct = () => {
             title: '',
             price: '',
             stock: '',
-            description: ''
+            description: '',
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
@@ -110,76 +107,69 @@ const UpdateProduct = () => {
     };
 
     return (
-        <div className="form-container">
-    <form className="product-form" onSubmit={handleSubmitUpdatedProduct}>
-        <div className="form-group">
-            <label htmlFor="titulo" className="form-label">Ingrese el título:</label>
-            <input
-                name="title"
-                id="titulo"
-                className="form-input"
-                placeholder="Nombre del producto"
-                value={product.title}
-                onChange={handleInputChange}
-                required
-            />
+        <div>
+            <form onSubmit={handleSubmitUpdatedProduct}>
+                <div>
+                    <label htmlFor="titulo">Ingrese el titulo:</label>
+                    <input
+                        name="title"
+                        id="titulo"
+                        placeholder="Nombre del producto"
+                        value={product.title}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="precio">Ingrese el precio:</label>
+                    <input
+                        name="price"
+                        id="precio"
+                        value={product.price}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="stock">Ingrese el stock:</label>
+                    <input
+                        name="stock"
+                        id="stock"
+                        value={product.stock}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </div>
+                <div>
+                <label htmlFor="descripcion">Ingrese la descripcion:</label>
+                    <textarea
+                        name="description"
+                        id="descripcion"
+                        value={product.description}
+                        onChange={handleInputChange}
+                        required
+                    ></textarea>
+                </div>
+                <div>
+                    {(image || product?.image) && <img src={image || product?.image} alt="Producto" />}
+                    <label htmlFor="imagen">Seleccione una imagen:</label>
+                    <input
+                        name="imagen"
+                        id="imagen"
+                        type="file"
+                        onChange={handleChangeFile}
+                        accept="image/*"
+                    />
+                </div>
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Actualizando...' : 'Actualizar producto'}
+                </button>
+                {error && <p className="error" style={{ color: 'red' }}>{error}</p>}
+            {success && <p className="success" style={{ color: 'green' }}>{success}</p>}
+            </form>
+            <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
+
         </div>
-        <div className="form-group">
-            <label htmlFor="precio" className="form-label">Ingrese el precio:</label>
-            <input
-                name="price"
-                id="precio"
-                className="form-input"
-                value={product.price}
-                onChange={handleInputChange}
-                required
-            />
-        </div>
-        <div className="form-group">
-            <label htmlFor="stock" className="form-label">Ingrese el stock:</label>
-            <input
-                name="stock"
-                id="stock"
-                className="form-input"
-                value={product.stock}
-                onChange={handleInputChange}
-                required
-            />
-        </div>
-        <div className="form-group">
-            <label htmlFor="descripcion" className="form-label">Ingrese la descripción:</label>
-            <textarea
-                name="description"
-                id="descripcion"
-                className="form-textarea"
-                value={product.description}
-                onChange={handleInputChange}
-                required
-            ></textarea>
-        </div>
-        <div className="form-group">
-            {(image || product?.image) && (
-                <img src={image || product?.image} alt="Producto" className="form-image" />
-            )}
-            <label htmlFor="imagen" className="form-label-file">Click aqui para subir la imagen</label>
-            <input
-                name="imagen"
-                id="imagen"
-                type="file"
-                className="form-file"
-                onChange={handleChangeFile}
-                accept="image/*"
-                required
-            />
-        </div>
-        <button type="submit" className="form-button" disabled={loading}>
-            {loading ? 'Actualizando...' : 'Actualizar producto'}
-        </button>
-        {error && <p className="form-error">{error}</p>}
-        {success && <p className="form-success">{success}</p>}
-    </form>
-    <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
-</div>
     );
 };
 
