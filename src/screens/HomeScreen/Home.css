@@ -16,7 +16,7 @@ body {
     max-width: 1200px;
     color: var(--dark-gray);
     animation: fadeIn 1s ease-in-out;
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    background: transparent
 }
 
 /* Título de bienvenida */
@@ -51,7 +51,7 @@ body {
 
 /* Card de producto */
 .product-card {
-    background-color: #2a2a2a; /* Fondo oscuro para la card */
+    background-color: #937bf7; /* Fondo oscuro para la card */
     color: #d1b3ff; /* Texto violeta claro */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed;
@@ -69,7 +69,7 @@ body {
 /* Título del producto */
 .product-title {
     font-size: 22px;
-    color: #7c2aed;
+    color: #00c7ad;
     margin-bottom: 10px;
     text-shadow: 0 0 10px #7c2aed;
 }
@@ -88,14 +88,14 @@ body {
 .product-price {
     font-size: 20px;
     font-weight: bold;
-    color: #9b42f5; /* Precio en violeta brillante */
+    color: #800f0f; /* Precio en violeta brillante */
     margin-bottom: 15px;
 }
 
 /* Enlace de detalles del producto */
 .product-detail-link {
     display: inline-block;
-    color: #9b42f5;
+    color: #19cb59;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
@@ -105,7 +105,7 @@ body {
 }
 
 .product-detail-link:hover {
-    color: #d1b3ff;
+    color: #439461;
     text-shadow: 0 0 15px #d1b3ff, 0 0 25px #7c2aed;
 }
 
@@ -113,7 +113,7 @@ body {
 .product-update-link,
 .product-delete-link {
     display: block;
-    color: #7c2aed;
+    color: #7928ca;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
