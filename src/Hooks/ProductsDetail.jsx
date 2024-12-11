@@ -8,7 +8,6 @@ const useProductDetail = (product_id) => {
     const [product_detail_state, setProductDetailState] = useState(null);
     const [product_detail_loading, setProductDetailLoading] = useState(true);
     const [product_detail_error, setProductDetailError] = useState(null);
-    const navigate = useNavigate();
 
     const getProductDetail = async () => {
         try {
@@ -26,12 +25,11 @@ const useProductDetail = (product_id) => {
                 setProductDetailState(product_detail_response.payload?.product || {});
             } else {
                 setProductDetailError(product_detail_response.payload?.detail || "Error desconocido");
-                navigate('/home');
+    
             }
         } catch (error) {
             setProductDetailLoading(false);
             setProductDetailError("Error de red: " + (error.message || "Error desconocido"));
-            navigate('/home');
         }
     };
 
