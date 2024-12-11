@@ -1,119 +1,124 @@
-/* Variables de color */
-:root {
-    --dark-salmon: #e9967a;
-    --midnight-blue: #191970;
-    --maroon: #800000;
-    --light-gray: #f9f9f9;
-    --white: #ffffff;
-}
+/* Fondo general de la página */
 
-/* General */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--light-gray);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
 
 /* Contenedor principal */
 .login-container {
-    width: 90%;
+    background: linear-gradient(145deg, #0a0a0a, #1a1a1a); /* Fondo con degradado oscuro */
+    border: 2px solid #00c4ff; /* Bordes cian */
+    border-radius: 15px;
+    padding: 2rem;
     max-width: 400px;
-    padding: 25px;
-    background: linear-gradient(145deg, var(--dark-salmon), var(--midnight-blue));
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    color: var(--white);
+    width: 90%;
+    box-shadow: 0 0 25px #00c4ff, 0 0 50px #00aaff;
     text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Título */
 .login-title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: var(--white);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2rem;
+    color: #00c4ff; /* Azul neón */
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px #00c4ff, 0 0 20px #00aaff;
 }
 
 /* Formulario */
 .login-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1.5rem;
 }
 
-/* Grupo de entrada */
+/* Grupo de entradas */
 .input-group {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 5px;
+    align-items: flex-start;
 }
 
+/* Etiquetas */
 .input-label {
-    font-size: 14px;
-    color: var(--white);
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 5px #00aaff;
 }
 
+/* Campos de entrada */
 .input-field {
-    padding: 12px;
-    font-size: 16px;
-    border: none;
+    background-color: transparent;
+    border: 2px solid #ffffff; /* Bordes cian */
     border-radius: 8px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    padding: 0.75rem;
+    width: 100%;
+    font-size: 1rem;
+    color: #e0e0e0;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px #00aaff inset; /* Sombra interna azul */
 }
 
 .input-field:focus {
-    outline: none;
-    box-shadow: 0 0 8px var(--white);
-    transform: scale(1.02);
+    box-shadow: 0 0 12px #00c4ff inset, 0 0 20px #00aaff;
+    border-color: #00c4ff;
+}
+
+/* Mensaje de error */
+p {
+    font-size: 0.9rem;
+    color: #ff4d4d; /* Color de error */
 }
 
 /* Botón */
 .submit-button {
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--white);
-    background: var(--maroon);
+    background: linear-gradient(145deg, #ff6600, #ff4500); /* Degradado naranja a rojo */
+    color: #0a0a0a; /* Fondo oscuro */
+    font-size: 1.2rem;
+    padding: 0.75rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px #ec9a01, 0 0 30px #00aaff;
+    transition: all 0.3s ease;
 }
 
 .submit-button:hover {
-    background: var(--dark-salmon);
-    transform: scale(1.05);
+    background: linear-gradient(145deg, #ff4500, #ff6600);
+    box-shadow: 0 0 25px #00c4ff, 0 0 50px #00aaff;
 }
 
-.submit-button:active {
-    background: var(--midnight-blue);
-    transform: scale(0.98);
+.submit-button:disabled {
+    background: #3a3a3a; /* Gris oscuro para botón deshabilitado */
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
-/* Enlaces */
-.register-link, .forgot-password-link {
-    font-size: 14px;
-    color: var(--maroon); /* Texto de los links en Maroon */
-    display: inline-block;
-    margin-top: 15px;
+/* Links de registro y recuperación */
+.register-link {
+    margin-top: 1.5rem;
+    color: #00c4ff; /* Azul brillante */
+    font-size: 0.9rem;
+    list-style: none;
+    padding: 0;
 }
 
-.register-link a, .forgot-password-link a {
-    color: var(--dark-salmon); /* Links visibles en Midnight Blue */
+.register-link li {
+    margin-bottom: 0.5rem;
+}
+
+.register-link a {
+    color: #00c4ff;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease;
+    text-shadow: 0 0 5px #00c4ff, 0 0 10px #00aaff;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.register-link a:hover, .forgot-password-link a:hover {
-    color: var(--dark-salmon); /* Cambia a Dark Salmon en hover */
-    transform: scale(1.1);
+.register-link a:hover {
+    color: #ff6600; /* Naranja brillante */
+    text-shadow: 0 0 15px #00c4ff, 0 0 30px #00aaff;
 }

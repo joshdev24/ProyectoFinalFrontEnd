@@ -1,0 +1,116 @@
+/* Global Styles */
+
+
+/* Delete Product Container */
+.delete-product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    border-radius: 15px;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Fondo oscuro para un look futurista */
+    margin: 0;
+    padding: 0;
+}
+
+/* Title */
+.delete-product-title {
+    font-size: 36px;
+    color: #e30613; /* Rojo TRON */
+    text-shadow: 0 0 5px rgba(227, 6, 19, 0.8), 0 0 10px rgba(227, 6, 19, 0.6);
+    margin-bottom: 10px;
+}
+
+/* Message */
+.delete-product-message {
+    font-size: 18px;
+    color: #ddd;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Success & Error Messages */
+.delete-product-success,
+.delete-product-error {
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Success Message */
+.delete-product-success {
+    background-color: #4caf50; /* Verde para éxito */
+    color: white;
+}
+
+/* Error Message */
+.delete-product-error {
+    background-color: #f44336; /* Rojo para error */
+    color: white;
+}
+
+/* Button */
+.delete-product-button {
+    background-color: #e30613; /* Rojo TRON */
+    color: white;
+    font-size: 18px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.delete-product-button:hover {
+    background-color: #c0050c; /* Rojo más oscuro */
+    transform: scale(1.05);
+}
+
+.delete-product-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+/* Loading State */
+.delete-product-button.loading {
+    background-color: #ff5722;
+    cursor: wait;
+}
+
+/* Back to Home Link */
+.back-to-home-link {
+    color: #e30613;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.back-to-home-link:hover {
+    color: #c0050c;
+}
+
+.error,
+.success {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Optional: Add a glowing animation for a futuristic effect */
+@keyframes glowing {
+    0% { text-shadow: 0 0 5px #e30613, 0 0 10px #e30613, 0 0 15px #e30613, 0 0 20px #e30613; }
+    50% { text-shadow: 0 0 10px #e30613, 0 0 20px #e30613, 0 0 30px #e30613, 0 0 40px #e30613; }
+    100% { text-shadow: 0 0 5px #e30613, 0 0 10px #e30613, 0 0 15px #e30613, 0 0 20px #e30613; }
+}
+
+.delete-product-title {
+    animation: glowing 1.5s infinite alternate;
+}

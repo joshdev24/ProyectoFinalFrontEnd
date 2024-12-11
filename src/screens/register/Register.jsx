@@ -12,31 +12,31 @@ const Register = () => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState(false)
 
-    const handleSubmitRegisterForm = async (event) => {
-        event.preventDefault();
-        setError('');
+    const form_fields = {
+        name: "",
+        email: "",
+        password: "",
+      };
+    
+      const { form_values_state, handleChangeInputValue } = useForm(form_fields);
+      
+    
+      const handleSubmitRegisterForm = async (e) => {
+        try {
+        e.preventDefault();
+        const form_HTML = e.target;
 
-        const form_HTML = event.target;
-        const form_Values = new FormData(form_HTML);
-        const form_fields = {
-            name: '',
-            email: '',
-            password: ''
-        };
-        const form_values_object = extractFormData(form_fields, form_Values);
-
-        if (!form_values_object.email || !form_values_object.password) {
+        if (!form_values_state.email || !form_values_state.password) {
             setError('Por favor, complete todos los campos.');
             setLoading(false);
             return;
         }
 
-        try {
             const response = await POST(
-            `${ENVIROMENT.URL_BACKEND}/auth/register`,
+            `${ENVIROMENT.URL_BACKEND}/api/auth/register`,
                 {
                     headers: getUnnauthenticatedHeaders(),
-                    body: JSON.stringify(form_values_object)
+                    body: JSON.stringify(form_values_state),
                 }
             )
 
@@ -58,6 +58,7 @@ const Register = () => {
                     <input name='name'
                         id='name'
                         placeholder='Pepe Suarez'
+                        onChange={handleChangeInputValue}
                     />
                 </div>
                 <div>
@@ -65,6 +66,7 @@ const Register = () => {
                     <input name='email'
                         id='email'
                         placeholder='pepe@gmail.com'
+                        onChange={handleChangeInputValue}
                     />
                 </div>
                 <div>
@@ -72,6 +74,7 @@ const Register = () => {
                     <input name='password'
                         id='password'
                         placeholder='pepe@gmail.com'
+                        onChange={handleChangeInputValue}
                     />
                 </div>
                 <button type='submit'>Registrar</button>
