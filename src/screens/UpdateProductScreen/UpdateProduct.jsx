@@ -6,7 +6,7 @@ import ENVIROMENT from "../../../enviroment";
 
 
 const UpdateProduct = () => {
-    const {id} = useParams();
+    const { product_id } = useParams();
     const [product, setProduct] = useState({
         title: '',
         price: '',
@@ -26,7 +26,7 @@ const UpdateProduct = () => {
 
     const getProduct = async () => {
         try {
-            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products/${id}`, {
+            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders()
             });
 
@@ -68,9 +68,8 @@ const UpdateProduct = () => {
         }
 
         try {
-            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/products/${_id}`, {
+            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
-
                 body: JSON.stringify(form_values_object),
             });
 
