@@ -1,38 +1,50 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const AuthContext  = createContext()
+export const AuthContext = createContext()
 
-export const AuthContextProvider = ({children}) =>{
-    const access_token = sessionStorage.getItem('access_token')
-    //Estado booleano
-    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(
-        Boolean(access_token)
-    )
+export const AuthContextProvider = ({ children }) => {
+    const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(false);
+    const [user_info, setUser_info] = useState({});
+    const access_token = sessionStorage.getItem('access_token');
+    const navigate = useNavigate();
 
     useEffect(
-        () => {
-            const access_token = sessionStorage.getItem('access_token')
-            if(access_token) {
-                setIsAuthenticatedUser(true)
+        ()=>{
+            if(access_token){
+                const user_info = JSON.parse(sessionStorage.getItem('user_info'))
+                if(user_info){
+                    setUser_info(user_info);
+                    setIsAuthenticatedUser(true)
+                }
             }
         }, 
         []
-    )
-    const logout = () =>{
-        sessionStorage.removeItem('access_token')
-        setIsAuthenticatedUser(false)
-    }
+    );
+
+    const logOut = () => {
+        try {
+            sessionStorage.removeItem('access_token');
+            sessionStorage.removeItem('user_info');
+            setIsAuthenticatedUser(false);
+            setUser_info({});
+            navigate('/login');
+        } catch (error) {
+            console.error('Error al cerrar sesion:', error);
+        }
+    };
 
     return (
         <AuthContext.Provider value={{
-            logout,
-            isAuthenticatedUser
-        }} >
+            logOut,
+            isAuthenticatedUser,
+            user_info
+        }}>
             {children}
         </AuthContext.Provider>
     )
 }
 
 export const useAuthContext = () => {
-    return useContext(AuthContext) // devuelve un objeto con  {logout, isAuthenticatedUser}
+    return useContext(AuthContext)
 }

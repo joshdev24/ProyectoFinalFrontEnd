@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
-import { PUT,  getAuthenticatedHeaders } from '../../fetching/http.fetching'
+import { getUnnauthenticatedHeaders, PUT } from '../../fetching/http.fetching'
 import "./ResetPassword.css"
 import { useState } from 'react'
 import ENVIROMENT from '../../../enviroment'
@@ -22,7 +22,9 @@ const ResetPassword = () => {
         }
         const form_values_object = extractFormData(form_fields, form_Values)
         const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/` + reset_token, {
-            headers: getAuthenticatedHeaders(),
+            headers: getUnnauthenticatedHeaders(),
+            
+    
 				body: JSON.stringify(form_values_object)
 			})
             if (response.ok) {
