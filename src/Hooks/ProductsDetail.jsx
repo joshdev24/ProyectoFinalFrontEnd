@@ -4,11 +4,10 @@ import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 import ENVIROMENT from "../../enviroment"
 
 
-const useProductDetail = () =>{
+const useProductDetail = (product_id) =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-    const {product_id} = useParams()
     const getProductDetail = async () =>{
         const product_detail_response = await GET(
            `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 

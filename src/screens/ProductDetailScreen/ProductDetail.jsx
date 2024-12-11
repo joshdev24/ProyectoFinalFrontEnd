@@ -3,8 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import useProductDetail from '../../Hooks/ProductsDetail';
 import './ProductDetail.css';
 
-const DetailProductScreen = () => {
-    const { product_id } = useParams();
+const DetailProductScreen = (product_id) => {
     const { product_detail_state, product_detail_loading, product_detail_error } = useProductDetail(product_id);
     return (
         <div className="detail-product-screen">
