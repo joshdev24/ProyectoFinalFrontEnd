@@ -52,48 +52,48 @@ const Register = () => {
     };
     return (
         <div className="register-container">
-    <h1 className="register-title">Regístrate en nuestra web</h1>
-    <form className="register-form" onSubmit={handleSubmitRegisterForm}>
-        <div className="form-group">
-            <label className="form-label" htmlFor="name">Ingrese su nombre:</label>
-            <input
-                className="form-input"
-                name="name"
-                id="name"
-                placeholder="Pepe Suarez"
-            />
-        </div>
-        <div className="form-group">
-            <label className="form-label" htmlFor="email">Ingrese su email:</label>
-            <input
-                className="form-input"
-                name="email"
-                id="email"
-                placeholder="pepe@gmail.com"
-            />
-        </div>
-        <div className="form-group">
-            <label className="form-label" htmlFor="password">Ingrese su contraseña:</label>
-            <input
-                className="form-input"
-                name="password"
-                id="password"
-                type="password"
-                placeholder="••••••••"
-            />
-        </div>
-        <button className="register-button" type="submit">Registrar</button>
-        <ul className="login-link-list">
-            <li className="login-link-item">
-                Si ya tienes cuenta puedes ir a{" "}
-                <Link to="/login" className="login-link">login</Link>
-            </li>
-        </ul>
-        {error && <p className="error-message">{error}</p>} 
-        {success && <p className="success-message">{success}</p>}
-    </form>
-</div>
-
+        <h1 className="register-title">Regístrate en nuestra web</h1>
+        <form className="register-form" onSubmit={handleSubmitRegisterForm}>
+            <div className="form-group">
+                <label className="form-label" htmlFor="name">Ingrese su nombre:</label>
+                <input
+                    className="form-input form-input-name"
+                    name="name"
+                    id="name"
+                    placeholder="Pepe Suarez"
+                />
+            </div>
+            <div className="form-group">
+                <label className="form-label" htmlFor="email">Ingrese su email:</label>
+                <input
+                    className="form-input form-input-email"
+                    name="email"
+                    id="email"
+                    placeholder="pepe@gmail.com"
+                />
+            </div>
+            <div className="form-group">
+                <label className="form-label" htmlFor="password">Ingrese su contraseña:</label>
+                <input
+                    className="form-input form-input-password"
+                    name="password"
+                    id="password"
+                    type="password"
+                    placeholder="••••••••"
+                />
+            </div>
+            <button className="register-button" type="submit">Registrar</button>
+            <ul className="login-link-list">
+                <li className="login-link-item">
+                    Si ya tienes cuenta puedes ir a{" "}
+                    <Link to="/login" className="login-link">login</Link>
+                </li>
+            </ul>
+            {error && <p className="error-message form-error">{error}</p>}
+            {success && <p className="success-message form-success">{success}</p>}
+        </form>
+    </div>
+    
     )
 }
 
