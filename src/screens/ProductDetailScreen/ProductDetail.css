@@ -1,102 +1,198 @@
-/* Contenedor principal de la pantalla */
+/* Estilo general del contenedor principal */
 .detail-product-screen {
-    max-width: 800px;
-    margin: 20px auto;
     padding: 20px;
-    background-color: white; /* Fondo blanco */
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 255, 144, 0.5); /* Sombra verde neón */
     font-family: 'Arial', sans-serif;
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Título principal */
-.detail-product-title {
-    font-size: 24px;
-    color: #00ff90; /* Verde neón */
-    text-align: center;
-    text-shadow: 0 0 10px #00ff90;
-    margin-bottom: 20px;
-}
-
-/* Texto de carga y error */
-.detail-product-loading,
-.detail-product-error {
-    font-size: 18px;
-    text-align: center;
-    color: #00ff90; /* Verde neón */
-    text-shadow: 0 0 5px #00ff90;
-    margin-top: 20px;
-}
-
-/* Contenedor del detalle del producto */
-.product-detail {
+    color: #333;
+    background-color: lavender; /* Fondo principal */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding: 20px;
-    border: 2px solid #00ff90; /* Borde verde neón */
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 255, 144, 0.5);
-    background-color: white; /* Fondo blanco */
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Estilo para cada detalle */
-.product-detail-id,
-.product-detail-title,
-.product-detail-price,
-.product-detail-stock,
-.product-detail-description {
-    font-size: 18px;
-    color: #333; /* Texto oscuro */
-    text-shadow: 0 0 5px #00ff90; /* Brillo neón */
-    margin: 5px 0;
-}
-
-/* Título del producto */
-.product-detail-title {
-    font-size: 22px;
+/* Título de la página */
+.detail-product-title {
+    font-size: 32px; /* Más grande */
     font-weight: bold;
-    color: #00ff90;
-    text-shadow: 0 0 10px #00ff90;
+    margin-bottom: 30px; /* Más espacioso */
+    color: darkolivegreen;
+    text-align: center;
+    border-bottom: 3px solid thistle; /* Línea más gruesa */
+    padding-bottom: 15px;
+    animation: slideInDown 1s ease-in-out;
+}
+
+/* Mensajes de carga y error */
+.detail-product-loading,
+.detail-product-error {
+    font-size: 20px; /* Texto más grande */
+    color: darkolivegreen;
+    margin-top: 30px;
+    background-color: thistle;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+/* Estilo del contenedor de detalles del producto */
+.product-detail {
+    border: 2px solid mediumaquamarine; /* Borde más grueso */
+    border-radius: 15px;
+    padding: 30px; /* Más espacio interior */
+    background-color: #fff;
+    max-width: 600px; /* Más ancho */
+    margin: 30px auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: popIn 0.8s ease-in-out;
+}
+
+.product-detail:hover {
+    transform: scale(1.05); /* Zoom un poco más notable */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Imagen del producto */
 .product-detail-image {
-    border: 2px solid #00ff90;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #00ff90;
-    max-width: 200px;
+    display: block;
+    margin: 20px auto; /* Más espacio alrededor */
+    border-radius: 15px;
+    width: 100%;
+    max-width: 300px; /* Imagen más grande */
+    object-fit: cover;
+    animation: float 2s infinite;
 }
 
-/* Enlace de regreso */
-.back-to-home-link {
-    display: flex;
-    align-items: center;
-    color: white;
-    font-size: 16px;
+/* Detalles específicos */
+.product-detail-id {
+    font-size: 16px; /* Texto más legible */
+    color: thistle;
+    margin-bottom: 15px;
+}
+
+.product-detail-title {
+    font-size: 28px; /* Más grande */
     font-weight: bold;
-    text-decoration: none;
+    color: darkolivegreen;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Detalles adicionales */
+.product-detail-price,
+.product-detail-stock,
+.product-detail-description {
+    display: block;
+    font-size: 18px; /* Texto más grande */
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.product-detail-price {
+    color: mediumaquamarine;
+    background-color: lavender;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product-detail-stock {
+    color: darkolivegreen;
+    background-color: thistle;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product-detail-description {
+    color: #333;
+    background-color: #f9f9f9;
+    text-align: justify;
+    font-style: italic;
+    padding: 15px;
+    line-height: 1.6; /* Mejora la legibilidad */
+    border: 1px solid #ddd;
+}
+
+/* Estilo para el enlace "Regresar al inicio" */
+.back-to-home-link {
+    display: inline-block;
+    color: midnightblue; /* Color de texto inicial */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none; /* Sin subrayado por defecto */
     padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #00ff90; /* Fondo verde neón */
     border-radius: 5px;
-    box-shadow: 0 0 10px #00ff90;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: darksalmon; /* Fondo de color Dark Salmon */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para color */
+    margin-top: 20px; /* Espaciado superior */
 }
 
+/* Estilo cuando el enlace es hover */
 .back-to-home-link:hover {
-    background-color: #00cc72; /* Oscurece al pasar el mouse */
-    transform: scale(1.05);
+    background-color: maroon; /* Cambio de fondo a maroon al pasar el ratón */
+    color: linen; /* Cambio de color de texto a linen */
 }
 
-/* Animación de entrada */
+/* Estilo para cuando el enlace está enfocado (cuando es seleccionado o accesible por teclado) */
+.back-to-home-link:focus {
+    outline: 2px solid maroon; /* Añadir un contorno maroon para accesibilidad */
+    outline-offset: 4px;
+}
+
+/* ANIMACIONES */
+
+/* Fade-in suave */
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
+    }
+}
+
+/* Entrada desde arriba */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Pulso sutil */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Aparición con rebote */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Efecto flotante */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
     }
 }

@@ -12,17 +12,16 @@ import ProductDetails from "./screens/ProductDetailScreen/ProductDetail"
 import ProtectedRoute from "./Components/ProtectedRoute"
 
 
+
 function App() {
   return (
     <>
       <Routes>
-
         <Route path="/" element={<Login/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
-        
         <Route element={<ProtectedRoute/>}>
         <Route path='/home' element={<Home/>}/>
         <Route path='/product/new' element={<CreateProductScreen/>}/>
@@ -31,7 +30,7 @@ function App() {
         </Route>
       </Routes>
     </>
-  );
+  )
 }
 
 export default App

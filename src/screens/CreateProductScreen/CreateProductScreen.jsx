@@ -1,9 +1,8 @@
 import React, { useState,  } from 'react';
 import { getAuthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import { extractFormData } from '../../utils/extractFormData';
-import { Link } from 'react-router-dom';
-import ENVIROMENT from '../../../enviroment';
 import './CreateProduct.css';
+import { Link } from 'react-router-dom';
 
 const CreateProductScreen = () => {
     const [image, setImage] = useState('');
@@ -38,15 +37,15 @@ const CreateProductScreen = () => {
         setLoading(true); 
 
         try {
-            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/products`, {
+            const response = await POST('http://localhost:3000/api/products', {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_values_object)
             });
 
-            if (response.ok) {
-    setSuccess('Se ha creado el producto con exito');
+            if (!response.ok) {
+                setError(errorData.message || 'Error al crear el producto'); 
             } 
-			
+			setSuccess('Se ha creado el producto con exito');
         } catch (error) {
             console.error(error);
             setError('Error inesperado'); 
@@ -78,42 +77,40 @@ const CreateProductScreen = () => {
 
     return (
         <>
-    <div className="form-container">
-        <form className="product-form" onSubmit={handleSubmitNewProduct}>
-            <div className="form-group">
-                <label htmlFor="titulo" className="form-label">Ingrese el título:</label>
-                <input name="title" id="titulo" className="form-input" required />
-            </div>
-            <div className="form-group">
-                <label htmlFor="precio" className="form-label">Ingrese el precio:</label>
-                <input name="price" id="precio" className="form-input" required />
-            </div>
-            <div className="form-group">
-                <label htmlFor="stock" className="form-label">Ingrese el stock:</label>
-                <input name="stock" id="stock" className="form-input" required />
-            </div>
-            <div className="form-group">
-                <label htmlFor="descripcion" className="form-label">Ingrese la descripción:</label>
-                <textarea name="description" id="descripcion" className="form-textarea" required></textarea>
-            </div>
-            <div className="form-group">
-                <label htmlFor="category" className="form-label">Ingrese la categoría:</label>
-                <input name="category" id="category" className="form-input" required />
-            </div>
-            <div className="form-group">
-                {image && <img src={image} alt="Selected" className="form-image" />}
-                <label htmlFor="imagen" className="form-label">Seleccione una imagen:</label>
-                <input name="imagen" id="imagen" type="file" className="form-file" onChange={handleChangeFile} accept="image/*" />
-            </div>
-            {error && <p className="form-error">{error}</p>}
-            {success && <p className="form-success">{success}</p>}
-            <button type="submit" className="form-button" disabled={loading}>
-                {loading ? 'Creating...' : 'Crear producto'}
-            </button>
-            <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
-        </form>
-    </div>
-</>
+        <div>
+            <form onSubmit={handleSubmitNewProduct}>
+                <div>
+                    <label htmlFor='titulo'>Ingrese el titulo:</label>
+                    <input name='title' id='titulo'  required />
+                </div>
+                <div>
+                    <label htmlFor='precio'>Ingrese el precio:</label>
+                    <input name='price' id='precio' required />
+                </div>
+                <div>
+                    <label htmlFor='stock'>Ingrese el stock:</label>
+                    <input name='stock' id='stock' required />
+                </div>
+                <div>
+                    <label htmlFor='descripcion'>Ingrese la descripcion:</label>
+                    <textarea name="description" id="descripcion" required></textarea>
+                </div>
+                <div>
+                    <label htmlFor='category'>Ingrese la categoria:</label>
+                    <input name='category' id='category' required />
+                </div>
+                <div>
+                    {image && <img src={image} alt="Selected" />}
+                    <label htmlFor='imagen'>Seleccione una imagen:</label>
+                    <input name='imagen' id='imagen' type='file' onChange={handleChangeFile} accept='image/*' />
+                </div>
+                {error && <p style={{ color: 'red' }}>{error}</p>} 
+				{success && <p style={{ color: 'green' }}>{success}</p>}
+                <button type='submit' disabled={loading}>{loading ? 'Creating...' : 'Crear producto'}</button>
+                <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
+            </form>
+        </div>
+       </>
     );
 };
 

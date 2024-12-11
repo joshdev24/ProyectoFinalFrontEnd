@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
 import useForm from '../../Hooks/useForm'
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
-import ENVIROMENT from '../../../enviroment'
-
 
 
 
@@ -12,31 +10,32 @@ const Register = () => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState(false)
 
-    const form_fields = {
-        name: "",
-        email: "",
-        password: "",
-      };
-    
-      const { form_values_state, handleChangeInputValue } = useForm(form_fields);
-      
-    
-      const handleSubmitRegisterForm = async (e) => {
-        try {
-        e.preventDefault();
-        const form_HTML = e.target;
+    const handleSubmitRegisterForm = async (event) => {
+        event.preventDefault();
+        event.preventDefault();
+        setError('');
 
-        if (!form_values_state.email || !form_values_state.password) {
+        const form_HTML = event.target;
+        const form_Values = new FormData(form_HTML);
+        const form_fields = {
+            name: '',
+            email: '',
+            password: ''
+        };
+        const form_values_object = extractFormData(form_fields, form_Values);
+
+        if (!form_values_object.email || !form_values_object.password) {
             setError('Por favor, complete todos los campos.');
             setLoading(false);
             return;
         }
 
+        try {
             const response = await POST(
-            `${ENVIROMENT.URL_BACKEND}/api/auth/register`,
+                'http://localhost:3000/api/auth/register',
                 {
                     headers: getUnnauthenticatedHeaders(),
-                    body: JSON.stringify(form_values_state),
+                    body: JSON.stringify(form_values_object)
                 }
             )
 
@@ -45,6 +44,7 @@ const Register = () => {
             } else {
                 setError("Error al registrarte")
             }
+            console.log(body)
         } catch (error) {
             console.error(error);
         }
@@ -58,7 +58,6 @@ const Register = () => {
                     <input name='name'
                         id='name'
                         placeholder='Pepe Suarez'
-                        onChange={handleChangeInputValue}
                     />
                 </div>
                 <div>
@@ -66,7 +65,6 @@ const Register = () => {
                     <input name='email'
                         id='email'
                         placeholder='pepe@gmail.com'
-                        onChange={handleChangeInputValue}
                     />
                 </div>
                 <div>
@@ -74,7 +72,6 @@ const Register = () => {
                     <input name='password'
                         id='password'
                         placeholder='pepe@gmail.com'
-                        onChange={handleChangeInputValue}
                     />
                 </div>
                 <button type='submit'>Registrar</button>

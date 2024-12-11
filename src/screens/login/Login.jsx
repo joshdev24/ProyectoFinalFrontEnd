@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { extractFormData } from '../../utils/extractFormData';
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
-import ENVIROMENT from '../../../enviroment';
 import './Login.css';
 
 const Login = () => {
@@ -32,7 +31,7 @@ const Login = () => {
 
         try {
             const response = await POST(
-                `${ENVIROMENT.URL_BACKEND}/api/auth/login`,
+                'http://localhost:3000/api/auth/login',
                 {
                     headers: getUnnauthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)
@@ -45,8 +44,8 @@ const Login = () => {
                 setLoading(false);
                 return;
             }
-            
 
+            
             console.log('Login Response:', response);
 
             const access_token = response.payload.token;
@@ -58,8 +57,7 @@ const Login = () => {
 
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
-
-            window.location.reload();
+            navigate('/home'); 
         } catch (error) {
             console.log('Error:', error);
             setError('Ocurrió un error al intentar iniciar sesión.');
