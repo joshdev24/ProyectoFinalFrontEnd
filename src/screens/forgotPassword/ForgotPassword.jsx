@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
-import { POST } from '../../fetching/http.fetching'
+import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment';
 
 
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
 
             const form_values_object = extractFormData(form_fields, form_Values);
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
-                headers: { 'Content-Type': 'application/json' },
+                headers: getUnnauthenticatedHeaders(),
                 body: JSON.stringify(form_values_object)
             });
 
