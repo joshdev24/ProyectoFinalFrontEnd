@@ -63,7 +63,7 @@ const HomeScreen = () => {
                 <>
                     <h1 className="welcome-title">Bienvenido {user_info.name}</h1>
                     <div className="header-actions">
-                        <Link to="/product/new" className="create-product-link">
+                        <Link to="/product/new" className="create-product-button">
                             Crear producto
                         </Link>
                         <button
