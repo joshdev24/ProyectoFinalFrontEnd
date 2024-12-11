@@ -156,3 +156,104 @@ hr {
     margin: 15px 0;
 }
 
+.create-product-button {
+    display: inline-block;
+    padding: 12px 24px; /* Tamaño del botón */
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Quita el subrayado */
+    text-align: center;
+    background: #32cd32; /* Verde lima neón */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 
+        0 0 10px #32cd32, 
+        0 0 20px #32cd32, 
+        0 0 30px #32cd32; /* Brillo */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.create-product-button:hover {
+    background: #7fff00; /* Color más claro al pasar el mouse */
+    box-shadow: 
+        0 0 20px #7fff00, 
+        0 0 40px #7fff00, 
+        0 0 60px #7fff00; /* Brillo intensificado */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+.create-product-button:active {
+    background: #228b22; /* Color más oscuro al hacer clic */
+    box-shadow: 
+        0 0 10px #228b22, 
+        0 0 20px #228b22;
+    transform: scale(0.95); /* Botón ligeramente comprimido */
+}
+.logout-button {
+    display: inline-block;
+    padding: 12px 24px; /* Tamaño del botón */
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Quita el subrayado */
+    text-align: center;
+    background: #d580ff; /* Violeta claro neón */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 
+        0 0 10px #d580ff, 
+        0 0 20px #d580ff, 
+        0 0 30px #d580ff; /* Brillo */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.logout-button:hover {
+    background: #e199ff; /* Color más claro al pasar el mouse */
+    box-shadow: 
+        0 0 20px #e199ff, 
+        0 0 40px #e199ff, 
+        0 0 60px #e199ff; /* Brillo intensificado */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+.logout-button:active {
+    background: #b366cc; /* Color más oscuro al hacer clic */
+    box-shadow: 
+        0 0 10px #b366cc, 
+        0 0 20px #b366cc;
+    transform: scale(0.95); /* Botón ligeramente comprimido */
+}
+
+.filter-user-products-button {
+    display: inline-block;
+    padding: 12px 24px; /* Tamaño del botón */
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; /* Texto blanco */
+    text-decoration: none; /* Quita el subrayado */
+    text-align: center;
+    background: #ffff99; /* Amarillo claro neón */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 
+        0 0 10px #ffff99, 
+        0 0 20px #ffff99, 
+        0 0 30px #ffff99; /* Brillo */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.filter-user-products-button:hover {
+    background: #ffffb3; /* Color más claro al pasar el mouse */
+    box-shadow: 
+        0 0 20px #ffffb3, 
+        0 0 40px #ffffb3, 
+        0 0 60px #ffffb3; /* Brillo intensificado */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+.filter-user-products-button:active {
+    background: #cccc80; /* Color más oscuro al hacer clic */
+    box-shadow: 
+        0 0 10px #cccc80, 
+        0 0 20px #cccc80;
+    transform: scale(0.95); /* Botón ligeramente comprimido */
+}
+
