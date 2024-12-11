@@ -1,22 +1,21 @@
-/* Contenedor principal */
 .login-container {
-    background: #413377; /* Fondo blanco */
+    background: #483f79; /* Fondo claro */
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 255, 128, 0.3), 0 0 40px rgba(0, 255, 128, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.05);
     max-width: 400px;
     margin: 50px auto;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    color: #121212; /* Texto oscuro */
+    color: #333; /* Texto más oscuro para contraste */
 }
 
 /* Título */
 .login-title {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #2894ca; /* Verde claro neón */
-    text-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80;
+    color: #3f51b5; /* Azul claro */
+    text-shadow: 0 0 5px rgba(63, 81, 181, 0.2);
 }
 
 /* Formulario */
@@ -36,7 +35,7 @@
     font-size: 1rem;
     margin-bottom: 5px;
     display: block;
-    color: #121212; /* Texto oscuro */
+    color: #555; /* Texto gris */
 }
 
 /* Campos de entrada */
@@ -45,17 +44,17 @@
     padding: 10px 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background: #f9f9f9;
-    color: #121212;
+    background: #ffffff;
+    color: #333;
     font-size: 1rem;
-    box-shadow: inset 0 0 5px rgba(0, 255, 128, 0.2);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
 
 .input-field:focus {
     outline: none;
-    border-color: #00ff80;
-    box-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80;
+    border-color: #3f51b5;
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
 }
 
 /* Botón de envío */
@@ -64,18 +63,18 @@
     font-size: 1rem;
     font-weight: bold;
     color: #ffffff;
-    background: #00ff80; /* Verde claro neón */
+    background: #3f51b5; /* Azul claro */
     border: none;
     border-radius: 8px;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80;
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.5);
 }
 
 .submit-button:hover {
-    background: #39ff14; /* Verde más brillante */
-    box-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14;
+    background: #5c6bc0; /* Azul más claro */
+    box-shadow: 0 0 10px rgba(92, 107, 192, 0.5);
     transform: scale(1.05);
 }
 
@@ -98,13 +97,13 @@
 }
 
 .register-link a {
-    color: #2894ca;
+    color: #3f51b5;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .register-link a:hover {
-    color: #2894ca;
-    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+    color: #5c6bc0;
+    text-shadow: 0 0 5px rgba(92, 107, 192, 0.3);
 }
