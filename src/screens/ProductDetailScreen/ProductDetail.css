@@ -3,11 +3,7 @@
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-<<<<<<< HEAD
     background-color: white; /* Fondo blanco */
-=======
-    background-color:  #2a2a2a; /* Fondo blanco */
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 255, 144, 0.5); /* Sombra verde neón */
     font-family: 'Arial', sans-serif;
@@ -43,11 +39,7 @@
     border: 2px solid #00ff90; /* Borde verde neón */
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 255, 144, 0.5);
-<<<<<<< HEAD
     background-color: white; /* Fondo blanco */
-=======
-    background-color:  #2a2a2a; /* Fondo blanco */
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
 }
 
 /* Estilo para cada detalle */
@@ -57,11 +49,7 @@
 .product-detail-stock,
 .product-detail-description {
     font-size: 18px;
-<<<<<<< HEAD
     color: #333; /* Texto oscuro */
-=======
-    color:#0affc9; /* Texto oscuro */
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
     text-shadow: 0 0 5px #00ff90; /* Brillo neón */
     margin: 5px 0;
 }

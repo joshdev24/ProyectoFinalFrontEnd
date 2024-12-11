@@ -10,10 +10,7 @@ const DeleteProduct = () => {
     const [loading, setLoading] = useState(false); // Estado de carga
     const [error, setError] = useState(""); // Estado de error
     const [success, setSuccess] = useState(""); // Estado de éxito
-<<<<<<< HEAD
     const navigate = useNavigate();
-=======
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
 
     const handleDelete = async () => {
         setLoading(true); // Indicamos que la solicitud está en progreso
@@ -22,11 +19,7 @@ const DeleteProduct = () => {
         try {
             const response = await DELETE(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
-<<<<<<< HEAD
                  // Ejemplo: cambiar el estado activo
-=======
-                "Access-Control-Allow-Origin": "*"
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
             });
 
             if (response.ok) {

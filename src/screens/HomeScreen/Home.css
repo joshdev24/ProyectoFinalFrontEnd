@@ -6,26 +6,16 @@
     --light-gray: #f4f4f4; /* Gris muy claro (para el fondo claro de las tarjetas) */
     --dark-gray: #212121; /* Gris oscuro */
     --black: #000000; /* Negro */
-<<<<<<< HEAD
 }
 
 /* General */
 body {
-    background-image: url('./tron.jpg'); /* Fondo blanco */
+    background-image: url('./login.jpg'); /* Fondo blanco */
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-=======
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
 }
 
-/* General */
-body {
-    background-image: url('./tron.jpg'); /* Fondo blanco */
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;;
-}
 /* Contenedor principal */
 .home-container {
     margin: 20px auto;
@@ -41,62 +31,13 @@ body {
 
 /* Título de bienvenida */
 .welcome-title {
-<<<<<<< HEAD
     font-size: 32px;
     color: var(--neon-cyan);
-=======
-    font-size: 48px; /* Tamaño más grande */
-    font-weight: bold; /* Aumenta el grosor de la fuente */
-    color: var(--neon-cyan);
-    margin-bottom: 30px;
-    text-shadow: 
-        0 0 15px var(--neon-cyan), 
-        0 0 30px var(--neon-cyan), 
-        0 0 45px var(--neon-cyan), 
-        0 0 60px var(--neon-cyan); /* Más capas de sombra */
-    animation: glowing 1s infinite alternate; /* Animación más rápida */
-}
-
-/* Definición de la animación */
-@keyframes glowing {
-    0% {
-        text-shadow: 
-            0 0 10px var(--neon-cyan), 
-            0 0 20px var(--neon-cyan), 
-            0 0 30px var(--neon-cyan);
-    }
-    100% {
-        text-shadow: 
-            0 0 20px var(--neon-cyan), 
-            0 0 40px var(--neon-cyan), 
-            0 0 60px var(--neon-cyan);
-    }
-}
-
-/* Animación para el título */
-@keyframes glowing {
-    0% {
-        text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan), 0 0 15px var(--neon-cyan);
-    }
-    50% {
-        text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan);
-    }
-    100% {
-        text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan), 0 0 15px var(--neon-cyan);
-    }
-}
-
-.header-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
     margin-bottom: 20px;
     text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
     animation: glowing 1.5s infinite alternate;
 }
 
-<<<<<<< HEAD
 /* Animación para el título */
 @keyframes glowing {
     0% {
@@ -110,115 +51,6 @@ body {
     }
 }
 
-=======
-.create-product-link {
-    display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
-    text-align: center;
-    background: #32cd32; /* Verde lima neón */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 
-        0 0 10px #32cd32, 
-        0 0 20px #32cd32, 
-        0 0 30px #32cd32; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
-}
-
-.create-product-link:hover {
-    background: #7fff00; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #7fff00, 
-        0 0 40px #7fff00, 
-        0 0 60px #7fff00; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
-}
-
-.create-product-link:active {
-    background: #228b22; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #228b22, 
-        0 0 20px #228b22;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
-}
-
-
-.logout-button {
-    display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
-    text-align: center;
-    background: #ff808b; /* Violeta claro neón */
-    border-radius: 8px; /* Bordes redondeados */
-    border-color: transparent;
-    box-shadow: 
-        0 0 10px #ff808b, 
-        0 0 20px #ff808b, 
-        0 0 30px #ff808b; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
-}
-
-.logout-button:hover {
-    background: #e199ff; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #e199ff, 
-        0 0 40px #e199ff, 
-        0 0 60px #e199ff; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
-}
-
-.logout-button:active {
-    background: #b366cc; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #b366cc, 
-        0 0 20px #b366cc;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
-}
-
-.filter-user-products-button {
-    display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
-    text-align: center;
-    background: #82bcd9; /* Amarillo claro neón */
-    border-radius: 8px; /* Bordes redondeados */
-    border-color: transparent;
-    box-shadow: 
-        0 0 10px #82bcd9, 
-        0 0 20px #82bcd9, 
-        0 0 30px #82bcd9; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
-}
-
-.filter-user-products-button:hover {
-    background: #6895ac; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #6895ac, 
-        0 0 40px #6895ac, 
-        0 0 60px #6895ac; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
-}
-
-.filter-user-products-button:active {
-    background: #82bcd9; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #82bcd9, 
-        0 0 20px #82bcd9;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
-}
-
-
-
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
 /* Lista de productos */
 .products-list {
     display: grid;
@@ -229,11 +61,7 @@ body {
 
 /* Card de producto con fondo claro */
 .product-card {
-<<<<<<< HEAD
     background-color: var(--light-gray); /* Fondo claro para la card */
-=======
-    background-color: #948fd5; /* Fondo claro para la card */
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
     color: var(--dark-gray); /* Texto oscuro para buena legibilidad */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px var(--neon-cyan); /* Brillo neón en los bordes */
@@ -269,22 +97,14 @@ body {
 .product-price {
     font-size: 20px;
     font-weight: bold;
-<<<<<<< HEAD
     color: var(--neon-red);
-=======
-    color: #c00505;
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
     margin-bottom: 15px;
 }
 
 /* Enlace de detalles del producto */
 .product-detail-link {
     display: inline-block;
-<<<<<<< HEAD
     color: var(--neon-orange);
-=======
-    color: #00ff90;
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
@@ -302,11 +122,7 @@ body {
 .product-update-link,
 .product-delete-link {
     display: block;
-<<<<<<< HEAD
     color: var(--neon-orange);
-=======
-    color: #00b7ff;
->>>>>>> 1b0091d92a0239d4a8bf97a875bbe4f3ddc90e67
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
