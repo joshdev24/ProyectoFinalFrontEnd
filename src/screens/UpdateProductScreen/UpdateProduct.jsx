@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import ENVIROMENT from "../../../enviroment";
 
 const UpdateProduct = (product_id) => {
-    const { product_id } = useParams();
     const [product, setProduct] = useState({
         title: '',
         price: '',
