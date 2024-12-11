@@ -5,8 +5,6 @@ import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import ENVIROMENT from '../../../enviroment';
 import './Login.css';
 
-
-
 const Login = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
