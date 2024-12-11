@@ -27,7 +27,7 @@ const ForgotPassword = () => {
 
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
                 headers:  getUnnauthenticatedHeaders(),
-                "Access-Control-Allow-Origin": "*",
+                mode: "no-cors",
                 body: JSON.stringify(form_values_object)
             });
 
