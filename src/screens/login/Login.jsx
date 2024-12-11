@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { extractFormData } from '../../utils/extractFormData';
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import './Login.css';
+import ENVIROMENT from '../../../enviroment';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Login = () => {
 
         try {
             const response = await POST(
-                'http://localhost:3000/api/auth/login',
+                `${ENVIROMENT.URL.BACKEND}/api/auth/login`,
                 {
                     headers: getUnnauthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)

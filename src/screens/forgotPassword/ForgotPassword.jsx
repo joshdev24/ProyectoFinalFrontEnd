@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
 import { POST } from '../../fetching/http.fetching'
+import ENVIROMENT from '../../../enviroment';
 
 
 
@@ -23,7 +24,7 @@ const ForgotPassword = () => {
             }
 
             const form_values_object = extractFormData(form_fields, form_Values);
-            const response = await POST('http://localhost:3000/api/auth/forgot-password', {
+            const response = await POST(`${ENVIROMENT.URL.BACKEND}/api/auth/forgot-password`, {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form_values_object)
             });

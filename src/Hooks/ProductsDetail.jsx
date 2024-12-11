@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
+import ENVIROMENT from "../../enviroment"
+
 
 const useProductDetail = (product_id) =>{
     const [product_detail_state, setProductDetailState] = useState(null)
@@ -9,7 +11,7 @@ const useProductDetail = (product_id) =>{
     const navigate = useNavigate()
     const getProductDetail = async (product_id) =>{
         const product_detail_response = await GET(
-            `http://localhost:3000/api/products/${product_id}`, 
+            `${ENVIROMENT.URL.BACKEND}/api/products/${product_id}`, 
             {
                 headers: getAuthenticatedHeaders()
             }
