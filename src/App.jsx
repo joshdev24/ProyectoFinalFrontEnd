@@ -32,15 +32,15 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/product/new" element={<CreateProductScreen />} />
           <Route
-            path="/product/:product_id"
+            path="/product/:id"
             element={<ProductDetails />}
           />
           <Route
-            path="/product/update/:product_id"
+            path="/product/update/:id"
             element={<UpdateProduct />}
           />
           <Route
-            path="/product/delete/:product_id"
+            path="/product/delete/:id"
             element={<DeleteProduct />}
           />
         </Route>

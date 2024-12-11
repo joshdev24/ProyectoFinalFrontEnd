@@ -4,7 +4,7 @@ import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 import ENVIROMENT from "../../enviroment"
 
 
-const useProductDetail = (id) =>{
+const useProductDetail = () =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
