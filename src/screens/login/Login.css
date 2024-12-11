@@ -1,6 +1,6 @@
 /* Contenedor principal */
 .login-container {
-    background: #ffffff; /* Fondo blanco */
+    background: #423479; /* Fondo blanco */
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 255, 128, 0.3), 0 0 40px rgba(0, 255, 128, 0.1);
@@ -15,7 +15,7 @@
 .login-title {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #00ff80; /* Verde claro neón */
+    color: #2894ca; /* Verde claro neón */
     text-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80;
 }
 
@@ -98,13 +98,13 @@
 }
 
 .register-link a {
-    color: #00ff80;
+    color: #2894ca;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .register-link a:hover {
-    color: #39ff14;
+    color: #2894ca;
     text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
 }
