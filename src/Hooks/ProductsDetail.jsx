@@ -29,12 +29,12 @@ const useProductDetail = () =>{
         }
     }
 
-    useEffect(
-        () =>{
-            getProductDetail(id)
-        },
-        []
-    )
+    useEffect(() => {
+        console.log(id); // Para ver si id es correcto
+        if (id) {
+            getProductDetail(id);
+        }
+    }, [id]);
     return {
         product_detail_state, 
         product_detail_loading, 
