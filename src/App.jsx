@@ -10,6 +10,8 @@ import CreateProductScreen from "./screens/CreateProductScreen/CreateProductScre
 import UpdateProduct from "./screens/UpdateProductScreen/UpdateProduct"
 import ProductDetails from "./screens/ProductDetailScreen/ProductDetail"
 import ProtectedRoute from "./Components/ProtectedRoute"
+import DeleteProduct from "./screens/DeleteProductScreen/DeleteProduct"
+
 
 
 
@@ -27,6 +29,7 @@ function App() {
         <Route path='/product/new' element={<CreateProductScreen/>}/>
         <Route path="/product/:product_id" element={<ProductDetails />} />
         <Route path='/product/update/:product_id' element={<UpdateProduct/>}/>
+        <Route path='/product/delete/:product_id' element={<DeleteProduct/>}/>
         </Route>
       </Routes>
     </>
