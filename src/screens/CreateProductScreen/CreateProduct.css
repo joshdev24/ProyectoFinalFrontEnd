@@ -1,153 +1,74 @@
-/* Estilo general para el formulario */
-form {
+/* Create Product Container */
+.create-product-container {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 50px auto;
     padding: 20px;
-    background-color: linen; /* Fondo suave */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-    animation: fadeIn 1s ease-in-out; /* Animación de entrada */
+    border: 2px solid #7c2aed;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    box-shadow: 0 0 20px #7c2aed, 0 0 40px #7c2aed;
+}
+
+/* Title */
+.create-product-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #7c2aed;
+    text-shadow: 0 0 10px #7c2aed;
+    margin-bottom: 20px;
+}
+
+/* Form */
+.create-product-form {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-items: center;
-
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Estilo para cada contenedor de los campos del formulario */
-form div {
-    margin-bottom: 15px;
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Estilo para las etiquetas de los campos */
-form label {
-    font-size: 16px;
-    color: midnightblue; /* Color para las etiquetas */
-    display: block;
+.form-label {
+    font-size: 1rem;
+    color: #d1b3ff;
     margin-bottom: 5px;
 }
 
-/* Estilo para los campos de entrada de texto */
-form input,
-form textarea {
-    width: 100%;
+.form-input,
+.form-textarea {
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid darksalmon;
-    border-radius: 5px;
-    background-color: gainsboro; /* Fondo claro para los inputs */
-    transition: border-color 0.3s ease-in-out;
-}
-
-form input:focus,
-form textarea:focus {
-    border-color: maroon; /* Borde color maroon al enfocar */
-    outline: none;
-}
-
-/* Estilo para la caja de texto */
-form textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-/* Estilo para el selector de imagen */
-form input[type="file"] {
-    display: none;
-}
-
-form label[for="imagen"] {
-    display: inline-block;
-    background-color: midnightblue; /* Fondo del botón de imagen */
-    color: linen;
-    padding: 8px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-form label[for="imagen"]:hover {
-    background-color: darksalmon;
-}
-
-/* Estilo para las imágenes seleccionadas */
-form img {
-    margin-top: 10px;
-    max-width: 200px;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Estilo para los mensajes de error y éxito */
-form p {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-form p[style*="color: red"] {
-    color: red;
-}
-
-form p[style*="color: green"] {
-    color: green;
-}
-
-/* Estilo para el botón */
-form button {
-    background-color: maroon; /* Fondo maroon para el botón */
-    color: linen; /* Texto claro */
-    padding: 12px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease-in-out;
+    background-color: #2a2a2a;
+    color: #fff;
+    outline: none;
+    box-shadow: 0 0 10px #7c2aed inset;
 }
 
-form button:hover {
-    background-color: darksalmon;
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #d1b3ff;
+    opacity: 0.8;
 }
 
-form button:disabled {
-    background-color: lightgray;
-    cursor: not-allowed;
-}
-/* Estilo para el enlace "Regresar al inicio" */
-.back-to-home-link {
-    display: inline-block;
-    color: midnightblue; /* Color de texto inicial */
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none; /* Sin subrayado por defecto */
-    padding: 10px 20px;
+/* Submit Button */
+.create-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: linear-gradient(145deg, #7c2aed, #9b42f5);
+    border: none;
     border-radius: 5px;
-    background-color: darksalmon; /* Fondo de color Dark Salmon */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para color */
-    margin-top: 20px; /* Espaciado superior */
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #7c2aed, 0 0 20px #9b42f5;
+    transition: all 0.3s ease;
 }
 
-/* Estilo cuando el enlace es hover */
-.back-to-home-link:hover {
-    background-color: maroon; /* Cambio de fondo a maroon al pasar el ratón */
-    color: linen; /* Cambio de color de texto a linen */
+.create-button:hover {
+    background: linear-gradient(145deg, #9b42f5, #7c2aed);
+    box-shadow: 0 0 20px #9b42f5, 0 0 40px #7c2aed;
 }
 
-/* Estilo para cuando el enlace está enfocado (cuando es seleccionado o accesible por teclado) */
-.back-to-home-link:focus {
-    outline: 2px solid maroon; /* Añadir un contorno maroon para accesibilidad */
-    outline-offset: 4px;
-}
-
-/* Animaciones */
-
-/* Animación de entrada */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}

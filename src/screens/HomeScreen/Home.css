@@ -1,132 +1,160 @@
-/* Variables de color */
-:root {
-    --dark-salmon: #e9967a;
-    --midnight-blue: #191970;
-    --maroon: #800000;
-    --white: #ffffff;
-    --light-gray: #f4f4f4;
-    --dark-gray: #444444;
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url("./tron.jpg");
+    
+
+    margin: 0;
+    padding: 0;
 }
 
-/* Contenedor principal */
+/* Home Container */
 .home-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     text-align: center;
-    background: linear-gradient(145deg, var(--dark-salmon), var(--midnight-blue));
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed; /* Brillo neón violeta */
+    width: 80%;
+    max-width: 1200px;
+    color: var(--dark-gray);
+    animation: fadeIn 1s ease-in-out;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
 }
 
 /* Título de bienvenida */
 .welcome-title {
-    font-size: 28px;
-    color: var(--midnight-blue);
+    font-size: 32px;
+    color: #7c2aed; /* Neón violeta */
     margin-bottom: 20px;
+    text-shadow: 0 0 10px #7c2aed, 0 0 20px #7c2aed;
+    animation: glowing 1.5s infinite alternate;
 }
 
-/* Mensaje de inicio de sesión */
-.login-message {
-    font-size: 18px;
-    color: var(--dark-gray);
-    margin-top: 20px;
-}
-
-/* Enlace para crear producto */
-.create-product-link {
-    display: inline-block;
-    margin: 15px 0;
-    padding: 10px 20px;
-    background-color: var(--dark-salmon);
-    color: var(--white);
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.create-product-link:hover {
-    background-color: var(--maroon);
-    transform: scale(1.05);
-}
-
-/* Texto de carga */
-.loading-text {
-    font-size: 18px;
-    font-style: italic;
+/* Animación para el título */
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 5px #7c2aed, 0 0 10px #7c2aed, 0 0 15px #7c2aed;
+    }
+    50% {
+        text-shadow: 0 0 10px #7c2aed, 0 0 20px #7c2aed, 0 0 30px #7c2aed;
+    }
+    100% {
+        text-shadow: 0 0 5px #7c2aed, 0 0 10px #7c2aed, 0 0 15px #7c2aed;
+    }
 }
 
 /* Lista de productos */
 .products-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
 
-/* Tarjeta de producto */
+/* Card de producto */
 .product-card {
-    width: 300px;
-    background-color: #F5F5DC;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #2a2a2a; /* Fondo oscuro para la card */
+    color: #d1b3ff; /* Texto violeta claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
     text-align: left;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3), 0 0 35px #7c2aed;
 }
 
-/* Título de producto */
+/* Título del producto */
 .product-title {
-    font-size: 20px;
-    color: var(--midnight-blue);
-    margin: 15px;
+    font-size: 22px;
+    color: #7c2aed;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #7c2aed;
 }
 
-/* Imagen de producto */
+/* Imagen del producto */
 .product-image {
     width: 100%;
-    height: auto;
+    height: 180px;
     object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Precio del producto */
 .product-price {
-    font-size: 18px;
-    color: var(--maroon);
-    margin: 10px 15px;
-}
-
-/* Enlaces de detalle y actualización */
-.product-detail-link,
-.product-update-link {
-    display: block;
-    margin: 10px 15px;
-    color: var(--dark-salmon);
-    text-decoration: none;
+    font-size: 20px;
     font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease;
+    color: #9b42f5; /* Precio en violeta brillante */
+    margin-bottom: 15px;
 }
 
-.product-detail-link:hover,
-.product-update-link:hover {
-    color: var(--maroon);
-    transform: scale(1.05);
+/* Enlace de detalles del producto */
+.product-detail-link {
+    display: inline-block;
+    color: #9b42f5;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 0 0 5px #9b42f5, 0 0 10px #7c2aed;
 }
 
-/* Separador */
+.product-detail-link:hover {
+    color: #d1b3ff;
+    text-shadow: 0 0 15px #d1b3ff, 0 0 25px #7c2aed;
+}
+
+/* Enlaces de acción (actualizar, borrar) */
+.product-update-link,
+.product-delete-link {
+    display: block;
+    color: #7c2aed;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.product-update-link:hover,
+.product-delete-link:hover {
+    color: #9b42f5;
+    text-shadow: 0 0 15px #7c2aed, 0 0 25px #9b42f5;
+}
+
+/* Mensajes */
+.loading-text {
+    font-size: 16px;
+    font-style: italic;
+    color: #d1b3ff;
+}
+
+.no-products-message {
+    font-size: 20px;
+    color: #d1b3ff;
+    margin-top: 30px;
+    text-shadow: 0 0 5px #d1b3ff;
+}
+
+.login-message {
+    font-size: 18px;
+    color: #d1b3ff;
+    margin-top: 20px;
+}
+
+/* Efectos de separación */
 hr {
     border: 0;
     height: 1px;
-    background: var(--light-gray);
-    margin: 10px 0;
+    background: #7c2aed;
+    margin: 15px 0;
 }
+
