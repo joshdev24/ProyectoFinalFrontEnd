@@ -1,8 +1,8 @@
 /* Fondo general */
 body {
-    background: linear-gradient(135deg, #1a1a1a, #0d0d0d); /* Tonalidad de negro */
-    color: #fff; /* Texto blanco */
-    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle, #1b1b1b, #0f0f0f); /* Fondo negro degradado */
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,33 +13,34 @@ body {
 
 /* Contenedor del registro */
 .register-container {
-    background: #1c1c1c; /* Fondo del formulario */
-    border-radius: 12px;
+    background: #121212; /* Fondo más oscuro */
+    border-radius: 16px;
     box-shadow: 
-        0 0 20px #7f00ff, 
-        0 0 40px #7f00ff, 
-        0 0 60px rgba(127, 0, 255, 0.5); /* Efecto de luz neón */
+        0 0 10px rgba(0, 255, 255, 0.3), 
+        0 0 30px rgba(0, 255, 255, 0.2); /* Suave resplandor cian */
     padding: 32px;
-    width: 400px;
+    width: 420px;
     text-align: center;
-    animation: fadeIn 1s ease-out;
+    animation: slideIn 1s ease-out;
+    border: 1px solid rgba(0, 255, 255, 0.2); /* Borde cian translúcido */
 }
 
 /* Título del formulario */
 .register-title {
-    font-size: 24px;
-    color: #bf40ff; /* Violeta claro neón */
-    text-shadow: 
-        0 0 10px #bf40ff, 
-        0 0 20px #bf40ff;
+    font-size: 26px;
+    color: #00ffff; /* Cian brillante */
     margin-bottom: 24px;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 10px #00ffff, 
+        0 0 20px rgba(0, 255, 255, 0.8); /* Resplandor suave */
 }
 
 /* Formulario y elementos */
 .register-form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
 }
 
 .form-group {
@@ -48,62 +49,60 @@ body {
 
 .form-label {
     font-size: 14px;
-    color: #d3d3d3;
+    color: #d4d4d4;
     margin-bottom: 8px;
     display: block;
 }
 
 .form-input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 14px;
-    border: none;
+    border: 1px solid rgba(0, 255, 255, 0.4);
     border-radius: 8px;
     outline: none;
-    background: #262626;
+    background: #1e1e1e;
     color: #fff;
     box-shadow: 
-        inset 0 0 10px #7f00ff, 
-        inset 0 0 20px #7f00ff;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+        inset 0 0 10px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
 .form-input:focus {
+    border-color: #00ffff;
     box-shadow: 
-        inset 0 0 15px #bf40ff, 
-        inset 0 0 30px #bf40ff, 
-        0 0 15px #bf40ff;
-    transform: scale(1.05);
+        inset 0 0 15px #00ffff, 
+        0 0 10px #00ffff;
+    transform: scale(1.02);
 }
 
 /* Botón de registro */
 .register-button {
-    padding: 12px 24px;
+    padding: 14px 24px;
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
-    background: #7f00ff;
+    color: #000;
+    background: #00ffff; /* Cian brillante */
     border: none;
     border-radius: 8px;
     cursor: pointer;
     text-transform: uppercase;
     box-shadow: 
-        0 0 10px #7f00ff, 
-        0 0 20px #7f00ff, 
-        0 0 40px #bf40ff;
+        0 0 15px rgba(0, 255, 255, 0.6), 
+        0 0 30px rgba(0, 255, 255, 0.4); /* Suave resplandor */
     transition: all 0.3s ease;
 }
 
 .register-button:hover {
-    background: #bf40ff;
+    background: #66ffff;
     box-shadow: 
-        0 0 20px #bf40ff, 
-        0 0 40px #bf40ff, 
-        0 0 60px #d580ff;
-    transform: scale(1.1);
+        0 0 20px rgba(102, 255, 255, 0.8), 
+        0 0 40px rgba(102, 255, 255, 0.6); /* Brillo intensificado */
+    transform: scale(1.05);
 }
 
 .register-button:active {
+    background: #00cccc;
     transform: scale(0.95);
 }
 
@@ -112,33 +111,34 @@ body {
     color: #ff4d4d;
     font-size: 14px;
     margin-top: 16px;
-    text-shadow: 0 0 10px #ff4d4d;
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
 }
 
 .success-message {
     color: #7fff00;
     font-size: 14px;
     margin-top: 16px;
-    text-shadow: 0 0 10px #7fff00;
+    text-shadow: 0 0 10px rgba(127, 255, 0, 0.7);
 }
 
 /* Enlace de login */
 .login-link {
-    color: #bf40ff;
+    color: #00ffff;
     text-decoration: none;
+    font-weight: bold;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .login-link:hover {
-    color: #d580ff;
-    text-shadow: 0 0 10px #d580ff, 0 0 20px #d580ff;
+    color: #66ffff;
+    text-shadow: 0 0 10px #66ffff, 0 0 20px #66ffff;
 }
 
-/* Efectos de animación */
-@keyframes fadeIn {
+/* Animaciones */
+@keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
