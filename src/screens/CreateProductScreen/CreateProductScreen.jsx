@@ -43,7 +43,7 @@ const CreateProductScreen = () => {
             });
 
             if (!response.ok) {
-                setError(errorData.message || 'Error al crear el producto'); 
+                setError('Error al crear el producto'); 
             } 
 			setSuccess('Se ha creado el producto con exito');
         } catch (error) {
