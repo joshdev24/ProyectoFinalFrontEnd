@@ -1,113 +1,147 @@
-/* General Styles */
+/* Fondo general */
 body {
+    background: linear-gradient(135deg, #1a1a1a, #0d0d0d); /* Tonalidad de negro */
+    color: #fff; /* Texto blanco */
     font-family: 'Arial', sans-serif;
-    color: #fff;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Container */
+/* Contenedor del registro */
 .register-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 2px solid #7c2aed; /* Neón violeta claro */
-    border-radius: 15px;
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-    box-shadow: 0 0 20px #7c2aed, 0 0 40px #7c2aed;
-}
-
-/* Title */
-.register-title {
+    background: #1c1c1c; /* Fondo del formulario */
+    border-radius: 12px;
+    box-shadow: 
+        0 0 20px #7f00ff, 
+        0 0 40px #7f00ff, 
+        0 0 60px rgba(127, 0, 255, 0.5); /* Efecto de luz neón */
+    padding: 32px;
+    width: 400px;
     text-align: center;
-    font-size: 2rem;
-    color: #7c2aed;
-    text-shadow: 0 0 10px #7c2aed;
-    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
 }
 
-/* Form */
+/* Título del formulario */
+.register-title {
+    font-size: 24px;
+    color: #bf40ff; /* Violeta claro neón */
+    text-shadow: 
+        0 0 10px #bf40ff, 
+        0 0 20px #bf40ff;
+    margin-bottom: 24px;
+}
+
+/* Formulario y elementos */
 .register-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    text-align: left;
 }
 
 .form-label {
-    margin-bottom: 5px;
-    font-size: 1rem;
-    color: #d1b3ff; /* Texto violeta claro */
+    font-size: 14px;
+    color: #d3d3d3;
+    margin-bottom: 8px;
+    display: block;
 }
 
 .form-input {
+    width: 100%;
     padding: 10px;
+    font-size: 14px;
     border: none;
-    border-radius: 5px;
-    background-color: #2a2a2a;
-    color: #fff;
+    border-radius: 8px;
     outline: none;
-    box-shadow: 0 0 10px #7c2aed inset;
-}
-
-.form-input::placeholder {
-    color: #d1b3ff;
-    opacity: 0.8;
-}
-
-/* Submit Button */
-.submit-button {
-    padding: 10px 15px;
-    font-size: 1rem;
+    background: #262626;
     color: #fff;
-    background: linear-gradient(145deg, #7c2aed, #9b42f5);
+    box-shadow: 
+        inset 0 0 10px #7f00ff, 
+        inset 0 0 20px #7f00ff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.form-input:focus {
+    box-shadow: 
+        inset 0 0 15px #bf40ff, 
+        inset 0 0 30px #bf40ff, 
+        0 0 15px #bf40ff;
+    transform: scale(1.05);
+}
+
+/* Botón de registro */
+.register-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #7f00ff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     text-transform: uppercase;
-    box-shadow: 0 0 10px #7c2aed, 0 0 20px #9b42f5;
+    box-shadow: 
+        0 0 10px #7f00ff, 
+        0 0 20px #7f00ff, 
+        0 0 40px #bf40ff;
     transition: all 0.3s ease;
 }
 
-.submit-button:hover {
-    background: linear-gradient(145deg, #9b42f5, #7c2aed);
-    box-shadow: 0 0 20px #9b42f5, 0 0 40px #7c2aed;
+.register-button:hover {
+    background: #bf40ff;
+    box-shadow: 
+        0 0 20px #bf40ff, 
+        0 0 40px #bf40ff, 
+        0 0 60px #d580ff;
+    transform: scale(1.1);
 }
 
-/* Info List */
-.info-list {
-    margin-top: 20px;
-    list-style: none;
-    padding: 0;
+.register-button:active {
+    transform: scale(0.95);
 }
 
-.info-item {
-    font-size: 0.9rem;
-    color: #d1b3ff;
-}
-
-.login-link {
-    color: #7c2aed;
-    text-decoration: none;
-}
-
-.login-link:hover {
-    text-decoration: underline;
-}
-
-/* Messages */
+/* Mensajes de error y éxito */
 .error-message {
     color: #ff4d4d;
-    font-weight: bold;
-    text-align: center;
+    font-size: 14px;
+    margin-top: 16px;
+    text-shadow: 0 0 10px #ff4d4d;
 }
 
 .success-message {
-    color: #7cfc7c;
-    font-weight: bold;
-    text-align: center;
+    color: #7fff00;
+    font-size: 14px;
+    margin-top: 16px;
+    text-shadow: 0 0 10px #7fff00;
+}
+
+/* Enlace de login */
+.login-link {
+    color: #bf40ff;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.login-link:hover {
+    color: #d580ff;
+    text-shadow: 0 0 10px #d580ff, 0 0 20px #d580ff;
+}
+
+/* Efectos de animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
