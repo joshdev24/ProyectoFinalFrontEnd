@@ -26,6 +26,7 @@ const HomeScreen = () => {
         try {
             const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products`, {
                 headers: getAuthenticatedHeaders(),
+                mode: "no-cors",
             });
 
             if (response.ok) {
