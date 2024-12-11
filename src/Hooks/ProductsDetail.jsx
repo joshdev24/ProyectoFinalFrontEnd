@@ -8,15 +8,14 @@ const useProductDetail = () =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-    const {id} = useParams()
-    const getProductDetail = async (id) =>{
+    const {product_id} = useParams()
+    const getProductDetail = async (product_id) =>{
         const product_detail_response = await GET(
-           `${ENVIROMENT.URL_BACKEND}/api/products/${id}`, 
+           `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 
             {
                 headers: getAuthenticatedHeaders()
             }
         )
-        console.log(id)
         //Condiciones / manejo de errores de la peticion
         setProductDetailLoading(false)
         if(product_detail_response.ok){
@@ -29,12 +28,12 @@ const useProductDetail = () =>{
         }
     }
 
-    useEffect(() => {
-        console.log(id); // Para ver si id es correcto
-        if (id) {
-            getProductDetail(id);
-        }
-    }, [id]);
+    useEffect(
+        () =>{
+            getProductDetail(product_id)
+        },
+        []
+    )
     return {
         product_detail_state, 
         product_detail_loading, 
