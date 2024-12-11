@@ -11,6 +11,7 @@ const useProducts = () => {
     const getProducts = async () => {
         const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products`, {
             headers: getAuthenticatedHeaders(),
+            mode: "no-cors",
         })
     
         console.log({response})
