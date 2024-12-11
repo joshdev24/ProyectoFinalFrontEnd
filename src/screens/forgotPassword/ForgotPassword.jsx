@@ -24,7 +24,7 @@ const ForgotPassword = () => {
             }
 
             const form_values_object = extractFormData(form_fields, form_Values);
-            const response = await POST(`${ENVIROMENT.URL.BACKEND}/api/auth/forgot-password`, {
+            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form_values_object)
             });

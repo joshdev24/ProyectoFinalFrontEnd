@@ -33,7 +33,7 @@ const Register = () => {
 
         try {
             const response = await POST(
-                `${ENVIROMENT.URL.BACKEND}/api/auth/register`,
+                `${ENVIROMENT.URL_BACKEND}/api/auth/register`,
                 {
                     headers: getUnnauthenticatedHeaders(),
                     body: JSON.stringify(form_values_object)

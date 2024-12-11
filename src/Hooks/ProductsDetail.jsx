@@ -11,11 +11,12 @@ const useProductDetail = (product_id) =>{
     const navigate = useNavigate()
     const getProductDetail = async (product_id) =>{
         const product_detail_response = await GET(
-            `${ENVIROMENT.URL.BACKEND}/api/products/${product_id}`, 
+            `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 
             {
                 headers: getAuthenticatedHeaders()
             }
         )
+
         //Condiciones / manejo de errores de la peticion
         setProductDetailLoading(false)
         if(product_detail_response.ok){

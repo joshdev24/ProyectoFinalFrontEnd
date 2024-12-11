@@ -6,7 +6,7 @@ const useProducts = () => {
     const [isLoadingProducts, setIsLoadingProducts] = useState(true)
 
     const getProducts = async () => {
-        const response = await GET(`${ENVIOROMENT.URL.BACKEND}/api/products`, {
+        const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products`, {
             headers: getAuthenticatedHeaders(),
         })
     

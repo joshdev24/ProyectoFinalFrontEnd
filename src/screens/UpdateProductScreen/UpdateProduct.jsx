@@ -24,7 +24,7 @@ const UpdateProduct = () => {
 
     const getProduct = async () => {
         try {
-            const response = await GET(`${ENVIROMENT.URL.BACKEND}/api/products/${product_id}`, {
+            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders()
             });
 

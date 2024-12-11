@@ -38,7 +38,7 @@ const CreateProductScreen = () => {
         setLoading(true); 
 
         try {
-            const response = await POST(`${ENVIROMENT.URL.BACKEND}/api/products`, {
+            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/products`, {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_values_object)
             });
