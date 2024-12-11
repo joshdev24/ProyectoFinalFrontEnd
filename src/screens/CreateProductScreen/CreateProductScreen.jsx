@@ -22,7 +22,6 @@ const CreateProductScreen = () => {
             price: '',
             stock: '',
             description: '',
-            category: ''
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
@@ -30,7 +29,7 @@ const CreateProductScreen = () => {
         form_values_object.image = image;
 
        
-        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description || !form_values_object.category) {
+        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description ) {
             setError('All fields are required.');
             return;
         }
@@ -95,10 +94,6 @@ const CreateProductScreen = () => {
                 <div>
                     <label htmlFor='descripcion'>Ingrese la descripcion:</label>
                     <textarea name="description" id="descripcion" required></textarea>
-                </div>
-                <div>
-                    <label htmlFor='category'>Ingrese la categoria:</label>
-                    <input name='category' id='category' required />
                 </div>
                 <div>
                     {image && <img src={image} alt="Selected" />}

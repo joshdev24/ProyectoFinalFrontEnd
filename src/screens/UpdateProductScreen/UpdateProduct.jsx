@@ -11,7 +11,7 @@ const UpdateProduct = () => {
         price: '',
         stock: '',
         description: '',
-        category: '',
+
     });
     const [image, setImage] = useState(null);
     const [error, setError] = useState('');
@@ -52,7 +52,7 @@ const UpdateProduct = () => {
             price: '',
             stock: '',
             description: '',
-            category: ''
+    
         };
         const form_values_object = extractFormData(form_fields, form_Values);
 
@@ -60,13 +60,13 @@ const UpdateProduct = () => {
         form_values_object.image = image;
 
        
-        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description || !form_values_object.category) {
+        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description) {
             setError('All fields are required.');
             return;
         }
 
         try {
-            const response = await PUT(`http://localhost:3000/api/products/${product_id}`, {
+            const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify(form_values_object),
             });
@@ -151,16 +151,6 @@ const UpdateProduct = () => {
                         onChange={handleInputChange}
                         required
                     ></textarea>
-                </div>
-                <div>
-                    <label htmlFor="category">Ingrese la categoria:</label>
-                    <input
-                        name="category"
-                        id="category"
-                        value={product.category}
-                        onChange={handleInputChange}
-                        required
-                    />
                 </div>
                 <div>
                     {(image || product?.image) && <img src={image || product?.image} alt="Producto" />}
