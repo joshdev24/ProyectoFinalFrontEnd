@@ -1,151 +1,124 @@
-/* Container para el formulario */
-.form-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 50px auto;
+.producto-form-container {
+    background-color: #000;
     padding: 20px;
-    background: #222;
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
-}
-
-/* Formulario */
-.product-form {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .producto-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-/* Estilo general para etiquetas */
-.form-label {
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .producto-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .producto-form-label {
+    color: #33CC33; /* Neon verde lima */
     font-size: 18px;
-    color: #e0ff8d;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
-}
-
-/* Estilo de los inputs y textarea */
-.form-input,
-.form-textarea,
-.form-file-input {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #e0ff8d;
-    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .producto-form-input, .producto-form-textarea {
     background-color: #333;
-    color: #e0ff8d;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-/* Efectos de los inputs y textarea */
-.form-input:focus,
-.form-textarea:focus,
-.form-file-input:focus {
-    border-color: #00ff00;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
-}
-
-/* Estilo de la imagen */
-.product-image {
-    width: 100%;
-    height: auto;
-    border: 2px solid #e0ff8d;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-/* Efecto de la imagen */
-.product-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
-}
-
-/* Botón de envío */
-.form-button {
-    padding: 12px;
-    font-size: 18px;
-    color: #222;
-    background-color: #e0ff8d;
-    border: 2px solid #e0ff8d;
-    border-radius: 8px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
-}
-
-/* Efecto del botón */
-.form-button:hover {
-    background-color: #00ff00;
-    color: #fff;
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.9);
-}
-
-/* Estado del botón cuando está deshabilitado */
-.form-button.loading {
-    background-color: #666;
-    color: #ccc;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-/* Mensajes de éxito y error */
-.form-error,
-.form-success {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #33CC33; /* Neon verde lima */
     font-size: 16px;
-    text-align: center;
+    width: 100%;
+  }
+  
+  .producto-form-input:focus, .producto-form-textarea:focus {
+    outline: none;
+    border: 1px solid #33CC33; /* Neon verde lima */
+    box-shadow: 0 0 10px rgba(51, 204, 51, 0.5); /* Neon verde lima */
+  }
+  
+  .producto-form-file-input {
+    background-color: #333;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #33CC33; /* Neon verde lima */
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .producto-form-file-input::-webkit-file-upload-button {
+    background-color: #33CC33; /* Neon verde lima */
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .producto-form-button {
+    background-color: #33CC33; /* Neon verde lima */
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
     font-weight: bold;
-    color: #ff0033;
-    text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
-}
-
-/* Mensaje de éxito */
-.form-success {
-    color: #33ff33;
-    text-shadow: 0 0 10px rgba(51, 255, 51, 0.7);
-}
-
-/* Estilo del enlace */
-.back-to-home-link {
-    display: inline-block;
-    margin-top: 20px;
-    text-align: center;
-    color: #e0ff8d;
-    text-decoration: none;
-    font-size: 18px;
+  }
+  
+  .producto-form-button:hover {
+    background-color: #66FF66; /* Neon verde lima más claro */
+  }
+  
+  .producto-form-button.loading {
+    background-color: #66FF66; /* Neon verde lima más claro */
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
     font-weight: bold;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
-}
-
-/* Efecto del enlace */
-.back-to-home-link:hover {
-    color: #00ff00;
-    text-shadow: 0 0 20px rgba(0, 255, 0, 1);
-    transform: scale(1.05);
-}
-
-/* Animación de brillo para todo el formulario */
-@keyframes neonGlow {
+    animation: loading 1s infinite;
+  }
+  
+  @keyframes loading {
     0% {
-        text-shadow: 0 0 10px rgba(0, 255, 0, 0.6), 0 0 20px rgba(0, 255, 0, 0.7), 0 0 30px rgba(0, 255, 0, 0.8);
+      transform: scale(1);
     }
     50% {
-        text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 1), 0 0 40px rgba(0, 255, 0, 1);
+      transform: scale(1.1);
     }
     100% {
-        text-shadow: 0 0 10px rgba(0, 255, 0, 0.6), 0 0 20px rgba(0, 255, 0, 0.7), 0 0 30px rgba(0, 255, 0, 0.8);
+      transform: scale(1);
     }
-}
-
-/* Aplicamos la animación de brillo */
-.product-form,
-.form-label,
-.form-input,
-.form-button,
-.back-to-home-link {
-    animation: neonGlow 1.5s ease-in-out infinite alternate;
-}
+  }
+  
+  .producto-form-error, .producto-form-success {
+    color: #33CC33; /* Neon verde lima */
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .producto-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .producto-back-to-home-link {
+    color: #33CC33; /* Neon verde lima */
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  
+  .producto-back-to-home-link:hover {
+    color: #66FF66; /* Neon verde lima más claro */
+  }

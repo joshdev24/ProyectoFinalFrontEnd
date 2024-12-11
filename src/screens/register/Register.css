@@ -1,0 +1,92 @@
+.registro-container {
+    background-color: #000; /* Fondo negro */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .registro-title {
+    color: #EAB8FF; /* Violeta claro */
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .registro-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .registro-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .registro-form-label {
+    color: #EAB8FF; /* Violeta claro */
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .registro-form-input {
+    background-color: #333; /* Fondo de los inputs */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #EAB8FF; /* Violeta claro */
+    font-size: 16px;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  
+  .registro-form-input:focus {
+    outline: none;
+    border: 1px solid #EAB8FF; /* Violeta claro */
+    box-shadow: 0 0 10px rgba(234, 184, 255, 0.5); /* Efecto de sombra */
+  }
+  
+  .registro-button {
+    background-color: #EAB8FF; /* Violeta claro */
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .registro-button:hover {
+    background-color: #DDA0E5; /* Violeta más oscuro */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+  }
+  
+  .registro-login-link-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .registro-login-link-item {
+    color: #EAB8FF; /* Violeta claro */
+    font-size: 14px;
+  }
+  
+  .registro-login-link {
+    color: #EAB8FF; /* Violeta claro */
+    text-decoration: underline;
+  }
+  
+  .registro-login-link:hover {
+    color: #DDA0E5; /* Violeta más oscuro */
+  }
+  
+  .registro-error-message, .registro-success-message {
+    color: #EAB8FF; /* Violeta claro */
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }
