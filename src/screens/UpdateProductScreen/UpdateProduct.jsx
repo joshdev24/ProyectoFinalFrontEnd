@@ -6,7 +6,7 @@ import ENVIROMENT from "../../../enviroment";
 
 
 const UpdateProduct = () => {
-    const {_id } = useParams();
+    const {id} = useParams();
     const [product, setProduct] = useState({
         title: '',
         price: '',
@@ -26,7 +26,7 @@ const UpdateProduct = () => {
 
     const getProduct = async () => {
         try {
-            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products/${_id}`, {
+            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/products/${id}`, {
                 headers: getAuthenticatedHeaders()
             });
 

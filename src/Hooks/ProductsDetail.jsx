@@ -4,13 +4,13 @@ import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 import ENVIROMENT from "../../enviroment"
 
 
-const useProductDetail = (_id) =>{
+const useProductDetail = (id) =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-    const getProductDetail = async (_id) =>{
+    const getProductDetail = async (id) =>{
         const product_detail_response = await GET(
-           `${ENVIROMENT.URL_BACKEND}/api/products/${_id}`, 
+           `${ENVIROMENT.URL_BACKEND}/api/products/${id}`, 
             {
                 headers: getAuthenticatedHeaders()
 
