@@ -109,69 +109,73 @@ const UpdateProduct = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmitUpdatedProduct}>
-                <div>
-                    <label htmlFor="titulo">Ingrese el titulo:</label>
-                    <input
-                        name="title"
-                        id="titulo"
-                        placeholder="Nombre del producto"
-                        value={product.title}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="precio">Ingrese el precio:</label>
-                    <input
-                        name="price"
-                        id="precio"
-                        value={product.price}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="stock">Ingrese el stock:</label>
-                    <input
-                        name="stock"
-                        id="stock"
-                        value={product.stock}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                <label htmlFor="descripcion">Ingrese la descripcion:</label>
-                    <textarea
-                        name="description"
-                        id="descripcion"
-                        value={product.description}
-                        onChange={handleInputChange}
-                        required
-                    ></textarea>
-                </div>
-                <div>
-                    {(image || product?.image) && <img src={image || product?.image} alt="Producto" />}
-                    <label htmlFor="imagen">Seleccione una imagen:</label>
-                    <input
-                        name="imagen"
-                        id="imagen"
-                        type="file"
-                        onChange={handleChangeFile}
-                        accept="image/*"
-                    />
-                </div>
-                <button type="submit" disabled={loading}>
-                    {loading ? 'Actualizando...' : 'Actualizar producto'}
-                </button>
-                {error && <p className="error" style={{ color: 'red' }}>{error}</p>}
-            {success && <p className="success" style={{ color: 'green' }}>{success}</p>}
-            </form>
-            <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
-
-        </div>
+        <div className="form-container">
+        <form onSubmit={handleSubmitUpdatedProduct} className="product-form">
+            <div className="form-group">
+                <label htmlFor="titulo" className="form-label">Ingrese el título:</label>
+                <input
+                    name="title"
+                    id="titulo"
+                    placeholder="Nombre del producto"
+                    value={product.title}
+                    onChange={handleInputChange}
+                    required
+                    className="form-input"
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="precio" className="form-label">Ingrese el precio:</label>
+                <input
+                    name="price"
+                    id="precio"
+                    value={product.price}
+                    onChange={handleInputChange}
+                    required
+                    className="form-input"
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="stock" className="form-label">Ingrese el stock:</label>
+                <input
+                    name="stock"
+                    id="stock"
+                    value={product.stock}
+                    onChange={handleInputChange}
+                    required
+                    className="form-input"
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="descripcion" className="form-label">Ingrese la descripción:</label>
+                <textarea
+                    name="description"
+                    id="descripcion"
+                    value={product.description}
+                    onChange={handleInputChange}
+                    required
+                    className="form-textarea"
+                ></textarea>
+            </div>
+            <div className="form-group">
+                {(image || product?.image) && <img src={image || product?.image} alt="Producto" className="product-image" />}
+                <label htmlFor="imagen" className="form-label">Seleccione una imagen:</label>
+                <input
+                    name="imagen"
+                    id="imagen"
+                    type="file"
+                    onChange={handleChangeFile}
+                    accept="image/*"
+                    className="form-file-input"
+                />
+            </div>
+            <button type="submit" disabled={loading} className={`form-button ${loading ? 'loading' : ''}`}>
+                {loading ? 'Actualizando...' : 'Actualizar producto'}
+            </button>
+            {error && <p className="form-error">{error}</p>}
+            {success && <p className="form-success">{success}</p>}
+        </form>
+        <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
+    </div>
     );
 };
 

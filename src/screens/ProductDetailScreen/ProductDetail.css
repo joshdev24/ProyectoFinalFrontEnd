@@ -1,198 +1,68 @@
-/* Estilo general del contenedor principal */
-.detail-product-screen {
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: lavender; /* Fondo principal */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Título de la página */
-.detail-product-title {
-    font-size: 32px; /* Más grande */
-    font-weight: bold;
-    margin-bottom: 30px; /* Más espacioso */
-    color: darkolivegreen;
-    text-align: center;
-    border-bottom: 3px solid thistle; /* Línea más gruesa */
-    padding-bottom: 15px;
-    animation: slideInDown 1s ease-in-out;
-}
-
-/* Mensajes de carga y error */
-.detail-product-loading,
-.detail-product-error {
-    font-size: 20px; /* Texto más grande */
-    color: darkolivegreen;
-    margin-top: 30px;
-    background-color: thistle;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    animation: pulse 2s infinite;
-}
-
-/* Estilo del contenedor de detalles del producto */
+/* Contenedor principal de los detalles del producto */
 .product-detail {
-    border: 2px solid mediumaquamarine; /* Borde más grueso */
+    background: #000000; /* Fondo negro */
+    padding: 20px;
     border-radius: 15px;
-    padding: 30px; /* Más espacio interior */
-    background-color: #fff;
-    max-width: 600px; /* Más ancho */
-    margin: 30px auto;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    animation: popIn 0.8s ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.2);
+    max-width: 500px;
+    margin: 50px auto;
+    color: #ffffff; /* Texto blanco */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
-.product-detail:hover {
-    transform: scale(1.05); /* Zoom un poco más notable */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+/* Título del producto */
+.product-detail-title {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #39ff14; /* Verde neón */
+    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+}
+
+/* ID y otros detalles del producto */
+.product-detail-id,
+.product-detail-price,
+.product-detail-stock,
+.product-detail-description {
+    display: block;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #00bcd4; /* Azul neón */
+    text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4;
 }
 
 /* Imagen del producto */
 .product-detail-image {
     display: block;
-    margin: 20px auto; /* Más espacio alrededor */
-    border-radius: 15px;
-    width: 100%;
-    max-width: 300px; /* Imagen más grande */
-    object-fit: cover;
-    animation: float 2s infinite;
-}
-
-/* Detalles específicos */
-.product-detail-id {
-    font-size: 16px; /* Texto más legible */
-    color: thistle;
-    margin-bottom: 15px;
-}
-
-.product-detail-title {
-    font-size: 28px; /* Más grande */
-    font-weight: bold;
-    color: darkolivegreen;
-    margin: 20px 0;
-    text-align: center;
-}
-
-/* Detalles adicionales */
-.product-detail-price,
-.product-detail-stock,
-.product-detail-description {
-    display: block;
-    font-size: 18px; /* Texto más grande */
-    margin: 15px 0;
-    padding: 10px;
+    margin: 20px auto;
     border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 40px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-detail-price {
-    color: mediumaquamarine;
-    background-color: lavender;
-    font-weight: bold;
-    text-align: center;
+.product-detail-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.3);
 }
 
-.product-detail-stock {
-    color: darkolivegreen;
-    background-color: thistle;
-    font-weight: bold;
-    text-align: center;
-}
-
-.product-detail-description {
-    color: #333;
-    background-color: #f9f9f9;
-    text-align: justify;
-    font-style: italic;
-    padding: 15px;
-    line-height: 1.6; /* Mejora la legibilidad */
-    border: 1px solid #ddd;
-}
-
-/* Estilo para el enlace "Regresar al inicio" */
+/* Enlace para regresar al inicio */
 .back-to-home-link {
     display: inline-block;
-    color: midnightblue; /* Color de texto inicial */
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none; /* Sin subrayado por defecto */
+    margin-top: 20px;
     padding: 10px 20px;
-    border-radius: 5px;
-    background-color: darksalmon; /* Fondo de color Dark Salmon */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para color */
-    margin-top: 20px; /* Espaciado superior */
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: #ff4081; /* Rosa neón */
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+    transition: all 0.3s ease;
 }
 
-/* Estilo cuando el enlace es hover */
 .back-to-home-link:hover {
-    background-color: maroon; /* Cambio de fondo a maroon al pasar el ratón */
-    color: linen; /* Cambio de color de texto a linen */
-}
-
-/* Estilo para cuando el enlace está enfocado (cuando es seleccionado o accesible por teclado) */
-.back-to-home-link:focus {
-    outline: 2px solid maroon; /* Añadir un contorno maroon para accesibilidad */
-    outline-offset: 4px;
-}
-
-/* ANIMACIONES */
-
-/* Fade-in suave */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Entrada desde arriba */
-@keyframes slideInDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Pulso sutil */
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-}
-
-/* Aparición con rebote */
-@keyframes popIn {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Efecto flotante */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    background: #ff80b0; /* Color más brillante al pasar el mouse */
+    box-shadow: 0 0 20px #ff80b0, 0 0 40px #ff80b0;
+    transform: scale(1.1);
 }

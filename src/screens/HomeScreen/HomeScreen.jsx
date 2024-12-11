@@ -72,13 +72,14 @@ const HomeScreen = () => {
                         >
                             Cerrar sesión
                         </button>
-                    </div>
+                    
                     <button
                         className="filter-user-products-button"
                         onClick={() => setShowUserProducts(!showUserProducts)}
                     >
                         {showUserProducts ? 'Ver todos los productos' : 'Ver mis productos'}
                     </button>
+                    </div>
                     {isLoadingProducts ? (
                         <span className="loading-text">Cargando...</span>
                     ) : showUserProducts ? (
