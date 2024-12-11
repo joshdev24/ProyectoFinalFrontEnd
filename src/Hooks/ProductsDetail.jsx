@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 import ENVIROMENT from "../../enviroment"
 
