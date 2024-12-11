@@ -1,0 +1,151 @@
+/* Container para el formulario */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+}
+
+/* Formulario */
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilo general para etiquetas */
+.form-label {
+    font-size: 18px;
+    color: #e0ff8d;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+/* Estilo de los inputs y textarea */
+.form-input,
+.form-textarea,
+.form-file-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #e0ff8d;
+    border-radius: 5px;
+    background-color: #333;
+    color: #e0ff8d;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Efectos de los inputs y textarea */
+.form-input:focus,
+.form-textarea:focus,
+.form-file-input:focus {
+    border-color: #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+}
+
+/* Estilo de la imagen */
+.product-image {
+    width: 100%;
+    height: auto;
+    border: 2px solid #e0ff8d;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto de la imagen */
+.product-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+/* Botón de envío */
+.form-button {
+    padding: 12px;
+    font-size: 18px;
+    color: #222;
+    background-color: #e0ff8d;
+    border: 2px solid #e0ff8d;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+/* Efecto del botón */
+.form-button:hover {
+    background-color: #00ff00;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.9);
+}
+
+/* Estado del botón cuando está deshabilitado */
+.form-button.loading {
+    background-color: #666;
+    color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Mensajes de éxito y error */
+.form-error,
+.form-success {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff0033;
+    text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
+}
+
+/* Mensaje de éxito */
+.form-success {
+    color: #33ff33;
+    text-shadow: 0 0 10px rgba(51, 255, 51, 0.7);
+}
+
+/* Estilo del enlace */
+.back-to-home-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    color: #e0ff8d;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+/* Efecto del enlace */
+.back-to-home-link:hover {
+    color: #00ff00;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 1);
+    transform: scale(1.05);
+}
+
+/* Animación de brillo para todo el formulario */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.6), 0 0 20px rgba(0, 255, 0, 0.7), 0 0 30px rgba(0, 255, 0, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 1), 0 0 40px rgba(0, 255, 0, 1);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.6), 0 0 20px rgba(0, 255, 0, 0.7), 0 0 30px rgba(0, 255, 0, 0.8);
+    }
+}
+
+/* Aplicamos la animación de brillo */
+.product-form,
+.form-label,
+.form-input,
+.form-button,
+.back-to-home-link {
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
