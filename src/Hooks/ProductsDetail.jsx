@@ -8,10 +8,10 @@ const useProductDetail = () =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-    const {product_id} = useParams()
-    const getProductDetail = async (product_id) =>{
+    const {id} = useParams()
+    const getProductDetail = async (id) =>{
         const product_detail_response = await GET(
-           `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 
+           `${ENVIROMENT.URL_BACKEND}/api/products/${id}`, 
             {
                 headers: getAuthenticatedHeaders()
             }
@@ -30,7 +30,7 @@ const useProductDetail = () =>{
 
     useEffect(
         () =>{
-            getProductDetail(product_id)
+            getProductDetail(id)
         },
         []
     )
