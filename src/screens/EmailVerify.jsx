@@ -12,7 +12,7 @@ export const VerifyMail = () => {
     const verifyEmail = async () => {
       try {
         const response = await GET(
-          `${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`,
+          `${ENVIROMENT.URL_BACKEND}/verify/${verificationToken}`,
           {
             headers: getUnnauthenticatedHeaders(),
           }
