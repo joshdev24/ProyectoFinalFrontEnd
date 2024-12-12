@@ -1,124 +1,92 @@
-.producto-form-container {
-    background-color: #000;
+/* Update Product Container */
+.update-product-container {
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .producto-form {
+    border: 2px solid #34C759;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    box-shadow: 0 0 20px #34C759, 0 0 40px #34C759;
+}
+
+/* Title */
+.update-product-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #34C759;
+    text-shadow: 0 0 10px #34C759;
+    margin-bottom: 20px;
+}
+
+/* Form */
+.update-product-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .producto-form-group {
-    margin-bottom: 20px;
-  }
-  
-  .producto-form-label {
-    color: #33CC33; /* Neon verde lima */
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .producto-form-input, .producto-form-textarea {
-    background-color: #333;
-    border: none;
+    gap: 15px;
+}
+
+.update-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-form-label {
+    font-size: 1rem;
+    color: #d1b3ff;
+    margin-bottom: 5px;
+}
+
+.update-form-input,
+.update-form-textarea {
     padding: 10px;
+    border: none;
     border-radius: 5px;
-    color: #33CC33; /* Neon verde lima */
-    font-size: 16px;
-    width: 100%;
-  }
-  
-  .producto-form-input:focus, .producto-form-textarea:focus {
+    background-color: #2a2a2a;
+    color: #fff;
     outline: none;
-    border: 1px solid #33CC33; /* Neon verde lima */
-    box-shadow: 0 0 10px rgba(51, 204, 51, 0.5); /* Neon verde lima */
-  }
-  
-  .producto-form-file-input {
-    background-color: #333;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    color: #33CC33; /* Neon verde lima */
-    font-size: 16px;
-    width: 100%;
-  }
-  
-  .producto-form-file-input::-webkit-file-upload-button {
-    background-color: #33CC33; /* Neon verde lima */
-    color: #000;
-    padding: 10px 20px;
+    box-shadow: 0 0 10px #34C759 inset;
+}
+
+.update-form-input::placeholder,
+.update-form-textarea::placeholder {
+    color: #d1b3ff;
+    opacity: 0.8;
+}
+
+/* Submit Button */
+.update-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: linear-gradient(145deg, #34C759, #2E865F);
     border: none;
     border-radius: 5px;
+    color: #fff;
     cursor: pointer;
-  }
-  
-  .producto-form-button {
-    background-color: #33CC33; /* Neon verde lima */
-    color: #000;
-    padding: 10px 20px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #34C759, 0 0 20px #2E865F;
+    transition: all 0.3s ease;
+}
+
+.update-button:hover {
+    background: linear-gradient(145deg, #2E865F, #34C759);
+    box-shadow: 0 0 20px #2E865F, 0 0 40px #34C759;
+}
+
+.back-to-home-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: linear-gradient(145deg, #34C759, #2E865F);
     border: none;
     border-radius: 5px;
+    color: #fff;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #34C759, 0 0 20px #2E865F;
+    transition: all 0.3s ease;
   }
   
-  .producto-form-button:hover {
-    background-color: #66FF66; /* Neon verde lima más claro */
-  }
-  
-  .producto-form-button.loading {
-    background-color: #66FF66; /* Neon verde lima más claro */
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    animation: loading 1s infinite;
-  }
-  
-  @keyframes loading {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .producto-form-error, .producto-form-success {
-    color: #33CC33; /* Neon verde lima */
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .producto-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .producto-back-to-home-link {
-    color: #33CC33; /* Neon verde lima */
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-top: 20px;
-  }
-  
-  .producto-back-to-home-link:hover {
-    color: #66FF66; /* Neon verde lima más claro */
+  .back-to-home-button:hover {
+    background: linear-gradient(145deg, #2E865F, #34C759);
+    box-shadow: 0 0 10px #2E865F, 0 0 20px #34C759;
+    transform: scale(1.05);
   }

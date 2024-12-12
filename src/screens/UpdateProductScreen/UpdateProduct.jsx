@@ -110,73 +110,25 @@ const UpdateProduct = () => {
     };
 
     return (
-        <div className="producto-form-container">
-    <form onSubmit={handleSubmitUpdatedProduct} className="producto-form">
-        <div className="producto-form-group">
-            <label htmlFor="titulo-producto" className="producto-form-label">Ingrese el título:</label>
-            <input
-                name="title"
-                id="titulo-producto"
-                placeholder="Nombre del producto"
-                value={product.title}
-                onChange={handleInputChange}
-                required
-                className="producto-form-input"
-            />
-        </div>
-        <div className="producto-form-group">
-            <label htmlFor="precio-producto" className="producto-form-label">Ingrese el precio:</label>
-            <input
-                name="price"
-                id="precio-producto"
-                value={product.price}
-                onChange={handleInputChange}
-                required
-                className="producto-form-input"
-            />
-        </div>
-        <div className="producto-form-group">
-            <label htmlFor="stock-producto" className="producto-form-label">Ingrese el stock:</label>
-            <input
-                name="stock"
-                id="stock-producto"
-                value={product.stock}
-                onChange={handleInputChange}
-                required
-                className="producto-form-input"
-            />
-        </div>
-        <div className="producto-form-group">
-            <label htmlFor="descripcion-producto" className="producto-form-label">Ingrese la descripción:</label>
-            <textarea
-                name="description"
-                id="descripcion-producto"
-                value={product.description}
-                onChange={handleInputChange}
-                required
-                className="producto-form-textarea"
-            ></textarea>
-        </div>
-        <div className="producto-form-group">
-            {(image || product?.image) && <img src={image || product?.image} alt="Producto" className="producto-image" />}
-            <label htmlFor="imagen-producto" className="producto-form-label">Seleccione una imagen:</label>
-            <input
-                name="imagen"
-                id="imagen-producto"
-                type="file"
-                onChange={handleChangeFile}
-                accept="image/*"
-                className="producto-form-file-input"
-            />
-        </div>
-        <button type="submit" disabled={loading} className={`producto-form-button ${loading ? 'loading' : ''}`}>
-            {loading ? 'Actualizando...' : 'Actualizar producto'}
-        </button>
-        {error && <p className="producto-form-error">{error}</p>}
-        {success && <p className="producto-form-success">{success}</p>}
-    </form>
-    <Link to="/home" className="producto-back-to-home-link">Regresar al inicio</Link>
-</div>
+        <div className="update-product-container">
+        <h2 className="update-product-title">Actualizar Producto</h2>
+        <form className="update-product-form">
+            <div className="update-form-group">
+                <label className="update-form-label">Nombre del producto:</label>
+                <input type="text" className="update-form-input" />
+            </div>
+            <div className="update-form-group">
+                <label className="update-form-label">Descripción del producto:</label>
+                <textarea className="update-form-textarea"></textarea>
+            </div>
+            <div className="update-form-group">
+                <label className="update-form-label">Precio del producto:</label>
+                <input type="number" className="update-form-input" />
+            </div>
+            <button type="submit" className="update-button">Actualizar Producto</button>
+            <button type="button" className="back-to-home-button">Regresar al inicio</button>
+        </form>
+    </div>
     );
 };
 

@@ -115,7 +115,7 @@ const CreateProductScreen = () => {
             disabled={loading}>
             {loading ? 'Creating...' : 'Crear producto'}
         </button>
-        <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link>
+        <Link to={`/home`} className="back-to-home-button">Regresar al inicio</Link>
     </form>
 </div>
 
