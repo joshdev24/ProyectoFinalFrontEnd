@@ -124,7 +124,7 @@ const Product = ({ title, price, image_base_64, id }) => {
             <Link to={`/product/update/${id}`} className="product-update-link">
                 Actualizar Producto
             </Link>
-            <Link to={`/product/delete/${id}`} className="product-update-link">
+            <Link to={`/product/delete/${id}`} className="product-delete-link">
                 Borrar Producto
             </Link>
         </div>
