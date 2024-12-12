@@ -1,10 +1,10 @@
 
-.body {
-  background-color: #EBECF0;
+body {
+  background-color: #ebecf0;
 }
 
 .login-container {
-  background-color: #EBECF0; /* Fondo claro adaptado */
+  background-color: #ebecf0; /* Fondo claro adaptado */
   padding: 16px; /* Adaptado del $ruler */
   box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC; /* Neumorfismo */
   max-width: 320px; /* Adaptado del $ruler * 20 */
