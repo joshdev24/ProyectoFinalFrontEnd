@@ -112,7 +112,7 @@ const UpdateProduct = () => {
     return (
         <div className="update-product-container">
         <h2 className="update-product-title">Actualizar Producto</h2>
-        <form className="update-product-form">
+        <form className="update-product-form" onSubmit={handleSubmitUpdatedProduct}>
             <div className="update-form-group">
                 <label className="update-form-label">Nombre del producto:</label>
                 <input type="text" className="update-form-input" onChange={handleInputChange}/>
@@ -123,19 +123,19 @@ const UpdateProduct = () => {
             </div>
             <div className="update-form-group">
                 <label className="update-form-label">Stock del producto:</label>
-                <input type="number" className="update-form-input"onChange={handleInputChange} />
+                <input type="string" className="update-form-input"onChange={handleInputChange} />
             </div>
             <div className="update-form-group">
                 <label className="update-form-label">Precio del producto:</label>
-                <input type="number" className="update-form-input" />
+                <input type="string" className="update-form-input" />
             </div>
              <div className="form-group">
             {image && <img className="selected-image" src={image} alt="Selected" />}
-            <label className="form-label" htmlFor="imagen">Seleccione una imagen:</label>
+            <label className="form-label" htmlFor="image">Seleccione una imagen:</label>
             <input
                 className="form-input-file"
-                name="imagen"
-                id="imagen"
+                name="image"
+                id="image"
                 type="file"
                 onChange={handleChangeFile}
                 accept="image/*"

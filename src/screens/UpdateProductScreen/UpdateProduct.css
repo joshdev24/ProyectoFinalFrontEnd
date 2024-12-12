@@ -80,7 +80,7 @@
 .update-button {
     padding: 10px 15px;
     font-size: 1rem;
-    background: linear-gradient(145deg, #34C759, #2E865F);
+    background: linear-gradient(145deg, #90bbe3, #6318c7);
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -91,7 +91,7 @@
 }
 
 .update-button:hover {
-    background: linear-gradient(145deg, #2E865F, #34C759);
+    background: linear-gradient(145deg, #6c4ba1, #178ba0);
     box-shadow: 0 0 20px #2E865F, 0 0 40px #34C759;
 }
 
