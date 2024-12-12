@@ -115,18 +115,27 @@ const UpdateProduct = () => {
         <form className="update-product-form">
             <div className="update-form-group">
                 <label className="update-form-label">Nombre del producto:</label>
-                <input type="text" className="update-form-input" />
+                <input type="text" className="update-form-input" onChange={handleInputChange}/>
             </div>
             <div className="update-form-group">
                 <label className="update-form-label">Descripción del producto:</label>
-                <textarea className="update-form-textarea"></textarea>
+                <textarea className="update-form-textarea"onChange={handleInputChange}></textarea>
+            </div>
+            <div className="update-form-group">
+                <label className="update-form-label">Stock del producto:</label>
+                <input type="number" className="update-form-input"onChange={handleInputChange} />
             </div>
             <div className="update-form-group">
                 <label className="update-form-label">Precio del producto:</label>
-                <input type="number" className="update-form-input" />
+                <input type="number" className="update-form-input" onChange={handleInputChange}/>
             </div>
+            <div className="update-form-group">
+                <label className="update-form-label">Imagen del producto:</label>
+                <input type="img" className="update-form-input" onChange={handleChangeFile}/>
+            </div>
+
             <button type="submit" className="update-button">Actualizar Producto</button>
-            <button type="button" className="back-to-home-button">Regresar al inicio</button>
+            < Link to={`/home`} className="back-to-home-button">Regresar al inicio</Link> 
         </form>
     </div>
     );
