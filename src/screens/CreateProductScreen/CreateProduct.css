@@ -45,6 +45,7 @@
     color: #fff;
     outline: none;
     box-shadow: 0 0 10px #7c2aed inset;
+    width: 60%;
 }
 
 .form-input::placeholder,
