@@ -116,17 +116,17 @@
 }
 
 .product-detail-link:hover {
-    background-color: #3035cb;
+    background-color: #4d51c4;
     color: #e4e4e4;
 }
 
 .product-update-link:hover {
-    background-color: #a55559;
+    background-color: #39a770;
     color: #e4e4e4;
 }
 
 .product-delete-link:hover {
-    background-color: #952d99;
+    background-color: #74181c;
     color: #e4e4e4;
     
 }
