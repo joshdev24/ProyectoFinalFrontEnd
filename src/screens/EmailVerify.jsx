@@ -23,6 +23,7 @@ export const VerifyMail = () => {
         } else {
           setResponseStatus("Error al verificar tu correo.");
         }
+        console.log(response);
       } catch (error) {
         console.error("Error en la verificación de correo", error);
         setResponseStatus("Hubo un error al verificar el correo.");

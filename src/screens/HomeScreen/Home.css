@@ -169,6 +169,7 @@ hr {
     padding: 10px;
     text-transform: uppercase;
     text-decoration: none;
+    border: antiquewhite;
 }
 
 .create-product-button:hover {
