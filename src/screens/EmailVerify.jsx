@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import ENVIROMENT from '../../enviroment'
+
 import { GET, getUnnauthenticatedHeaders } from '../fetching/http.fetching'
+import ENVIROMENT from '../../enviroment'
 const EmailVerify = () => {
 
     const {verificationToken} = useParams()
@@ -9,7 +10,7 @@ const EmailVerify = () => {
     const [isLoading, setIsLoading] = useState(true)
     const verifyEmail = async () => {
         try {
-            const response = await GET(`${ENVIROMENT.URL.BACKEND}/api/auth/verify/${verificationToken}`, {
+            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`, {
                 headers: getUnnauthenticatedHeaders()
             })
             if (!response.ok) {
