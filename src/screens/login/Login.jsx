@@ -69,8 +69,7 @@ const Login = () => {
 
     return (
         <>
-        <div className="login-container"></div>
-      <h1 className="login-title">Inicia sesión</h1>
+       <h1 className="login-title">Inicia sesión</h1>
         <div className="login-container">
             <form onSubmit={handleSubmitLoginForm} className="login-form">
                 <div className="input-group">
