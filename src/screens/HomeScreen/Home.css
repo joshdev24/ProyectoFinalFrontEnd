@@ -16,10 +16,7 @@
 /* Título de bienvenida */
 .welcome-title {
     font-size: 32px;
-    color: #7c2aed;
-    /* Neón violeta */
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px #7c2aed, 0 0 20px #7c2aed;
+    color: #ffffff;
     animation: glowing 1.5s infinite alternate;
 }
 
@@ -64,13 +61,6 @@
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3), 0 0 35px #7c2aed;
 }
 
-/* Título del producto */
-.product-title {
-    font-size: 22px;
-    color: #00c7ad;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px #7c2aed;
-}
 
 /* Imagen del producto */
 .product-image {
@@ -87,7 +77,6 @@
     font-size: 20px;
     font-weight: bold;
     color: #800f0f;
-    /* Precio en violeta brillante */
     margin-bottom: 15px;
 }
 
