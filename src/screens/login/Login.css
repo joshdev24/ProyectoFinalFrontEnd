@@ -35,14 +35,6 @@ body {
   justify-content: flex-start;
 }
 
-.input-label {
-  display: block;
-  margin-bottom: 24px; /* $ruler * 1.5 */
-  width: 100%;
-  color: #BABECC; /* Sombra adaptada */
-  text-shadow: 1px 1px 1px #FFF; /* Neumorfismo ligero */
-}
-
 .input-field {
   background-color: #EBECF0; /* Fondo adaptado */
   border: none;

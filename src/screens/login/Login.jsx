@@ -72,11 +72,11 @@ const Login = () => {
             <h1 className="login-title">Inicia sesión</h1>
             <form onSubmit={handleSubmitLoginForm} className="login-form">
                 <div className="input-group">
-                    <label htmlFor="email" className="input-label">Ingrese su email:</label>
+                    <label htmlFor="email" className="input-label"></label>
                     <input name="email" id="email" placeholder="pepe@gmail.com" className="input-field" required />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="password" className="input-label">Ingrese su contraseña:</label>
+                    <label htmlFor="password" className="input-label"></label>
                     <input name="password" id="password" type="password" placeholder="Ingrese su contraseña" className="input-field" required />
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>} 
