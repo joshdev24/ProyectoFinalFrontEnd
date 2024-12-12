@@ -46,14 +46,15 @@
 
 /* Card de producto */
 .product-card {
-    background-color: #937bf7; /* Fondo oscuro para la card */
     color: #d1b3ff; /* Texto violeta claro */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 20px;
     text-align: left;
+    border-radius: 45px;
+background: #ebecf0;
+box-shadow:  -35px 35px 70px #bebfc2,
+             35px -35px 70px #ffffff;
 }
 
 .product-card:hover {
