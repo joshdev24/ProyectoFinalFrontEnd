@@ -129,13 +129,20 @@ const UpdateProduct = () => {
                 <label className="update-form-label">Precio del producto:</label>
                 <input type="number" className="update-form-input" />
             </div>
-            <div className="update-form-group">
-                <label className="update-form-label">Imagen del producto:</label>
-                <input type="img" className="update-form-input" onChange={handleChangeFile}/>
-            </div>
-
+             <div className="form-group">
+            {image && <img className="selected-image" src={image} alt="Selected" />}
+            <label className="form-label" htmlFor="imagen">Seleccione una imagen:</label>
+            <input
+                className="form-input-file"
+                name="imagen"
+                id="imagen"
+                type="file"
+                onChange={handleChangeFile}
+                accept="image/*"
+            />
+        </div>
             <button type="submit" className="update-button">Actualizar Producto</button>
-            <button Link to={`/home`} className="back-to-home-button">Regresar al inicio</Link> 
+            <Link to={`/home`} className="back-to-home-button">Regresar al inicio </Link> 
         </form>
     </div>
     );
