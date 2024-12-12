@@ -1,93 +1,96 @@
 .login-container {
-    background-color: #212121; /* Fondo oscuro */
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  .login-title {
-    color: #34C759; /* Verde neon */
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 0 0 5px rgba(52, 199, 89, 0.5); /* Sombra para resaltar el texto */
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-label {
-    color: #34C759; /* Verde neon */
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-shadow: 0 0 5px rgba(52, 199, 89, 0.5); /* Sombra para resaltar el texto */
-  }
-  
-  .input-field {
-    background-color: #333; /* Fondo de los inputs */
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    color: #34C759; /* Verde neon */
-    font-size: 16px;
-    transition: border 0.3s, box-shadow 0.3s;
-  }
-  
-  .input-field:focus {
-    outline: none;
-    border: 1px solid #34C759; /* Verde neon */
-    box-shadow: 0 0 10px rgba(52, 199, 89, 0.5); /* Efecto de sombra */
-  }
-  
-  .submit-button {
-    background-color: #34C759; /* Verde neon */
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .submit-button:hover {
-    background-color: #2E865F; /* Verde más oscuro */
-    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
-  }
-  
-  .submit-button:disabled {
-    background-color: #666; /* Fondo gris al estar deshabilitado */
-    cursor: not-allowed;
-  }
-  
-  .register-link {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .register-link li {
-    color: #34C759; /* Verde neon */
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .register-link a {
-    color: #34C759; /* Verde neon */
-    text-decoration: underline;
-  }
-  
-  .register-link a:hover {
-    color: #2E865F; /* Verde más oscuro */
-  }
+  background-color: #EBECF0; /* Fondo claro adaptado */
+  padding: 16px; /* Adaptado del $ruler */
+  border-radius: 320px; /* Usando $ruler * 20 */
+  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC; /* Neumorfismo */
+  max-width: 320px; /* Adaptado del $ruler * 20 */
+  margin: auto;
+}
+
+.login-title {
+  color: #61677C; /* Color texto adaptado */
+  font-size: 16px; /* Usando $ruler */
+  text-align: center;
+  margin-bottom: 32px; /* $ruler * 2 */
+  text-shadow: 1px 1px 1px #FFF; /* Neumorfismo ligero */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 32px; /* $ruler * 2 */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 24px; /* $ruler * 1.5 */
+  width: 100%;
+  color: #BABECC; /* Sombra adaptada */
+  text-shadow: 1px 1px 1px #FFF; /* Neumorfismo ligero */
+}
+
+.input-field {
+  background-color: #EBECF0; /* Fondo adaptado */
+  border: none;
+  padding: 16px; /* $ruler */
+  border-radius: 320px; /* $ruler * 20 */
+  color: #BABECC; /* Texto sombra */
+  font-size: 16px; /* $ruler */
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF; /* Neumorfismo */
+  transition: all 0.2s ease-in-out;
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.submit-button {
+  background-color: #EBECF0; /* Fondo adaptado */
+  color: #61677C; /* Color adaptado */
+  padding: 16px; /* $ruler */
+  border: none;
+  border-radius: 320px; /* $ruler * 20 */
+  cursor: pointer;
+  font-size: 16px; /* $ruler */
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC; /* Neumorfismo */
+  transition: all 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
+.submit-button:active {
+  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+
+.register-link {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-top: 32px; /* $ruler * 2 */
+}
+
+.register-link li {
+  color: #BABECC; /* Color sombra */
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 1px #FFF;
+}
+
+.register-link a {
+  color: #BABECC; /* Color sombra */
+  text-decoration: underline;
+}
+
+.register-link a:hover {
+  color: #AE1100; /* Rojo adaptado */
+}
