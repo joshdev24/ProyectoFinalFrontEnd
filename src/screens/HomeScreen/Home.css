@@ -92,12 +92,6 @@
 }
 
 
-
-.product-detail-link:hover {
-    background-color: #3035cb;
-    color: #e4e4e4;
-}
-
 /* Enlaces de acción (actualizar, borrar) */
 .product-update-link,
 .product-delete-link,
@@ -121,16 +115,20 @@
     text-transform: uppercase;
 }
 
-
-
-.product-update-link:hover {
+.product-detail-link:hover {
     background-color: #3035cb;
     color: #e4e4e4;
 }
 
+.product-update-link:hover {
+    background-color: #a55559;
+    color: #e4e4e4;
+}
+
 .product-delete-link:hover {
-    color: #9b42f5;
-    text-shadow: 0 0 15px #7c2aed, 0 0 25px #9b42f5;
+    background-color: #952d99;
+    color: #e4e4e4;
+    
 }
 
 /* Mensajes */
