@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=VT323');
 
-
+body {
+    background: url(https://splatoon.nintendo.com/assets/img/home/bg-main.png) left;
+    
+   
+  }
+ * {
+    box-sizing: border-box;
+    }  
+  .wrapper {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap;
+    height: 100vh;
+  }
 
 /* Home Container */
 .home-container {
@@ -135,6 +150,8 @@ box-shadow:  -35px 35px 70px #bebfc2,
 .product-delete-link:hover {
     color: #9b42f5;
     text-shadow: 0 0 15px #7c2aed, 0 0 25px #9b42f5;
+    background-position: 500% 100%;
+      
 }
 
 /* Mensajes */
