@@ -1,12 +1,11 @@
-
-
 /* Home Container */
 .home-container {
     margin: 20px auto;
     padding: 20px;
     text-align: center;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed; /* Brillo neón violeta */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed;
+    /* Brillo neón violeta */
     width: 80%;
     max-width: 1200px;
     color: var(--dark-gray);
@@ -17,7 +16,8 @@
 /* Título de bienvenida */
 .welcome-title {
     font-size: 32px;
-    color: #7c2aed; /* Neón violeta */
+    color: #7c2aed;
+    /* Neón violeta */
     margin-bottom: 20px;
     text-shadow: 0 0 10px #7c2aed, 0 0 20px #7c2aed;
     animation: glowing 1.5s infinite alternate;
@@ -28,9 +28,11 @@
     0% {
         text-shadow: 0 0 5px #7c2aed, 0 0 10px #7c2aed, 0 0 15px #7c2aed;
     }
+
     50% {
         text-shadow: 0 0 10px #7c2aed, 0 0 20px #7c2aed, 0 0 30px #7c2aed;
     }
+
     100% {
         text-shadow: 0 0 5px #7c2aed, 0 0 10px #7c2aed, 0 0 15px #7c2aed;
     }
@@ -46,14 +48,15 @@
 
 /* Card de producto */
 .product-card {
-    color: #d1b3ff; /* Texto violeta claro */
+    color: #d1b3ff;
+    /* Texto violeta claro */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 20px;
     border-radius: 45px;
-background: #ebecf0;
-box-shadow:  -35px 35px 70px #bebfc2,
-             35px -35px 70px #ffffff;
+    background: #ebecf0;
+    box-shadow: -35px 35px 70px #bebfc2,
+        35px -35px 70px #ffffff;
 }
 
 .product-card:hover {
@@ -83,40 +86,48 @@ box-shadow:  -35px 35px 70px #bebfc2,
 .product-price {
     font-size: 20px;
     font-weight: bold;
-    color: #800f0f; /* Precio en violeta brillante */
+    color: #800f0f;
+    /* Precio en violeta brillante */
     margin-bottom: 15px;
 }
 
-/* Enlace de detalles del producto */
-.product-detail-link {
-    display: inline-block;
-    color: #19cb59;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-bottom: 10px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    text-shadow: 0 0 5px #9b42f5, 0 0 10px #7c2aed;
-}
+
 
 .product-detail-link:hover {
-    color: #439461;
-    text-shadow: 0 0 15px #d1b3ff, 0 0 25px #7c2aed;
+    background-color: #3035cb;
+    color: #e4e4e4;
 }
 
 /* Enlaces de acción (actualizar, borrar) */
 .product-update-link,
-.product-delete-link {
-    display: block;
-    color: #7928ca;
-    font-size: 14px;
+.product-delete-link,
+.product-detail-link {
+    background-color: #e4e4e4;
+    border: none;
+    border-radius: 10px;
+    box-shadow: inset 5px 5px 5px #c4c4c4,
+        inset -5px -5px 5px #ffffff;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
     font-weight: bold;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    margin: 3px;
+    padding: 10px;
+    text-transform: uppercase;
 }
 
-.product-update-link:hover,
+
+
+.product-update-link:hover {
+    background-color: #3035cb;
+    color: #e4e4e4;
+}
+
 .product-delete-link:hover {
     color: #9b42f5;
     text-shadow: 0 0 15px #7c2aed, 0 0 25px #9b42f5;
@@ -159,102 +170,138 @@ hr {
 
 .create-product-button {
     display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
+    padding: 12px 24px;
+    /* Tamaño del botón */
     font-size: 16px;
     font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
+    color: #fff;
+    /* Texto blanco */
+    text-decoration: none;
+    /* Quita el subrayado */
     text-align: center;
-    background: #32cd32; /* Verde lima neón */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 
-        0 0 10px #32cd32, 
-        0 0 20px #32cd32, 
-        0 0 30px #32cd32; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
+    background: #32cd32;
+    /* Verde lima neón */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow:
+        0 0 10px #32cd32,
+        0 0 20px #32cd32,
+        0 0 30px #32cd32;
+    /* Brillo */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .create-product-button:hover {
-    background: #7fff00; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #7fff00, 
-        0 0 40px #7fff00, 
-        0 0 60px #7fff00; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
+    background: #7fff00;
+    /* Color más claro al pasar el mouse */
+    box-shadow:
+        0 0 20px #7fff00,
+        0 0 40px #7fff00,
+        0 0 60px #7fff00;
+    /* Brillo intensificado */
+    transform: scale(1.1);
+    /* Efecto de agrandamiento */
 }
 
 .create-product-button:active {
-    background: #228b22; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #228b22, 
+    background: #228b22;
+    /* Color más oscuro al hacer clic */
+    box-shadow:
+        0 0 10px #228b22,
         0 0 20px #228b22;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
+    transform: scale(0.95);
+    /* Botón ligeramente comprimido */
 }
+
 .logout-button {
     display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
+    padding: 12px 24px;
+    /* Tamaño del botón */
     font-size: 16px;
     font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
+    color: #fff;
+    /* Texto blanco */
+    text-decoration: none;
+    /* Quita el subrayado */
     text-align: center;
-    background: #d580ff; /* Violeta claro neón */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 
-        0 0 10px #d580ff, 
-        0 0 20px #d580ff, 
-        0 0 30px #d580ff; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
+    background: #d580ff;
+    /* Violeta claro neón */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow:
+        0 0 10px #d580ff,
+        0 0 20px #d580ff,
+        0 0 30px #d580ff;
+    /* Brillo */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .logout-button:hover {
-    background: #e199ff; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #e199ff, 
-        0 0 40px #e199ff, 
-        0 0 60px #e199ff; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
+    background: #e199ff;
+    /* Color más claro al pasar el mouse */
+    box-shadow:
+        0 0 20px #e199ff,
+        0 0 40px #e199ff,
+        0 0 60px #e199ff;
+    /* Brillo intensificado */
+    transform: scale(1.1);
+    /* Efecto de agrandamiento */
 }
 
 .logout-button:active {
-    background: #b366cc; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #b366cc, 
+    background: #b366cc;
+    /* Color más oscuro al hacer clic */
+    box-shadow:
+        0 0 10px #b366cc,
         0 0 20px #b366cc;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
+    transform: scale(0.95);
+    /* Botón ligeramente comprimido */
 }
 
 .filter-user-products-button {
     display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
+    padding: 12px 24px;
+    /* Tamaño del botón */
     font-size: 16px;
     font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
+    color: #fff;
+    /* Texto blanco */
+    text-decoration: none;
+    /* Quita el subrayado */
     text-align: center;
-    background: #ffff99; /* Amarillo claro neón */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 
-        0 0 10px #ffff99, 
-        0 0 20px #ffff99, 
-        0 0 30px #ffff99; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
+    background: #ffff99;
+    /* Amarillo claro neón */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow:
+        0 0 10px #ffff99,
+        0 0 20px #ffff99,
+        0 0 30px #ffff99;
+    /* Brillo */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .filter-user-products-button:hover {
-    background: #ffffb3; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #ffffb3, 
-        0 0 40px #ffffb3, 
-        0 0 60px #ffffb3; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
+    background: #ffffb3;
+    /* Color más claro al pasar el mouse */
+    box-shadow:
+        0 0 20px #ffffb3,
+        0 0 40px #ffffb3,
+        0 0 60px #ffffb3;
+    /* Brillo intensificado */
+    transform: scale(1.1);
+    /* Efecto de agrandamiento */
 }
 
 .filter-user-products-button:active {
-    background: #cccc80; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #cccc80, 
+    background: #cccc80;
+    /* Color más oscuro al hacer clic */
+    box-shadow:
+        0 0 10px #cccc80,
         0 0 20px #cccc80;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
+    transform: scale(0.95);
+    /* Botón ligeramente comprimido */
 }
-
