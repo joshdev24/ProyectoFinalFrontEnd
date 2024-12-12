@@ -52,6 +52,29 @@
     color: #d1b3ff;
     opacity: 0.8;
 }
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.selected-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
 
 /* Submit Button */
 .update-button {
@@ -83,6 +106,8 @@
     text-transform: uppercase;
     box-shadow: 0 0 10px #34C759, 0 0 20px #2E865F;
     transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
   }
   
   .back-to-home-button:hover {

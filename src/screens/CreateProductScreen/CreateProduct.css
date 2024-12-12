@@ -53,6 +53,17 @@
     opacity: 0.8;
 }
 
+
+
+.selected-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
 /* Submit Button */
 .create-button {
     padding: 10px 15px;
@@ -72,3 +83,23 @@
     box-shadow: 0 0 20px #9b42f5, 0 0 40px #7c2aed;
 }
 
+.back-to-home-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: linear-gradient(145deg, #34C759, #2E865F);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #34C759, 0 0 20px #2E865F;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .back-to-home-button:hover {
+    background: linear-gradient(145deg, #2E865F, #34C759);
+    box-shadow: 0 0 10px #2E865F, 0 0 20px #34C759;
+    transform: scale(1.05);
+  }

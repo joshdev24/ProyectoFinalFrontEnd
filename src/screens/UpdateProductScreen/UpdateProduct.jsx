@@ -127,7 +127,7 @@ const UpdateProduct = () => {
             </div>
             <div className="update-form-group">
                 <label className="update-form-label">Precio del producto:</label>
-                <input type="number" className="update-form-input" onChange={handleInputChange}/>
+                <input type="number" className="update-form-input" />
             </div>
             <div className="update-form-group">
                 <label className="update-form-label">Imagen del producto:</label>
@@ -135,7 +135,7 @@ const UpdateProduct = () => {
             </div>
 
             <button type="submit" className="update-button">Actualizar Producto</button>
-            < Link to={`/home`} className="back-to-home-button">Regresar al inicio</Link> 
+            <button Link to={`/home`} className="back-to-home-button">Regresar al inicio</Link> 
         </form>
     </div>
     );
