@@ -1,3 +1,8 @@
+
+.body {
+  background-color: #EBECF0;
+}
+
 .login-container {
   background-color: #EBECF0; /* Fondo claro adaptado */
   padding: 16px; /* Adaptado del $ruler */
@@ -5,6 +10,10 @@
   box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC; /* Neumorfismo */
   max-width: 320px; /* Adaptado del $ruler * 20 */
   margin: auto;
+  margin-top: 230px; /* $ruler * 4 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-title {
@@ -66,6 +75,7 @@
 
 .submit-button:hover {
   box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+  background-color: #AE1100; /* Rojo adaptado */
 }
 
 .submit-button:active {
