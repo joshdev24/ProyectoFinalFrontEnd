@@ -6,7 +6,6 @@
 .login-container {
   background-color: #EBECF0; /* Fondo claro adaptado */
   padding: 16px; /* Adaptado del $ruler */
-  border-radius: 320px; /* Usando $ruler * 20 */
   box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC; /* Neumorfismo */
   max-width: 320px; /* Adaptado del $ruler * 20 */
   margin: auto;
