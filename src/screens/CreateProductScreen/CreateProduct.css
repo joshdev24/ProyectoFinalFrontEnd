@@ -35,7 +35,8 @@
     color: #d1b3ff;
     margin-bottom: 5px;
     display: flex;
-    align-items: center;
+    justify-content: space-around;
+
     gap: 10px;
 }
 
