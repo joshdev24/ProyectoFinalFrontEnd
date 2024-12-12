@@ -2,20 +2,22 @@
 
 body {
     background: url(https://splatoon.nintendo.com/assets/img/home/bg-main.png) left;
-    
-   
-  }
- * {
+
+
+}
+
+* {
     box-sizing: border-box;
-    }  
-  .wrapper {
+}
+
+.wrapper {
     padding: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: wrap;
     height: 100vh;
-  }
+}
 
 /* Home Container */
 .home-container {
@@ -23,7 +25,8 @@ body {
     padding: 20px;
     text-align: center;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed; /* Brillo neón violeta */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 0 20px #7c2aed;
+    /* Brillo neón violeta */
     width: 80%;
     max-width: 1200px;
     color: var(--dark-gray);
@@ -34,7 +37,8 @@ body {
 /* Título de bienvenida */
 .welcome-title {
     font-size: 32px;
-    color: #7c2aed; /* Neón violeta */
+    color: #7c2aed;
+    /* Neón violeta */
     margin-bottom: 20px;
     text-shadow: 0 0 10px #7c2aed, 0 0 20px #7c2aed;
     animation: glowing 1.5s infinite alternate;
@@ -45,9 +49,11 @@ body {
     0% {
         text-shadow: 0 0 5px #7c2aed, 0 0 10px #7c2aed, 0 0 15px #7c2aed;
     }
+
     50% {
         text-shadow: 0 0 10px #7c2aed, 0 0 20px #7c2aed, 0 0 30px #7c2aed;
     }
+
     100% {
         text-shadow: 0 0 5px #7c2aed, 0 0 10px #7c2aed, 0 0 15px #7c2aed;
     }
@@ -63,15 +69,16 @@ body {
 
 /* Card de producto */
 .product-card {
-    color: #d1b3ff; /* Texto violeta claro */
+    color: #d1b3ff;
+    /* Texto violeta claro */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 20px;
     text-align: left;
     border-radius: 45px;
-background: #ebecf0;
-box-shadow:  -35px 35px 70px #bebfc2,
-             35px -35px 70px #ffffff;
+    background: #ebecf0;
+    box-shadow: -35px 35px 70px #bebfc2,
+        35px -35px 70px #ffffff;
 }
 
 .product-card:hover {
@@ -101,57 +108,51 @@ box-shadow:  -35px 35px 70px #bebfc2,
 .product-price {
     font-size: 20px;
     font-weight: bold;
-    color: #800f0f; /* Precio en violeta brillante */
+    color: #800f0f;
+    /* Precio en violeta brillante */
     margin-bottom: 15px;
 }
 
-/* Enlace de detalles del producto */
-.product-detail-link {
-    display: inline-block;
-    color: #19cb59;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-bottom: 10px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    text-shadow: 0 0 5px #9b42f5, 0 0 10px #7c2aed;
-}
 
-.product-detail-link:hover {
-    color: #439461;
-    text-shadow: 0 0 15px #d1b3ff, 0 0 25px #7c2aed;
-}
 
 /* Enlaces de acción (actualizar, borrar) */
 .product-update-link,
-.product-delete-link {
-    
-        flex: 1;
-        padding: 25px 50px;
-        margin: 25px;
-        border-radius: 999px;
-        border: 5px solid #284cff;
-        font-family: 'VT323', monospace;
-        font-size: 25px;
-        text-shadow: 0 3px 5px rgba(#000, 0.25);
-        white-space: nowrap;
-        color: #fff;
-        background: transparent;
-        background-image: url(https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871);
-        background-repeat: repeat-x;
-        background-position: 0 -100%;
-        transition: 1.5s ease;
-        
-       
-    
-}
+.product-delete-link, .product-detail-link  {
+    display: flex;
+    flex: 1;
+    padding: 25px 50px;
+    margin: 25px;
+    border-radius: 999px;
+    border: 5px solid #284cff;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+    text-shadow: 0 3px 5px rgba(#000, 0.25);
+    white-space: nowrap;
+    color: #fff;
+    background: transparent;
+    background-image: url(https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871);
+    background-repeat: repeat-x;
+    background-position: 0 -100%;
+    transition: 1.5s ease;
 
-.product-update-link:hover,
-.product-delete-link:hover {
-    color: #9b42f5;
+
+
+}
+.product-detail-link:hover {
+    color: #439461;
+    text-shadow: 0 0 15px #4b9457, 0 0 25px #498b4e;
+    background-position: 500% 100%;
+}
+.product-update-link:hover {
+    color: #b482e7;
     text-shadow: 0 0 15px #7c2aed, 0 0 25px #9b42f5;
     background-position: 500% 100%;
-      
+}
+.product-delete-link:hover {
+    color: #5f48e6;
+    text-shadow: 0 0 15px #5cb2eb, 0 0 25px #54dcee;
+    background-position: 500% 100%;
+
 }
 
 /* Mensajes */
@@ -191,102 +192,138 @@ hr {
 
 .create-product-button {
     display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
+    padding: 12px 24px;
+    /* Tamaño del botón */
     font-size: 16px;
     font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
+    color: #fff;
+    /* Texto blanco */
+    text-decoration: none;
+    /* Quita el subrayado */
     text-align: center;
-    background: #32cd32; /* Verde lima neón */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 
-        0 0 10px #32cd32, 
-        0 0 20px #32cd32, 
-        0 0 30px #32cd32; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
+    background: #32cd32;
+    /* Verde lima neón */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow:
+        0 0 10px #32cd32,
+        0 0 20px #32cd32,
+        0 0 30px #32cd32;
+    /* Brillo */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .create-product-button:hover {
-    background: #7fff00; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #7fff00, 
-        0 0 40px #7fff00, 
-        0 0 60px #7fff00; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
+    background: #7fff00;
+    /* Color más claro al pasar el mouse */
+    box-shadow:
+        0 0 20px #7fff00,
+        0 0 40px #7fff00,
+        0 0 60px #7fff00;
+    /* Brillo intensificado */
+    transform: scale(1.1);
+    /* Efecto de agrandamiento */
 }
 
 .create-product-button:active {
-    background: #228b22; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #228b22, 
+    background: #228b22;
+    /* Color más oscuro al hacer clic */
+    box-shadow:
+        0 0 10px #228b22,
         0 0 20px #228b22;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
+    transform: scale(0.95);
+    /* Botón ligeramente comprimido */
 }
+
 .logout-button {
     display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
+    padding: 12px 24px;
+    /* Tamaño del botón */
     font-size: 16px;
     font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
+    color: #fff;
+    /* Texto blanco */
+    text-decoration: none;
+    /* Quita el subrayado */
     text-align: center;
-    background: #d580ff; /* Violeta claro neón */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 
-        0 0 10px #d580ff, 
-        0 0 20px #d580ff, 
-        0 0 30px #d580ff; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
+    background: #d580ff;
+    /* Violeta claro neón */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow:
+        0 0 10px #d580ff,
+        0 0 20px #d580ff,
+        0 0 30px #d580ff;
+    /* Brillo */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .logout-button:hover {
-    background: #e199ff; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #e199ff, 
-        0 0 40px #e199ff, 
-        0 0 60px #e199ff; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
+    background: #e199ff;
+    /* Color más claro al pasar el mouse */
+    box-shadow:
+        0 0 20px #e199ff,
+        0 0 40px #e199ff,
+        0 0 60px #e199ff;
+    /* Brillo intensificado */
+    transform: scale(1.1);
+    /* Efecto de agrandamiento */
 }
 
 .logout-button:active {
-    background: #b366cc; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #b366cc, 
+    background: #b366cc;
+    /* Color más oscuro al hacer clic */
+    box-shadow:
+        0 0 10px #b366cc,
         0 0 20px #b366cc;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
+    transform: scale(0.95);
+    /* Botón ligeramente comprimido */
 }
 
 .filter-user-products-button {
     display: inline-block;
-    padding: 12px 24px; /* Tamaño del botón */
+    padding: 12px 24px;
+    /* Tamaño del botón */
     font-size: 16px;
     font-weight: bold;
-    color: #fff; /* Texto blanco */
-    text-decoration: none; /* Quita el subrayado */
+    color: #fff;
+    /* Texto blanco */
+    text-decoration: none;
+    /* Quita el subrayado */
     text-align: center;
-    background: #ffff99; /* Amarillo claro neón */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 
-        0 0 10px #ffff99, 
-        0 0 20px #ffff99, 
-        0 0 30px #ffff99; /* Brillo */
-    transition: all 0.3s ease; /* Transición suave */
+    background: #ffff99;
+    /* Amarillo claro neón */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow:
+        0 0 10px #ffff99,
+        0 0 20px #ffff99,
+        0 0 30px #ffff99;
+    /* Brillo */
+    transition: all 0.3s ease;
+    /* Transición suave */
 }
 
 .filter-user-products-button:hover {
-    background: #ffffb3; /* Color más claro al pasar el mouse */
-    box-shadow: 
-        0 0 20px #ffffb3, 
-        0 0 40px #ffffb3, 
-        0 0 60px #ffffb3; /* Brillo intensificado */
-    transform: scale(1.1); /* Efecto de agrandamiento */
+    background: #ffffb3;
+    /* Color más claro al pasar el mouse */
+    box-shadow:
+        0 0 20px #ffffb3,
+        0 0 40px #ffffb3,
+        0 0 60px #ffffb3;
+    /* Brillo intensificado */
+    transform: scale(1.1);
+    /* Efecto de agrandamiento */
 }
 
 .filter-user-products-button:active {
-    background: #cccc80; /* Color más oscuro al hacer clic */
-    box-shadow: 
-        0 0 10px #cccc80, 
+    background: #cccc80;
+    /* Color más oscuro al hacer clic */
+    box-shadow:
+        0 0 10px #cccc80,
         0 0 20px #cccc80;
-    transform: scale(0.95); /* Botón ligeramente comprimido */
+    transform: scale(0.95);
+    /* Botón ligeramente comprimido */
 }
-
