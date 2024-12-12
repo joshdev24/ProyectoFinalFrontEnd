@@ -14,7 +14,6 @@ const Register = () => {
 
     const handleSubmitRegisterForm = async (event) => {
         event.preventDefault();
-        event.preventDefault();
         setError('');
 
         const form_HTML = event.target;
