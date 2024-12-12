@@ -11,6 +11,7 @@ import UpdateProduct from "./screens/UpdateProductScreen/UpdateProduct"
 import ProductDetails from "./screens/ProductDetailScreen/ProductDetail"
 import ProtectedRoute from "./Components/ProtectedRoute"
 import DeleteProduct from "./screens/DeleteProductScreen/DeleteProduct"
+import EmailVerify from "./screens/EmailVerify"
 
 
 
