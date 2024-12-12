@@ -96,7 +96,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 13px;
     font-weight: bold;
-    margin: 3px;
+    margin: 12px;
     padding: 10px;
     text-transform: uppercase;
     text-decoration: none;
@@ -153,28 +153,22 @@ hr {
     margin-bottom: 20px;
 }
 
-.create-product-button {
-    display: inline-block;
-    padding: 12px 24px;
-    /* Tamaño del botón */
-    font-size: 16px;
+.create-product-button, .logout-button, .filter-user-products-button {
+    background-color: #e4e4e4;
+    border-radius: 10px;
+    box-shadow: inset 5px 5px 5px #c4c4c4,
+        inset -5px -5px 5px #ffffff;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
     font-weight: bold;
-    color: #fff;
-    /* Texto blanco */
+    margin: 12px;
+    padding: 10px;
+    text-transform: uppercase;
     text-decoration: none;
-    /* Quita el subrayado */
-    text-align: center;
-    background: #32cd32;
-    /* Verde lima neón */
-    border-radius: 8px;
-    /* Bordes redondeados */
-    box-shadow:
-        0 0 10px #32cd32,
-        0 0 20px #32cd32,
-        0 0 30px #32cd32;
-    /* Brillo */
-    transition: all 0.3s ease;
-    /* Transición suave */
 }
 
 .create-product-button:hover {
@@ -199,30 +193,6 @@ hr {
     /* Botón ligeramente comprimido */
 }
 
-.logout-button {
-    display: inline-block;
-    padding: 12px 24px;
-    /* Tamaño del botón */
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    /* Texto blanco */
-    text-decoration: none;
-    /* Quita el subrayado */
-    text-align: center;
-    background: #d580ff;
-    /* Violeta claro neón */
-    border-radius: 8px;
-    /* Bordes redondeados */
-    box-shadow:
-        0 0 10px #d580ff,
-        0 0 20px #d580ff,
-        0 0 30px #d580ff;
-    /* Brillo */
-    transition: all 0.3s ease;
-    /* Transición suave */
-}
-
 .logout-button:hover {
     background: #e199ff;
     /* Color más claro al pasar el mouse */
@@ -245,29 +215,6 @@ hr {
     /* Botón ligeramente comprimido */
 }
 
-.filter-user-products-button {
-    display: inline-block;
-    padding: 12px 24px;
-    /* Tamaño del botón */
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    /* Texto blanco */
-    text-decoration: none;
-    /* Quita el subrayado */
-    text-align: center;
-    background: #ffff99;
-    /* Amarillo claro neón */
-    border-radius: 8px;
-    /* Bordes redondeados */
-    box-shadow:
-        0 0 10px #ffff99,
-        0 0 20px #ffff99,
-        0 0 30px #ffff99;
-    /* Brillo */
-    transition: all 0.3s ease;
-    /* Transición suave */
-}
 
 .filter-user-products-button:hover {
     background: #ffffb3;
