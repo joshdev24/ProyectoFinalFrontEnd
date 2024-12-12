@@ -68,9 +68,8 @@ const Login = () => {
     };
 
     return (
-        <>
-       <h1 className="login-title">Inicia sesión</h1>
         <div className="login-container">
+            <h1 className="login-title">Inicia sesión</h1>
             <form onSubmit={handleSubmitLoginForm} className="login-form">
                 <div className="input-group">
                     <label htmlFor="email" className="input-label"></label>
@@ -91,7 +90,6 @@ const Login = () => {
                 <li>¿Has olvidado la contraseña? <Link to="/forgot-password">Restablecer</Link></li>
             </itemize>
         </div>
-        </>
     );
 };
 
