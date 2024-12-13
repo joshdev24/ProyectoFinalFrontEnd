@@ -34,6 +34,10 @@ const ResetPassword = () => {
 			setError('Error al restablecer contraseña')
 			
 		}
+        console.log(`URL del backend: ${ENVIROMENT.URL_BACKEND}`)
+console.log(`Ruta del servidor: /api/auth/reset-password/${reset_token}`)
+console.log(`Token de reseteo: ${reset_token}`)
+console.log(`Solicitud HTTP: ${JSON.stringify(form_values_object)}`)
     }
 
     return (
