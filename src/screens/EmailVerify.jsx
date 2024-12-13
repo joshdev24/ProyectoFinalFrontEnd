@@ -9,12 +9,16 @@ export const VerifyMail = () => {
   const [responseStatus, setResponseStatus] = useState(null);
   
   useEffect(() => {
-    console.log("Verificando correo...");
     const verifyEmail = async () => {
       try {
+        if (!verificationToken) {
+          throw new Error("No se ha proporcionado un token de verificación");
+        }
+
         console.log(
           `Solicitud de verificación de correo: ${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`
         );
+
         const response = await GET(
           `${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`,
           {
@@ -22,15 +26,23 @@ export const VerifyMail = () => {
           }
         );
 
+        if (!response) {
+          throw new Error("No se ha recibido respuesta alguna");
+        }
+
         console.log("Respuesta de verificación de correo:", response);
-        if (response) {
-          setResponseStatus("Verificado!!! Anda a loguearte!!😊🙌👌👍❤️");
+        if (response.status === 200) {
+          setResponseStatus("Verificado!!! Anda a loguearte!!");
         } else {
-          setResponseStatus("Error al verificar tu correo.");
+          setResponseStatus(
+            `Error al verificar tu correo. Codigo de error: ${response.status}`
+          );
         }
       } catch (error) {
         console.error("Error en la verificación de correo", error);
-        setResponseStatus("Hubo un error al verificar el correo.");
+        setResponseStatus(
+          error.message ? error.message : "Error al verificar el correo"
+        );
       }
     };
 
