@@ -76,12 +76,16 @@
 
 /* Links */
 .registro-login-link {
-  color: #EAB8FF; /* Violeta claro */
-  text-decoration: underline;
+  color: #a0a0a0; /* Violeta claro */
+  text-decoration: none;
+  transition: color 0.3s;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .registro-login-link:hover {
-  color: #DDA0E5;
+  color: #a8a8a8;
 }
 
 /* Mensajes */

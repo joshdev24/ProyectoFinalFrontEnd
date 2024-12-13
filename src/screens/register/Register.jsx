@@ -85,7 +85,7 @@ const Register = () => {
                 <ul className="registro-login-link-list">
                     <li className="registro-login-link-item">
                         Si ya tienes cuenta puedes ir a{" "}
-                        <Link to="/login" className="registro-login-link">login</Link>
+                        <Link to="/login" className="registro-login-link">Si ya tienes cuenta, inicia sesión</Link>
                     </li>
                 </ul>
                 {error && <p className="registro-error-message form-error">{error}</p>}
