@@ -5,25 +5,29 @@ import ENVIROMENT from "../../enviroment";
 
 export const VerifyMail = () => {
   const { verificationToken } = useParams();
-  
+
   const [responseStatus, setResponseStatus] = useState(null);
   
   useEffect(() => {
+    console.log("Verificando correo...");
     const verifyEmail = async () => {
       try {
+        console.log(
+          `Solicitud de verificación de correo: ${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`
+        );
         const response = await GET(
-          `${ENVIROMENT.URL_BACKEND}/verify/${verificationToken}`,
+          `${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`,
           {
             headers: getUnnauthenticatedHeaders(),
           }
         );
 
+        console.log("Respuesta de verificación de correo:", response);
         if (response && response.ok) {
           setResponseStatus("Verificado!!! Anda a loguearte!!😊🙌👌👍❤️");
         } else {
           setResponseStatus("Error al verificar tu correo.");
         }
-        console.log(response);
       } catch (error) {
         console.error("Error en la verificación de correo", error);
         setResponseStatus("Hubo un error al verificar el correo.");
