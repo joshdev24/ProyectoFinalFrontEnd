@@ -10,6 +10,7 @@
   transition: .4s ease-in-out;
   max-width: 400px;
   margin: auto;
+  margin-top: 150px;
 }
 
  .registro-container:hover {
