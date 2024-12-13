@@ -21,7 +21,7 @@ const ResetPassword = () => {
             'password': ''
         }
         const form_values_object = extractFormData(form_fields, form_Values)
-        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/` + reset_token, {
+        const response = await PUT(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${reset_token}`, {
             headers: getAuthenticatedHeaders(),
 				body: JSON.stringify(form_values_object)
 			})
@@ -34,10 +34,6 @@ const ResetPassword = () => {
 			setError('Error al restablecer contraseña')
 			
 		}
-        console.log(`URL del backend: ${ENVIROMENT.URL_BACKEND}`)
-console.log(`Ruta del servidor: /api/auth/reset-password/${reset_token}`)
-console.log(`Token de reseteo: ${reset_token}`)
-console.log(`Solicitud HTTP: ${JSON.stringify(form_values_object)}`)
     }
 
     return (
