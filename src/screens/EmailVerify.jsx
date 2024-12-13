@@ -23,7 +23,7 @@ export const VerifyMail = () => {
         );
 
         console.log("Respuesta de verificación de correo:", response);
-        if (response && response.ok) {
+        if (response) {
           setResponseStatus("Verificado!!! Anda a loguearte!!😊🙌👌👍❤️");
         } else {
           setResponseStatus("Error al verificar tu correo.");
