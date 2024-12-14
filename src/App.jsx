@@ -26,7 +26,7 @@ function App() {
         <Route path="/register" element={<Register />}/>
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
-        <Route path='/verify/:verification_token' element={<VerifyMail/>}/>
+        <Route path='/api/auth/verify/:verification_token' element={<VerifyMail/>}/>
         <Route element={<ProtectedRoute/>}>
         <Route path='/home' element={<Home/>}/>
         <Route path='/product/new' element={<CreateProductScreen/>}/>
