@@ -29,7 +29,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
         <Route path='/verify/:verification_token' element={<VerifyMail/>}/>
-        <Route path='/verificar/:pepe' element={<VerifyMail2/>}/>
+        <Route path='/verificar/:pepe' element={<h1>hola</h1>}/>
 
         <Route element={<ProtectedRoute/>}>
         <Route path='/home' element={<Home/>}/>
