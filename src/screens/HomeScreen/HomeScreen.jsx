@@ -61,7 +61,7 @@ const HomeScreen = () => {
         <div className="home-container">
             {user_info.name ? (
                 <>
-                    <h1 className="welcome-title">Bienvenido {user_info.name}</h1>
+                    <h1 className="welcome-title">Bienvenidossssssssssssss{user_info.name}</h1>
                     <div className="header-actions">
                         <Link to="/product/new" className="create-product-button">
                             Crear producto
