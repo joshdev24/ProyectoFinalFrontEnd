@@ -4,23 +4,23 @@ import { useEffect, useState } from "react";
 import ENVIROMENT from "../../enviroment";
 
 export const VerifyMail = () => {
-  const { verificationToken } = useParams();
+  const { verification_token } = useParams();
 
   const [responseStatus, setResponseStatus] = useState(null);
   
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        if (!verificationToken) {
+        if (!verification_token ) {
           throw new Error("No se ha proporcionado un token de verificación");
         }
 
         console.log(
-          `Solicitud de verificación de correo: ${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`
+          `Solicitud de verificación de correo: ${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verification_token }`
         );
 
         const response = await GET(
-          `${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`,
+          `${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verification_token }`,
           {
             headers: getUnnauthenticatedHeaders(),
           }
@@ -47,10 +47,11 @@ export const VerifyMail = () => {
     };
 
     verifyEmail();
-  }, [verificationToken]);
+  }, [verification_token ]);
 
   return (
     <div>
+      <h1>PEPE TOKEN `${verification_token}`</h1>
       {responseStatus ? <h2>{responseStatus}</h2> : <h2>Verificando...</h2>}
     </div>
   );
