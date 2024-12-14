@@ -3,7 +3,7 @@ import { GET, getUnnauthenticatedHeaders } from "../fetching/http.fetching";
 import { useEffect, useState } from "react";
 import ENVIROMENT from "../../enviroment";
 
-export const VerifyMail = () => {
+const VerifyMail = () => {
   const { verification_token } = useParams();
 
   const [responseStatus, setResponseStatus] = useState(null);
@@ -56,3 +56,5 @@ export const VerifyMail = () => {
     </div>
   );
 };
+
+export default VerifyMail;
