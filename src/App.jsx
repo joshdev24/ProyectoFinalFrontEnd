@@ -30,6 +30,9 @@ function App() {
         <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
         <Route path='/verify/:verification_token' element={<VerifyMail/>}/>
         <Route path='/verificar' element={<h1>hola</h1>}/>
+        <Route path= "/pepe" element={<h1>pepe</h1>}/>
+        <Route path= "/pepesito" element={<h1>pepesito</h1>}/>
+
 
         <Route element={<ProtectedRoute/>}>
         <Route path='/home' element={<Home/>}/>
