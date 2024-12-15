@@ -13,6 +13,7 @@ import ProtectedRoute from "./Components/ProtectedRoute"
 import DeleteProduct from "./screens/DeleteProductScreen/DeleteProduct"
 import VerifyMail from "./screens/EmailVerify.jsx"
 import VerifyMail2 from "./Verify.jsx"
+import Prueba from "./prueba.jsx"
 
 
 
@@ -29,11 +30,8 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
         <Route path='/verify/:verification_token' element={<VerifyMail/>}/>
-        <Route path='/verificar' element={<h1>hola</h1>}/>
-        <Route path= "/pepe" element={<h1>pepe</h1>}/>
-        <Route path= "/pepesito" element={<h1>pepesito</h1>}/>
-
-
+        <Route path='/verify2/:token' element={<VerifyMail2/>}/>
+        <Route path= "/prueba" element={<Prueba/>}/>
         <Route element={<ProtectedRoute/>}>
         <Route path='/home' element={<Home/>}/>
         <Route path='/product/new' element={<CreateProductScreen/>}/>
