@@ -27,11 +27,14 @@ function App() {
         <Route path="/" element={<Login/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />}/>
+        <Route path= "/prueba" element={<Prueba/>}/>
+
+
+
         <Route path="/forgot-password" element={<ForgotPassword />}/>
         <Route path="/reset-password/:reset_token" element={<ResetPassword />}/>
         <Route path='/verify/:verification_token' element={<VerifyMail/>}/>
         <Route path='/verify2/:token' element={<VerifyMail2/>}/>
-        <Route path= "/prueba" element={<Prueba/>}/>
         <Route element={<ProtectedRoute/>}>
         <Route path='/home' element={<Home/>}/>
         <Route path='/product/new' element={<CreateProductScreen/>}/>
