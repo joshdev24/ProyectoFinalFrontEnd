@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { extractFormData } from "../../utils/extractFormData";
 import { PUT, POST, getAuthenticatedHeaders } from "../../fetching/http.fetching";
 import "./ResetPassword.css";
@@ -122,9 +122,9 @@ const ResetPassword = () => {
 
             <div className="additional-links">
                 <p>
-                    <a href="/login">Volver a Iniciar Sesión</a>
+                    <Link to="/login">Volver a Iniciar Sesión</Link>
                     <span> | </span>
-                    <a href="/register">Crear una cuenta</a>
+                    <Link to="/register">Crear una cuenta</Link>
                 </p>
             </div>
         </div>
