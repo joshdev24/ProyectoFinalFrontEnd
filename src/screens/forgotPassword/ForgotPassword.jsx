@@ -52,7 +52,7 @@ const ForgotPassword = () => {
                     </div>
                     <button type='submit'>Obtener token</button>
                     <br/>
-                    <button Link= {`/reset-password`} type='submit'>Restablecer contraseña</button>
+                    <Link to="/reset-password" className="verify-user-button">Verificar usuario</Link>
                     <itemize>
                 <li> Si tienes cuenta puedes <Link to='/login'>iniciar sesion</Link></li>
                 <li>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></li>
