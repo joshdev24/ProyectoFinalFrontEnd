@@ -30,7 +30,6 @@ const ProductDetail = ({ title, price, stock, description, image_base_64, id }) 
             <img
                 className="product-detail-image"
                 src={image_base_64}
-                alt={title}
                 width="200"
             />
             <div className="product-detail-price">Precio: ${price}</div>

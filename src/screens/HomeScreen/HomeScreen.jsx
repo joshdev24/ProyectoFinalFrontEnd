@@ -33,7 +33,7 @@ const HomeScreen = () => {
 
                 // Filtrar productos del usuario actual
                 const userSpecificProducts = allProducts.filter(
-                    (product) => product.seller_id === user_seller.id
+                    (product) => product.seller_id === user_info.seller.id
                 );
                 setUserProducts(userSpecificProducts);
             } else {
@@ -78,7 +78,7 @@ const HomeScreen = () => {
                         {/* Nuevo botón */}
                         <button
                             className="verify-user-button"
-                            onClick={() => navigate("/verify2/:token")}
+                            onClick={() => navigate("/verify/:verification_token")}
                         >
                             Verificar usuario
                         </button>
