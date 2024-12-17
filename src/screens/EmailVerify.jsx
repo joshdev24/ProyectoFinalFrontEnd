@@ -2,12 +2,14 @@
 import { GET, getUnnauthenticatedHeaders } from "../fetching/http.fetching";
 import {  useState } from "react";
 import ENVIROMENT from "../../enviroment";
+import { useNavigate } from "react-router-dom";
 
 
 const VerifyMail = () => {
   const [verificationToken, setVerificationToken] = useState(""); // Estado para el token ingresado por el usuario
   const [responseStatus, setResponseStatus] = useState(null); // Estado para el resultado de la verificación
-  const [isVerifying, setIsVerifying] = useState(false); // Estado para el proceso de verificación
+  const [isVerifying, setIsVerifying] = useState(false);
+  const navigate = useNavigate(); // Estado para el proceso de verificación
 
   const handleVerify = async () => {
     setIsVerifying(true); // Indica que se está procesando
@@ -36,6 +38,7 @@ const VerifyMail = () => {
       console.log("Respuesta de verificación de correo:", response);
       if (response.status === 200) {
         setResponseStatus("¡Correo verificado! Ahora puedes iniciar sesión.");
+        navigate("/login");
       } else {
         setResponseStatus(
           `Error al verificar tu correo. Código de error: ${response.status}`
