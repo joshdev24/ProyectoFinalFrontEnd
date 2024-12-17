@@ -21,7 +21,7 @@ const ResetPassword = () => {
             }
 
             const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/verify-token`, {
-                headers: { "Content-Type": "application/json" },
+                headers: getAuthenticatedHeaders(),
                 body: JSON.stringify({ token: resetToken }),
             });
 
@@ -122,7 +122,7 @@ const ResetPassword = () => {
 
             <div className="additional-links">
                 <p>
-                    <a L="/login">Volver a Iniciar Sesión</a>
+                    <a href="/login">Volver a Iniciar Sesión</a>
                     <span> | </span>
                     <a href="/register">Crear una cuenta</a>
                 </p>
