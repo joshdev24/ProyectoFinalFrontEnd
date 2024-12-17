@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
 import useForm from '../../Hooks/useForm'
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
@@ -11,6 +11,7 @@ import './Register.css'
 const Register = () => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState(false)
+    const navigate = useNavigate()
 
     const handleSubmitRegisterForm = async (event) => {
         event.preventDefault();
@@ -87,12 +88,7 @@ const Register = () => {
                         <Link to="/login" className="registro-login-link">Si ya tienes cuenta, inicia sesión</Link>
                     </li>
                     <li className="registro-login-link-item">
-                         <button
-                            className="verify-user-button"
-                            onClick={() => navigate("/verify/:verification_token")}
-                        >
-                            Verificar usuario
-                        </button>
+                         <Link to="/verify/:verification_token" className="verify-user-button">Verificar usuario</Link>
                     </li>
                 </ul>
                 {error && <p className="registro-error-message form-error">{error}</p>}
