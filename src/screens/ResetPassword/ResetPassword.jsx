@@ -22,7 +22,6 @@ const ResetPassword = () => {
 
             const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/auth/verify/${resetToken}`, {
                 headers: getAuthenticatedHeaders(),
-                body: JSON.stringify({ token: resetToken }),
             });
 
             if (response === null || response === undefined) {
