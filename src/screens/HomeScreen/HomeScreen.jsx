@@ -61,24 +61,27 @@ const HomeScreen = () => {
         <div className="home-container">
             {user_info.name ? (
                 <>
-                    <h1 className="welcome-title">Bienvenido{user_info.name}</h1>
+                    <h1 className="welcome-title">Bienvenido {user_info.name}</h1>
                     <div className="header-actions">
                         <Link to="/product/new" className="create-product-button">
                             Crear producto
                         </Link>
-                        <button
-                            className="logout-button"
-                            onClick={handleLogout}
-                        >
+                        <button className="logout-button" onClick={handleLogout}>
                             Cerrar sesión
                         </button>
-                    
-                    <button
-                        className="filter-user-products-button"
-                        onClick={() => setShowUserProducts(!showUserProducts)}
-                    >
-                        {showUserProducts ? 'Ver todos los productos' : 'Ver mis productos'}
-                    </button>
+                        <button
+                            className="filter-user-products-button"
+                            onClick={() => setShowUserProducts(!showUserProducts)}
+                        >
+                            {showUserProducts ? "Ver todos los productos" : "Ver mis productos"}
+                        </button>
+                        {/* Nuevo botón */}
+                        <button
+                            className="verify-user-button"
+                            onClick={() => navigate("/verify2/:token")}
+                        >
+                            Verificar usuario
+                        </button>
                     </div>
                     {isLoadingProducts ? (
                         <span className="loading-text">Cargando...</span>
@@ -94,6 +97,7 @@ const HomeScreen = () => {
                 </p>
             )}
         </div>
+
     );
 };
 
@@ -119,11 +123,11 @@ const Product = ({ title, price, image_base_64, id }) => {
             <Link to={`/product/${id}`} className="product-detail-link">
                 Ver detalles del producto
             </Link>
-           
+
             <Link to={`/product/update/${id}`} className="product-update-link">
                 Actualizar Producto
             </Link>
-           
+
             <Link to={`/product/delete/${id}`} className="product-delete-link">
                 Borrar Producto
             </Link>
