@@ -29,14 +29,18 @@ const UpdateProduct = () => {
                 headers: getAuthenticatedHeaders()
             });
 
-            if (response.ok) {
+            if (response.ok && response.payload && response.payload.product) {
                 const productFromServer = response.payload.product;
                 setProduct(productFromServer);
             } else {
                 setError("Error al obtener el producto.");
             }
         } catch (error) {
-            console.error("Error al obtener el producto:", error);
+            if (error instanceof Error) {
+                console.error("Error al obtener el producto:", error.message);
+            } else {
+                console.error("Error al obtener el producto:", error);
+            }
             setError("Error al obtener el producto.");
         }
     };

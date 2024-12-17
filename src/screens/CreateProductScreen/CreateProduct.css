@@ -5,7 +5,6 @@
     padding: 20px;
     border: 2px solid #7c2aed;
     border-radius: 15px;
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
     box-shadow: 0 0 20px #7c2aed, 0 0 40px #7c2aed;
 }
 
@@ -44,7 +43,7 @@
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #2a2a2a;
+    background-color: #ffffff;
     color: #fff;
     outline: none;
     box-shadow: 0 0 10px #7c2aed inset;
