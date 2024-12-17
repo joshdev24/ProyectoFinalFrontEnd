@@ -44,14 +44,15 @@ const ForgotPassword = () => {
         <>
             <div>
                 <h1>Olvide mi contraseña</h1>
-                <p>Enviaremos un mail a tu email de usuario para enviarte los pasos de restablecimiento de la contraseña.</p>
+                <p>Enviaremos un token a tu email de usuario con los pasos de restablecimiento de la contraseña.</p>
                 <form onSubmit={handleSubmitLoginForm}>
                     <div>
                         <label htmlFor='email'>Ingrese su email:</label>
                         <input name='email' id='email' placeholder='pepe@gmail.com' required />
                     </div>
-                    <button type='submit'>Enviar mail</button>
+                    <button type='submit'>Obtener token</button>
                     <br/>
+                    <button Link= {`/reset-password`} type='submit'>Restablecer contraseña</button>
                     <itemize>
                 <li> Si tienes cuenta puedes <Link to='/login'>iniciar sesion</Link></li>
                 <li>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></li>
