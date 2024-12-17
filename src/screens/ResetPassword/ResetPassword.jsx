@@ -20,7 +20,7 @@ const ResetPassword = () => {
                 throw new Error("Por favor, introduce un token válido.");
             }
 
-            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`, {
+            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/verify/${resetToken}`, {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify({ token: resetToken }),
             });
