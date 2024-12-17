@@ -20,18 +20,24 @@ const ResetPassword = () => {
                 throw new Error("Por favor, introduce un token válido.");
             }
 
-            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${resetToken}`, {
+            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${resetToken}`, {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify({ token: resetToken }),
             });
 
+            if (response === null || response === undefined) {
+                throw new Error("No se ha recibido respuesta del servidor.");
+            }
+
             if (response.ok) {
                 setStep(2); // Avanza al formulario de restablecimiento de contraseña
             } else {
-                setError("El token proporcionado no es válido o ha expirado.");
+                const errorText = response.error ? response.error.message : "El token proporcionado no es válido o ha expirado.";
+                setError(errorText);
             }
         } catch (error) {
-            setError("Error al verificar el token. Por favor, inténtalo nuevamente.");
+            const errorText = error.message ? error.message : "Error al verificar el token. Por favor, inténtalo nuevamente.";
+            setError(errorText);
         }
     };
 

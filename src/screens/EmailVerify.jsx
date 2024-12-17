@@ -20,10 +20,6 @@ const VerifyMail = () => {
         throw new Error("Por favor, introduce un token de verificación");
       }
 
-      console.log(
-        `Solicitud de verificación de correo: ${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`
-      );
-
       const response = await GET(
         `${ENVIROMENT.URL_BACKEND}/api/auth/verify/${verificationToken}`,
         {
