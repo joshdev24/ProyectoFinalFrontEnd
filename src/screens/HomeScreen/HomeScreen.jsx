@@ -75,13 +75,6 @@ const HomeScreen = () => {
                         >
                             {showUserProducts ? "Ver todos los productos" : "Ver mis productos"}
                         </button>
-                        {/* Nuevo botón */}
-                        <button
-                            className="verify-user-button"
-                            onClick={() => navigate("/verify/:verification_token")}
-                        >
-                            Verificar usuario
-                        </button>
                     </div>
                     {isLoadingProducts ? (
                         <span className="loading-text">Cargando...</span>
