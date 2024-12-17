@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { extractFormData } from "../../utils/extractFormData";
 import { PUT, getAuthenticatedHeaders, GET, POST } from "../../fetching/http.fetching";
 import "./ResetPassword.css";
 import ENVIROMENT from "../../../enviroment";
-
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { PUT } from "your-api-utils"; // Reemplaza con tu utilidad real
-import { ENVIROMENT, getAuthenticatedHeaders, extractFormData } from "your-helpers"; // Ajusta las importaciones
 
 const ResetPassword = () => {
     const [resetToken, setResetToken] = useState(""); // Almacena el token ingresado
