@@ -5,40 +5,16 @@ import { PUT, getAuthenticatedHeaders, GET, POST } from "../../fetching/http.fet
 import "./ResetPassword.css";
 import ENVIROMENT from "../../../enviroment";
 
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { PUT } from "your-api-utils"; // Reemplaza con tu utilidad real
+import { ENVIROMENT, getAuthenticatedHeaders, extractFormData } from "your-helpers"; // Ajusta las importaciones
+
 const ResetPassword = () => {
-    const [step, setStep] = useState(1); // Controla el flujo entre ingresar token y restablecer contraseña
     const [resetToken, setResetToken] = useState(""); // Almacena el token ingresado
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState("");
-
-    const handleTokenSubmit = async (e) => {
-        e.preventDefault();
-        setError(""); // Limpia errores previos
-
-        try {
-            if (!resetToken) {
-                throw new Error("Por favor, introduce un token válido.");
-            }
-
-            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${resetToken}`, {
-                headers: getAuthenticatedHeaders(),
-            });
-
-            if (response === null || response === undefined) {
-                throw new Error("No se ha recibido respuesta del servidor.");
-            }
-
-            if (response.ok) {
-                setStep(2); // Avanza al formulario de restablecimiento de contraseña
-            } else {
-                const errorText = response.error ? response.error.message : "El token proporcionado no es válido o ha expirado.";
-                setError(errorText);
-            }
-        } catch (error) {
-            const errorText = error.message ? error.message : "Error al verificar el token. Por favor, inténtalo nuevamente.";
-            setError(errorText);
-        }
-    };
+    const [showTokenField, setShowTokenField] = useState(false); // Controla cuándo se solicita el token
 
     const handleSubmitResetForm = async (e) => {
         e.preventDefault();
@@ -52,6 +28,17 @@ const ResetPassword = () => {
             };
             const form_values_object = extractFormData(form_fields, form_Values);
 
+            // Primero verifica si el usuario ya ingresó el token
+            if (!showTokenField) {
+                setShowTokenField(true); // Muestra el campo del token
+                return;
+            }
+
+            if (!resetToken) {
+                throw new Error("Por favor, introduce un token válido.");
+            }
+
+            // Envía la solicitud con el token y la nueva contraseña
             const response = await PUT(
                 `${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${resetToken}`,
                 {
@@ -66,19 +53,33 @@ const ResetPassword = () => {
                 throw new Error("Error al restablecer la contraseña.");
             }
         } catch (error) {
-            setError("Error al restablecer la contraseña. Por favor, inténtalo nuevamente.");
+            const errorText = error.message || "Error al restablecer la contraseña. Por favor, inténtalo nuevamente.";
+            setError(errorText);
         }
     };
 
     return (
         <div className="reset-password-container">
-            {step === 1 ? (
-                <>
-                    <h1 className="reset-password-title">Verificar Token</h1>
-                    <p className="reset-password-subtitle">
-                        Por favor, ingresa el token enviado a tu correo electrónico.
-                    </p>
-                    <form className="reset-token-form" onSubmit={handleTokenSubmit}>
+            <h1 className="reset-password-title">Restablecer Contraseña</h1>
+            <p className="reset-password-subtitle">
+                Ingresa tu nueva contraseña para recuperar el acceso.
+            </p>
+
+            <form className="reset-password-form" onSubmit={handleSubmitResetForm}>
+                <label htmlFor="password" className="input-label">
+                    Nueva Contraseña
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    className="input-field"
+                    placeholder="Escribe tu nueva contraseña"
+                    required
+                />
+
+                {showTokenField && (
+                    <>
                         <label htmlFor="resetToken" className="input-label">
                             Token de Verificación
                         </label>
@@ -87,40 +88,18 @@ const ResetPassword = () => {
                             id="resetToken"
                             name="resetToken"
                             className="input-field"
-                            placeholder="Escribe tu token"
+                            placeholder="Escribe el token de verificación"
                             value={resetToken}
                             onChange={(e) => setResetToken(e.target.value)}
                             required
                         />
-                        <button type="submit" className="verify-button">
-                            Verificar Token
-                        </button>
-                    </form>
-                </>
-            ) : (
-                <>
-                    <h1 className="reset-password-title">Restablecer Contraseña</h1>
-                    <p className="reset-password-subtitle">
-                        Ingresa tu nueva contraseña para recuperar el acceso.
-                    </p>
-                    <form className="reset-password-form" onSubmit={handleSubmitResetForm}>
-                        <label htmlFor="password" className="input-label">
-                            Nueva Contraseña
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            className="input-field"
-                            placeholder="Escribe tu nueva contraseña"
-                            required
-                        />
-                        <button type="submit" className="reset-button">
-                            Restablecer Contraseña
-                        </button>
-                    </form>
-                </>
-            )}
+                    </>
+                )}
+
+                <button type="submit" className="reset-button">
+                    {showTokenField ? "Restablecer Contraseña" : "Continuar"}
+                </button>
+            </form>
 
             {error && <p style={{ color: "red" }}>{error}</p>}
             {success && <p style={{ color: "green" }}>{success}</p>}
@@ -137,3 +116,4 @@ const ResetPassword = () => {
 };
 
 export default ResetPassword;
+
