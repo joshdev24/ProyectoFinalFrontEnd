@@ -31,7 +31,7 @@ const VerifyMail = () => {
         throw new Error("No se ha recibido respuesta alguna");
       }
 
-      console.log("Respuesta de verificación de correo:", response);
+
       if (response.status === 200) {
         setResponseStatus("¡Correo verificado! Ahora puedes iniciar sesión.");
         navigate("/login");

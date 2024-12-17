@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { extractFormData } from "../../utils/extractFormData";
-import { PUT, POST, getAuthenticatedHeaders } from "../../fetching/http.fetching";
+import { PUT, POST, getAuthenticatedHeaders, GET } from "../../fetching/http.fetching";
 import "./ResetPassword.css";
 import ENVIROMENT from "../../../enviroment";
 
@@ -20,7 +20,7 @@ const ResetPassword = () => {
                 throw new Error("Por favor, introduce un token válido.");
             }
 
-            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/reset-password/${resetToken}`, {
+            const response = await GET(`${ENVIROMENT.URL_BACKEND}/api/auth/verify/${resetToken}`, {
                 headers: getAuthenticatedHeaders(),
                 body: JSON.stringify({ token: resetToken }),
             });
