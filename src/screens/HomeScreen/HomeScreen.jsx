@@ -114,7 +114,6 @@ const Product = ({ title, price, image_base_64, id }) => {
             <img
                 src={image_base_64}
                 className="product-image"
-                alt={`Imagen de ${title}`}
             />
             <p className="product-price">Precio: ${price}</p>
             <Link to={`/product/${id}`} className="product-detail-link">
