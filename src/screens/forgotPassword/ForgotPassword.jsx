@@ -4,6 +4,8 @@ import { extractFormData } from '../../utils/extractFormData'
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment';
 
+import './ForgotPassword.css'
+
 
 
 const ForgotPassword = () => {
@@ -42,26 +44,39 @@ const ForgotPassword = () => {
 
     return (
         <>
-            <div>
-                <h1>Olvide mi contraseña</h1>
-                <p>Enviaremos un token a tu email de usuario con los pasos de restablecimiento de la contraseña.</p>
-                <form onSubmit={handleSubmitLoginForm}>
-                    <div>
-                        <label htmlFor='email'>Ingrese su email:</label>
-                        <input name='email' id='email' placeholder='pepe@gmail.com' required />
-                    </div>
-                    <button type='submit'>Obtener token</button>
-                    <br/>
-                    <Link to="/reset-password" className="verify-user-button">Verificar usuario</Link>
-                    <itemize>
-                <li> Si tienes cuenta puedes <Link to='/login'>iniciar sesion</Link></li>
-                <li>Si aun no tienes cuenta puedes <Link to='/register'>Registrarte</Link></li>
-            </itemize>
-                </form>
-                {error && <p style={{ color: 'red' }}>{error}</p>} 
-                {success && <p style={{ color: 'green' }}>{success}</p>} 
+            <div class="card">
+  <div class="card-overlay"></div>
+  <div class="card-inner">
+    <div class="password-reset-container">
+      <h1 class="password-reset-title">Olvidé mi contraseña</h1>
+      <p class="password-reset-instructions">
+        Enviaremos un token a tu email de usuario con los pasos de restablecimiento de la contraseña.
+      </p>
+      <form class="password-reset-form" onSubmit={handleSubmitLoginForm}>
+        <div class="form-group">
+          <label htmlFor="email" class="form-label">Ingrese su email:</label>
+          <input
+            name="email"
+            id="email"
+            class="form-input"
+            placeholder="pepe@gmail.com"
+            required
+          />
+        </div>
+        <button type="submit" class="form-button">Obtener token</button>
+        <br />
+        <Link to="/reset-password" class="verify-user-button">Verificar usuario</Link>
+        <ul class="form-links">
+          <li>Si tienes cuenta puedes <Link to="/login">iniciar sesión</Link></li>
+          <li>Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
+        </ul>
+      </form>
+      {error && <p class="form-error">{error}</p>}
+      {success && <p class="form-success">{success}</p>}
+    </div>
+  </div>
+</div>
 
-            </div>
             
         </>
     );
