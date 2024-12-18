@@ -36,7 +36,9 @@ const VerifyMail = () => {
 
       if (response.status === 200) {
         setResponseStatus("¡Correo verificado!");
-        navigate("/login");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
       } else {
         setResponseStatus(
           `Error al verificar tu correo. Código de error: ${response.status}`
