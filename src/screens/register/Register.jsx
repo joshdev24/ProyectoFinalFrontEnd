@@ -44,7 +44,7 @@ const Register = () => {
             if (response.ok) {
                 setSuccess("Te has registrado con exito")
             } else {
-                setError(response.payload.message)
+                setError("Hubo un problema al registrar el usuario, verifique sus datos.");
             }
         } catch (error) {
             console.error(error);
