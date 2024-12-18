@@ -39,6 +39,9 @@
   /* Verification Content Styles */
   .verification-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   
   .verification-title {
@@ -55,7 +58,6 @@
   }
   
   .verification-input {
-    width: 80%;
     padding: 10px;
     font-size: 16px;
     border: 2px solid #ccc;
@@ -70,7 +72,6 @@
   }
   
   .verification-button {
-    width: 85%;
     padding: 10px 15px;
     font-size: 16px;
     font-weight: bold;

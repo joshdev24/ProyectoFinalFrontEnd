@@ -79,3 +79,4 @@ const VerifyMail = () => {
 };
 
 export default VerifyMail;
+
