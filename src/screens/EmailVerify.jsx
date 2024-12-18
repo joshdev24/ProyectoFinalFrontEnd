@@ -2,7 +2,7 @@
 import { GET, getUnnauthenticatedHeaders } from "../fetching/http.fetching";
 import {  useState } from "react";
 import ENVIROMENT from "../../enviroment";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./EmailVerify.css";
 
