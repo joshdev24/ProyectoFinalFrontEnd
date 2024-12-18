@@ -4,6 +4,8 @@ import {  useState } from "react";
 import ENVIROMENT from "../../enviroment";
 import { useNavigate } from "react-router-dom";
 
+import "./EmailVerify.css";
+
 
 const VerifyMail = () => {
   const [verificationToken, setVerificationToken] = useState(""); // Estado para el token ingresado por el usuario
@@ -51,21 +53,27 @@ const VerifyMail = () => {
   };
 
   return (
-    <div>
-      <h1>Verificación de Correo</h1>
-      <p>Por favor, introduce tu código de verificación:</p>
-      <input
-        type="text"
-        value={verificationToken}
-        onChange={(e) => setVerificationToken(e.target.value)}
-        placeholder="Código de verificación"
-        className="verification-input"
-      />
-      <button onClick={handleVerify} disabled={isVerifying}>
-        {isVerifying ? "Verificando..." : "Verificar"}
-      </button>
-      {responseStatus && <h2>{responseStatus}</h2>}
+    <div class="card">
+    <div class="card-overlay"></div>
+    <div class="card-inner">
+      <div class="verification-container">
+        <h1 class="verification-title">Verificación de Correo</h1>
+        <p class="verification-instructions">Por favor, introduce tu código de verificación:</p>
+        <input
+          type="text"
+          value={verificationToken}
+          onChange={(e) => setVerificationToken(e.target.value)}
+          placeholder="Código de verificación"
+          class="verification-input"
+        />
+        <button class="verification-button" onClick={handleVerify} disabled={isVerifying}>
+          {isVerifying ? "Verificando..." : "Verificar"}
+        </button>
+        {responseStatus && <h2 class="verification-response">{responseStatus}</h2>}
+      </div>
     </div>
+  </div>
+  
   );
 };
 
