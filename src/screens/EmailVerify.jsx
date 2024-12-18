@@ -36,9 +36,7 @@ const VerifyMail = () => {
 
       if (response.status === 200) {
         setResponseStatus("¡Correo verificado!");
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
+       
       } else {
         setResponseStatus(
           `Error al verificar tu correo. Código de error: ${response.status}`
@@ -71,6 +69,7 @@ const VerifyMail = () => {
         <button class="verification-button" onClick={handleVerify} disabled={isVerifying}>
           {isVerifying ? "Verificando..." : "Verificar"}
         </button>
+        <Link to="/login" class="verification-link">Inicia Sesion </Link>
         {responseStatus && <h2 class="verification-response">{responseStatus}</h2>}
       </div>
     </div>
