@@ -82,7 +82,7 @@
   transition: color 0.3s;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .registro-login-link:hover {
@@ -124,6 +124,7 @@
   align-items: center;
   transition: background-color 0.3s, transform 0.3s;
   text-decoration: none;
+  margin-right: 55px;
 }
 
 
