@@ -4,7 +4,7 @@ import { extractFormData } from '../../utils/extractFormData'
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment';
 
-import './ForgotPassword.css'
+import './forgotPassword.css'
 
 
 
