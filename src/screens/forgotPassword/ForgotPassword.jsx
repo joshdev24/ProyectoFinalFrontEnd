@@ -4,6 +4,8 @@ import { extractFormData } from '../../utils/extractFormData'
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment';
 
+import './ForgotPassword.css'
+
 
 
 
@@ -62,10 +64,10 @@ const ForgotPassword = () => {
             required
           />
         </div>
-        <button type="submit" class="form-button">Obtener token</button>
+        <button type="submit" class="form-button"> Obtener token</button>
         <br />
-        <Link to="/reset-password" class="verify-user-button">Verificar usuario</Link>
-        <ul class="form-links">
+        <Link to="/reset-password" class="verify-user-button">Restablecer mi contraseña</Link>
+        <ul class="verification-button">
           <li>Si tienes cuenta puedes <Link to="/login">iniciar sesión</Link></li>
           <li>Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
         </ul>
