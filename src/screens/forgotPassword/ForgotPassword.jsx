@@ -66,8 +66,8 @@ const ForgotPassword = () => {
         </div>
         <button type="submit" class="form-button"> Obtener token</button>
         <br />
-        <Link to="/reset-password" class="verify-user-button">Restablecer mi contraseña</Link>
-        <ul class="verification-button">
+        <Link to="/reset-password" class="reset-button">Restablecer mi contraseña</Link>
+        <ul class="form-links">
           <li>Si tienes cuenta puedes <Link to="/login">iniciar sesión</Link></li>
           <li>Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
         </ul>
