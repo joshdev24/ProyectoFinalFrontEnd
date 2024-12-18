@@ -44,7 +44,7 @@ const Register = () => {
             if (response.ok) {
                 setSuccess("Te has registrado con exito")
             } else {
-                setError("Error al registrarte")
+                setError(payload.detail)
             }
         } catch (error) {
             console.error(error);

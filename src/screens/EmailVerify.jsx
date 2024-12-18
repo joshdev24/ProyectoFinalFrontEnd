@@ -35,7 +35,7 @@ const VerifyMail = () => {
 
 
       if (response.status === 200) {
-        setResponseStatus("¡Correo verificado! Ahora puedes iniciar sesión.");
+        setResponseStatus("¡Correo verificado!");
         navigate("/login");
       } else {
         setResponseStatus(

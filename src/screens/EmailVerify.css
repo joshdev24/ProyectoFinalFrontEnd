@@ -1,4 +1,4 @@
-/* Base Card Styles */
+
 .card {
     --bg: #e8e8e8;
     --contrast: #e2e0e0;
@@ -12,6 +12,7 @@
                 rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     max-width: 400px;
     margin: 0 auto;
+    margin-top: 230px;
   }
   
   .card-overlay {
