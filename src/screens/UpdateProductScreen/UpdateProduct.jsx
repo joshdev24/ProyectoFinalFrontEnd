@@ -151,6 +151,7 @@ const UpdateProduct = () => {
                         className="form-input-file"
                         name="image"
                         id="image"
+                        type="file"
                         onChange={handleChangeFile}
                         accept="image/*"
                     />
