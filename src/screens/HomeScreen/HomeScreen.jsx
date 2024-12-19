@@ -103,8 +103,8 @@ const ProductsList = ({ products }) => {
 };
 
 
-const Product = ({ title, price, image_base_64, id, seller_id, userId }) => {
-    const isSeller = seller_id === userId;
+const Product = ({ title, price, image_base_64, id, seller_id}) => {
+    const isSeller = seller_id === user_info.id;
 
     return (
         <div className="product-card">

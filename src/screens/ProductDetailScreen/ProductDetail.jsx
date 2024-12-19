@@ -28,15 +28,15 @@ const ProductDetail = ({ title, price, stock, description, image_base_64, id }) 
             <span className="product-detail-id">ID: {id}</span>
             <h2 className="product-detail-title">{title}</h2>
             <img
-                className="product-detail-image"
+                className="product-image"
                 src={image_base_64}
-                width="200"
             />
             <div className="product-detail-price">Precio: ${price}</div>
             <div className="product-detail-stock">Stock: {stock}</div>
             <div className="product-detail-description">Descripción: {description}</div>
+            <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link> 
         </div>
-         <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link> 
+         
 
         </>
     );
