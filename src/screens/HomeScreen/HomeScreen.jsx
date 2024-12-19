@@ -104,6 +104,7 @@ const ProductsList = ({ products }) => {
 
 
 const Product = ({ title, price, image_base_64, id, seller_id}) => {
+    const user_info = getUserInfo();
     const isSeller = seller_id === user_info.id;
 
     return (
