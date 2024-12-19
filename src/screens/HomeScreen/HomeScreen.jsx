@@ -102,12 +102,18 @@ const ProductsList = ({ products }) => {
     );
 };
 
-const Product = ({ title, price, image_base_64, id }) => {
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Product = ({ title, price, image_base_64, id, seller_id, userId }) => {
+    const isSeller = seller_id === userId;
+
     return (
         <div className="product-card">
             <h2 className="product-title">{title}</h2>
             <img
                 src={image_base_64}
+                alt={`Imagen de ${title}`}
                 className="product-image"
             />
             <p className="product-price">Precio: ${price}</p>
@@ -115,16 +121,23 @@ const Product = ({ title, price, image_base_64, id }) => {
                 Ver detalles del producto
             </Link>
 
-            <Link to={`/product/update/${id}`} className="product-update-link">
-                Actualizar Producto
-            </Link>
+            {isSeller && (
+                <>
+                    <Link to={`/product/update/${id}`} className="product-update-link">
+                        Actualizar Producto
+                    </Link>
 
-            <Link to={`/product/delete/${id}`} className="product-delete-link">
-                Borrar Producto
-            </Link>
+                    <Link to={`/product/delete/${id}`} className="product-delete-link">
+                        Borrar Producto
+                    </Link>
+                </>
+            )}
         </div>
     );
 };
+
+export default Product;
+
 
 export default HomeScreen;
 
