@@ -32,7 +32,7 @@ const HomeScreen = () => {
 
                 
                 const userSpecificProducts = allProducts.filter(
-                    (product) => product.seller_id === user_info.seller_id
+                    (product) => product.seller_id === user_info.id
                 );
                 setUserProducts(userSpecificProducts);
             } else {
