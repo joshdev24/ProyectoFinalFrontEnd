@@ -115,19 +115,34 @@ const UpdateProduct = () => {
             <form className="create-product-form" onSubmit={handleSubmitUpdatedProduct}>
                 <div className="form-group">
                     <label className="form-label" htmlFor="titulo">Ingrese el título:</label>
-                    <input className="form-input" name="title" id="titulo" required />
+                    <input className="form-input" 
+                    name="title" 
+                    id="titulo" required  
+                    value={product.title} 
+                    onChange={handleInputChange} />
                 </div>
                 <div className="form-group">
                     <label className="form-label" htmlFor="precio">Ingrese el precio:</label>
-                    <input className="form-input" name="price" id="precio" required />
+                    <input className="form-input" 
+                    name="price" id="precio" required 
+                    value={product.price} 
+                    onChange={handleInputChange} />
                 </div>
                 <div className="form-group">
                     <label className="form-label" htmlFor="stock">Ingrese el stock:</label>
-                    <input className="form-input" name="stock" id="stock" required />
+                    <input className="form-input" 
+                    name="stock" 
+                    id="stock" required 
+                    value={product.stock} 
+                    onChange={handleInputChange} />
                 </div>
                 <div className="form-group">
                     <label className="form-label" htmlFor="descripcion">Ingrese la descripción:</label>
-                    <textarea className="form-textarea" name="description" id="descripcion" required></textarea>
+                    <textarea className="form-textarea" 
+                    name="description" 
+                    id="descripcion" required 
+                    value={product.description} 
+                    onChange={handleInputChange}></textarea>
                 </div>
                 <div className="form-group">
                     {image && <img className="selected-image" src={image} alt="Selected" />}
