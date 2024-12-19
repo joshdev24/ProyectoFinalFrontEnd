@@ -105,3 +105,17 @@
     box-shadow: 0 0 10px #2E865F, 0 0 20px #34C759;
     transform: scale(1.05);
   }
+
+  .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .error-message {  
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }
