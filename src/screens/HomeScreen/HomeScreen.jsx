@@ -112,7 +112,6 @@ const Product = ({ title, price, image_base_64, id, seller_id}) => {
             <h2 className="product-title">{title}</h2>
             <img
                 src={image_base_64}
-                alt={`Imagen de ${title}`}
                 className="product-image"
             />
             <p className="product-price">Precio: ${price}</p>
