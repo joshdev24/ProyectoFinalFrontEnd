@@ -102,6 +102,7 @@ const ProductsList = ({ products }) => {
     );
 };
 
+
 const Product = ({ title, price, image_base_64, id, seller_id, userId }) => {
     const isSeller = seller_id === userId;
 
@@ -132,9 +133,5 @@ const Product = ({ title, price, image_base_64, id, seller_id, userId }) => {
         </div>
     );
 };
-
-export default Product;
-
-
 export default HomeScreen;
 
