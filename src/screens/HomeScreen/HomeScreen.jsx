@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import './Home.css';
 import { GET, getAuthenticatedHeaders } from '../../fetching/http.fetching';
 import ENVIROMENT from '../../../enviroment';
@@ -31,9 +30,9 @@ const HomeScreen = () => {
                 const allProducts = response.payload.products;
                 setProducts(allProducts);
 
-                // Filtrar productos del usuario actual
+                
                 const userSpecificProducts = allProducts.filter(
-                    (product) => product.seller_id === user_info.seller.id
+                    (product) => product.seller_id === user_info.seller_id
                 );
                 setUserProducts(userSpecificProducts);
             } else {
@@ -47,9 +46,8 @@ const HomeScreen = () => {
     };
 
     const handleLogout = () => {
-        // Elimina los datos del usuario de sessionStorage
         sessionStorage.removeItem('user_info');
-        // Redirige a la página de inicio de sesión
+        
         navigate('/login');
     };
 

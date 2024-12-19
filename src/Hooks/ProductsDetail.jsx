@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { GET, getAuthenticatedHeaders } from "../fetching/http.fetching"
 import ENVIROMENT from "../../enviroment"
 
@@ -8,7 +7,6 @@ const useProductDetail = (product_id) =>{
     const [product_detail_state, setProductDetailState] = useState(null)
     const [product_detail_loading, setProductDetailLoading] = useState(true)
     const [product_detail_error, setProductDetailError] = useState(null)
-    const navigate = useNavigate()
     const getProductDetail = async (product_id) =>{
         const product_detail_response = await GET(
             `${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, 
@@ -17,14 +15,13 @@ const useProductDetail = (product_id) =>{
             }
         )
 
-        //Condiciones / manejo de errores de la peticion
+       
         setProductDetailLoading(false)
         if(product_detail_response.ok){
             setProductDetailState(product_detail_response.payload.product)
         }   
         else{
-            //navigate('/home')
-            //Aca les dejo el centro para manejar los errores
+           
             setProductDetailError(product_detail_response.payload.detail)
         }
     }

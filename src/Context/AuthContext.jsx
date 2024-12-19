@@ -4,7 +4,6 @@ export const AuthContext  = createContext()
 
 export const AuthContextProvider = ({children}) =>{
     const access_token = sessionStorage.getItem('access_token')
-    //Estado booleano
     const [isAuthenticatedUser, setIsAuthenticatedUser] = useState(
         Boolean(access_token)
     )
@@ -34,5 +33,5 @@ export const AuthContextProvider = ({children}) =>{
 }
 
 export const useAuthContext = () => {
-    return useContext(AuthContext) // devuelve un objeto con  {logout, isAuthenticatedUser}
+    return useContext(AuthContext) 
 }

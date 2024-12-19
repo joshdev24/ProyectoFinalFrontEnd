@@ -6,14 +6,14 @@ import "./ResetPassword.css";
 import ENVIROMENT from "../../../enviroment";
 
 const ResetPassword = () => {
-    const [resetToken, setResetToken] = useState(""); // Almacena el token ingresado
+    const [resetToken, setResetToken] = useState(""); 
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState("");
-    const [showTokenField, setShowTokenField] = useState(false); // Controla cuándo se solicita el token
+    const [showTokenField, setShowTokenField] = useState(false); 
 
     const handleSubmitResetForm = async (e) => {
         e.preventDefault();
-        setError(""); // Limpia errores previos
+        setError(""); 
 
         try {
             const form_HTML = e.target;
@@ -23,9 +23,9 @@ const ResetPassword = () => {
             };
             const form_values_object = extractFormData(form_fields, form_Values);
 
-            // Primero verifica si el usuario ya ingresó el token
+            
             if (!showTokenField) {
-                setShowTokenField(true); // Muestra el campo del token
+                setShowTokenField(true);
                 return;
             }
 

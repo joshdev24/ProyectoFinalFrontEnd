@@ -3,27 +3,26 @@ import { DELETE, getAuthenticatedHeaders } from "../../fetching/http.fetching";
 import { useParams, Link } from "react-router-dom";
 import ENVIROMENT from "../../../enviroment";
 import "./DeleteProduct.css";
-import { useNavigate } from "react-router-dom";
+
 
 const DeleteProduct = () => {
-    const { product_id } = useParams(); // Obtenemos el ID del producto desde la URL
-    const [loading, setLoading] = useState(false); // Estado de carga
-    const [error, setError] = useState(""); // Estado de error
-    const [success, setSuccess] = useState(""); // Estado de éxito
-    const navigate = useNavigate();
+    const { product_id } = useParams(); 
+    const [loading, setLoading] = useState(false); 
+    const [error, setError] = useState(""); 
+    const [success, setSuccess] = useState("");
 
     const handleDelete = async () => {
-        setLoading(true); // Indicamos que la solicitud está en progreso
-        setError(""); // Reiniciamos el mensaje de error
+        setLoading(true); 
+        setError(""); 
 
         try {
             const response = await DELETE(`${ENVIROMENT.URL_BACKEND}/api/products/${product_id}`, {
                 headers: getAuthenticatedHeaders(),
-                 // Ejemplo: cambiar el estado activo
+                
             });
 
             if (response.ok) {
-                setSuccess("Producto eliminado exitosamente."); // Éxito
+                setSuccess("Producto eliminado exitosamente."); 
             } else {
                 const errorMessage = response.payload?.message || "Error al eliminar el producto.";
                 setError(errorMessage);
@@ -33,7 +32,7 @@ const DeleteProduct = () => {
             console.error("Error al eliminar el producto:", err);
             setError("Hubo un problema al eliminar el producto.");
         } finally {
-            setLoading(false); // Finalizamos la carga
+            setLoading(false); 
         }
     };
 
