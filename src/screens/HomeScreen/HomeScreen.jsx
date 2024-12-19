@@ -102,9 +102,6 @@ const ProductsList = ({ products }) => {
     );
 };
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-
 const Product = ({ title, price, image_base_64, id, seller_id, userId }) => {
     const isSeller = seller_id === userId;
 
