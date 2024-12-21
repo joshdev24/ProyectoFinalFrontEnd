@@ -83,7 +83,13 @@ const Register = () => {
                         placeholder="••••••••"
                     />
                 </div>
-                <button className="registro-button" type="submit" disabled={loading}>Registrar</button>
+                <button
+                    className="registro-button"
+                    type="submit"
+                    disabled={loading} // Desactiva el botón mientras carga
+                >
+                    {loading ? 'Registrando...' : 'Registrar'}
+                </button>
                 <ul className="registro-login-link-list">
                     <li className="registro-login-link-item">
                         <Link to="/login" className="registro-login-link">Si ya tienes cuenta, inicia sesión</Link>
