@@ -81,14 +81,14 @@ body {
 }
 
 .register-link li {
-  color: #BABECC; /* Color sombra */
+  color: #AE1100; /* Color sombra */
   font-size: 14px;
   margin-bottom: 10px;
   text-shadow: 1px 1px 1px #FFF;
 }
 
 .register-link a {
-  color: #BABECC; /* Color sombra */
+  color: #AE1100; /* Color sombra */
   text-decoration: underline;
 }
 
