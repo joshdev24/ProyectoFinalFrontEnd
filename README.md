@@ -14,5 +14,5 @@ mysql12 para la base de datos de los productos y nodemailer para el envio de mai
 
 
 
-La dificultad mas grande que enfrente fue con los links de verficacion del usuario y reseteo de contraseña que se enviaban por mail, por alguna razon no me las reconocia teniendo todad las rutas y links bien, al final lo pude solucionar, haciendo que por mail solo me llegue y token y en la pagina el usuario entre a rutas designadas con un formulario para verificar el token obtenido del mail y al verificar el token, se verificaba al usuario y/o se cambiaba la contraseña
+La dificultad mas grande que enfrente fue con los links de verficacion del usuario y reseteo de contraseña que se enviaban por mail, por alguna razon no me las reconocia teniendo todaS las rutas y links bien, al final lo pude solucionar, haciendo que por mail solo me llegue y token y que en la pagina el usuario ingrese a rutas designadas con un formulario para verificar el token obtenido del mail y al verificar el token, se verificaba al usuario y/o se cambiaba la contraseña
 
