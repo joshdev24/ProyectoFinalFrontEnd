@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Componente funcional para mostrar información de un usuario desde sessionStorage
 const UserCard = () => {
