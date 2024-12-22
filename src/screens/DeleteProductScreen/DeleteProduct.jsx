@@ -50,9 +50,6 @@ const DeleteProduct = () => {
                 {loading ? "Eliminando..." : "Eliminar Producto"}
             </button>
             <Link to="/home" className="back-to-home-link">Regresar al inicio</Link>
-            {error && <p className="error" style={{ color: 'red' }}>{error}</p>}
-            {success && <p className="success" style={{ color: 'green' }}>{success}</p>}
-
         </div>
     );
 };
