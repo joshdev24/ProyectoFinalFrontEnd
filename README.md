@@ -8,8 +8,11 @@ Tiene rutas protegidas como lo es, el home y el CRUD de productos
 
 
 Librerias que utilize: 
-FRONTEND: Utilize React para la creacion de componentes, react-router-dom para los usos de useNavigate, useEffect y demas.
+FRONTEND: Utilize React para la creacion de componentes, react-router-dom para los usos de useNavigate, useEffect, etc.
 BACKEND: Utilize bcrypt para encriptar contraseñas, cors para los permisos de la aplicacion, dotenv para las variables de entorno, jsonwebtoken para la creacion de token de acceso y verificacion, mongose para la base de datos de los usuarios.
 mysql12 para la base de datos de los productos y nodemailer para el envio de mails.
+
+
+
 
 
