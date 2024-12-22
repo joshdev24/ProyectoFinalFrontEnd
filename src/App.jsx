@@ -12,7 +12,8 @@ import ProductDetails from "./screens/ProductDetailScreen/ProductDetail"
 import ProtectedRoute from "./Components/ProtectedRoute"
 import DeleteProduct from "./screens/DeleteProductScreen/DeleteProduct"
 import VerifyMail from "./screens/EmailVerify.jsx"
-import UserCard from "../userDetail.jsx"
+import UserCard from "./screens/userDetail.jsx"
+
 
 
 

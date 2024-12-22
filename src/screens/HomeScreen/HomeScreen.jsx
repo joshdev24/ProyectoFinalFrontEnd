@@ -74,7 +74,7 @@ const HomeScreen = () => {
                             {showUserProducts ? "Ver todos los productos" : "Ver mis productos"}
                         </button>
 
-                        <Link to="/user" className="reset-password-link"> Ver perfil</Link>
+                        <Link to="/user" className="create-product-button"> Ver perfil</Link>
                     </div>
                     {isLoadingProducts ? (
                         <span className="loading-text">Cargando...</span>
