@@ -12,6 +12,7 @@ import ProductDetails from "./screens/ProductDetailScreen/ProductDetail"
 import ProtectedRoute from "./Components/ProtectedRoute"
 import DeleteProduct from "./screens/DeleteProductScreen/DeleteProduct"
 import VerifyMail from "./screens/EmailVerify.jsx"
+import UserCard from "../userDetail.jsx"
 
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/verify" element={<VerifyMail/>} />
         <Route element={<ProtectedRoute />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/user" element={<UserCard />} />
           <Route path="/product/new" element={<CreateProductScreen />} />
           <Route path="/product/:product_id" element={<ProductDetails />} />
           <Route path="/product/update/:product_id" element={<UpdateProduct />} />
