@@ -17,29 +17,17 @@ const UserCard = () => {
   }
 
   return (
-    <div style={styles.card}>
-      <h2 style={styles.name}>{user.name}</h2>
-      <p><strong>Email:</strong> {user.email}</p>
-      <p><strong>id:</strong> {user.id}</p>
-      <p><strong>rol:</strong> {user.rol}</p>
-    </div>
+    
+       <div className="product-detail">
+                  <span className="user-detail-id">ID: {user.id}</span>
+                  <h2 className="user-detail-title">Nombre de usuario: {user.name}</h2>
+                  <div className="product-detail-price">Rol: {user.role}</div>
+                  <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link> 
+              </div>
   );
 };
 
-// Estilos en línea (puedes usar CSS externo si prefieres)
-const styles = {
-  card: {
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    padding: '16px',
-    maxWidth: '300px',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    backgroundColor: '#f9f9f9'
-  },
-  name: {
-    marginBottom: '8px',
-    color: '#333'
-  }
-};
+
+
 
 export default UserCard;
