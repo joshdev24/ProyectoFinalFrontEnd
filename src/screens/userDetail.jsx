@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './userDetail.css';
-// Componente funcional para mostrar información de un usuario desde sessionStorage
+
 const UserCard = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Obtener datos del usuario desde sessionStorage
+   
     const storedUser = sessionStorage.getItem('user_info');
     if (storedUser) {
       setUser(JSON.parse(storedUser));

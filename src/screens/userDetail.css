@@ -16,7 +16,7 @@
   }
   
   .user-detail-id {
-    color: #c7c4c4;
+    color: #1e615b;
     font-size: 16px;
     font-weight: 900;
     margin-bottom: 10px;
@@ -27,14 +27,14 @@
   .user-detail-title {
     font-size: 30px;
     font-weight: 900;
-    color: #c7c4c4;
+    color: #1a475c;
     margin-bottom: 20px;
     text-align: center;
     font-family: monospace;
   }
   
-  .product-detail-role {
-    color: #c7c4c4;
+  .user-detail-role {
+    color: #143274;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -43,7 +43,7 @@
   }
   
   .user-detail-email {
-    color: #c7c4c4;
+    color: #125a3f;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -52,7 +52,7 @@
   }
   
   .back-to-home-link {
-    color: #c7c4c4;
+    color: #ad2f2f;
     font-size: 16px;
     font-weight: bold;
     margin-top: 20px;
