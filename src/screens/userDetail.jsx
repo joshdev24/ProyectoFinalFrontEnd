@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import './userDetail.css';
 // Componente funcional para mostrar información de un usuario desde sessionStorage
 const UserCard = () => {
   const [user, setUser] = useState(null);
@@ -21,9 +22,9 @@ const UserCard = () => {
     
        <div className="product-detail">
                   <h2 className="user-detail-id">ID: {user.id}</h2>
-                  <h2 className="user-detail-title">Email: {user.email}</h2>
+                  <h2 className="user-detail-email">Email: {user.email}</h2>
                   <h2 className="user-detail-title">Nombre de usuario: {user.name}</h2>
-                  <div className="product-detail-price">Rol: {user.role}</div>
+                  <div className="user-detail-role">Rol: {user.role}</div>
                   <Link to={`/home`} className="back-to-home-link">Regresar al inicio</Link> 
               </div>
   );
