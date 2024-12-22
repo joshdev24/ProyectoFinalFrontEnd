@@ -30,7 +30,7 @@ const HomeScreen = () => {
                 const allProducts = response.payload.products;
                 setProducts(allProducts);
 
-                
+
                 const userSpecificProducts = allProducts.filter(
                     (product) => product.seller_id === user_info.id
                 );
@@ -47,7 +47,7 @@ const HomeScreen = () => {
 
     const handleLogout = () => {
         sessionStorage.removeItem('user_info');
-        
+
         navigate('/login');
     };
 
@@ -105,7 +105,7 @@ const ProductsList = ({ products }) => {
 };
 
 
-const Product = ({ title, price, image_base_64, id, seller_id}) => {
+const Product = ({ title, price, image_base_64, id, seller_id }) => {
     const user_info = getUserInfo();
     const isSeller = seller_id === user_info.id;
     const isAdmin = user_info.role === 'admin';
@@ -122,7 +122,7 @@ const Product = ({ title, price, image_base_64, id, seller_id}) => {
                 Ver detalles del producto
             </Link>
 
-            {isSeller || isAdmin  && (
+            {(isSeller || isAdmin) && (
                 <>
                     <Link to={`/product/update/${id}`} className="product-update-link">
                         Actualizar Producto
