@@ -182,9 +182,6 @@ hr {
     transform: scale(1.05);
 }
 
-/* === Media Queries === */
-
-/* Móviles pequeños (320px - 480px) */
 @media (max-width: 480px) {
     .header-actions {
         flex-direction: column;
@@ -200,7 +197,7 @@ hr {
     }
 }
 
-/* Tablets (481px - 768px) */
+
 @media (max-width: 768px) {
     .header-actions {
         gap: 10px;
@@ -215,21 +212,21 @@ hr {
     }
 }
 
-/* Laptops (769px - 1024px) */
+
 @media (max-width: 1024px) {
     .header-actions {
         gap: 12px;
     }
 }
 
-/* Escritorios grandes (1025px - 1440px) */
+
 @media (max-width: 1440px) {
     .header-actions {
         gap: 14px;
     }
 }
 
-/* Pantallas muy grandes (1441px - 2000px) */
+
 @media (min-width: 1441px) {
     .header-actions {
         gap: 16px;
