@@ -16,7 +16,7 @@
 }
 
 .product-detail-id {
-  color: #c7c4c4;
+  color: #131010;
   font-size: 16px;
   font-weight: 900;
   margin-bottom: 10px;
@@ -27,7 +27,7 @@
 .product-detail-title {
   font-size: 30px;
   font-weight: 900;
-  color: #c7c4c4;
+  color: #267c88;
   margin-bottom: 20px;
   text-align: center;
   font-family: monospace;
@@ -43,7 +43,7 @@
 }
 
 .product-detail-price {
-  color: #c7c4c4;
+  color: #720d0d;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -52,7 +52,7 @@
 }
 
 .product-detail-stock {
-  color: #c7c4c4;
+  color: #9b2828;
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -61,7 +61,7 @@
 }
 
 .product-detail-description {
-  color: #93a1a1;
+  color: #324774;
   font-size: 16px;
   margin-bottom: 20px;
   text-align: center;
