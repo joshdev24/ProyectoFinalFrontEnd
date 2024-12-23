@@ -31,24 +31,24 @@
     }
 }
 
-/* === Lista de productos === */
 .products-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
     margin-top: 30px;
 }
 
-/* === Card de producto === */
+/* === CARTA DE PRODUCTO === */
 .product-card {
     color: #d1b3ff;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 20px;
-    border-radius: 45px;
+    border-radius: 15px;
     background: #ebecf0;
-    box-shadow: -35px 35px 70px #bebfc2,
-        35px -35px 70px #ffffff;
+    box-shadow: -15px 15px 30px #bebfc2,
+        15px -15px 30px #ffffff;
+    text-align: center;
 }
 
 .product-card:hover {
@@ -56,40 +56,40 @@
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3), 0 0 35px #7c2aed;
 }
 
-/* === Imagen del producto === */
+/* === IMAGEN DEL PRODUCTO === */
 .product-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-/* === Precio del producto === */
+/* === PRECIO DEL PRODUCTO === */
 .product-price {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #800f0f;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-/* === Enlaces de acción === */
+/* === BOTONES DE ACCIÓN === */
 .product-update-link,
 .product-delete-link,
 .product-detail-link {
     background-color: #e4e4e4;
-    border-radius: 10px;
+    border-radius: 8px;
     color: #333;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
-    margin: 12px;
-    padding: 10px;
+    margin: 8px 5px;
+    padding: 8px 12px;
     text-transform: uppercase;
     text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .product-detail-link:hover {
@@ -230,5 +230,77 @@ hr {
 @media (min-width: 1441px) {
     .header-actions {
         gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .product-card {
+        padding: 15px;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .product-update-link,
+    .product-delete-link,
+    .product-detail-link {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+}
+
+/* Tablets (481px - 768px) */
+@media (max-width: 768px) {
+    .products-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .product-card {
+        padding: 18px;
+    }
+
+    .product-image {
+        height: 190px;
+    }
+
+    .product-price {
+        font-size: 17px;
+    }
+}
+
+/* Laptops (769px - 1024px) */
+@media (max-width: 1024px) {
+    .products-list {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .product-card {
+        padding: 20px;
+    }
+}
+
+/* Escritorios grandes (1025px - 1440px) */
+@media (max-width: 1440px) {
+    .products-list {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+/* Pantallas muy grandes (1441px - 2000px) */
+@media (min-width: 1441px) {
+    .products-list {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     }
 }
