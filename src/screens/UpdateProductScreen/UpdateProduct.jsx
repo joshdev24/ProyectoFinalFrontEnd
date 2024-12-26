@@ -12,6 +12,7 @@ const UpdateProduct = () => {
         price: '',
         stock: '',
         description: '',
+        image: '',
 
     });
     const [image, setImage] = useState(null);
@@ -152,6 +153,7 @@ const UpdateProduct = () => {
                         name="image"
                         id="image"
                         type="file"
+                        value={image}
                         onChange={handleChangeFile}
                         accept="image/*"
                     />
