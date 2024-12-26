@@ -55,6 +55,7 @@ const UpdateProduct = () => {
             price: '',
             stock: '',
             description: '',
+            image: '',
 
     
         };
