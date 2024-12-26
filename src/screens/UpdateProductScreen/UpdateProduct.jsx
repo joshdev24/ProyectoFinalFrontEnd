@@ -12,7 +12,6 @@ const UpdateProduct = () => {
         price: '',
         stock: '',
         description: '',
-        image: '',
 
     });
     const [image, setImage] = useState(null);
@@ -93,15 +92,24 @@ const UpdateProduct = () => {
     const handleChangeFile = (e) => {
         const file = e.target.files?.[0];
         const FILE_MB_LIMIT = 2;
+    
+        // Si hay un archivo y excede el límite de tamaño
         if (file && file.size > FILE_MB_LIMIT * 1024 * 1024) {
-            setError(`Error: el archivo es muy grande (limite ${FILE_MB_LIMIT} MB)`);
+            setError(`Error: el archivo es muy grande (límite ${FILE_MB_LIMIT} MB)`);
             return;
         }
-
-        const reader = new FileReader();
-        reader.onloadend = () => setImage(reader.result);
-        if (file) reader.readAsDataURL(file);
+    
+        // Si hay un nuevo archivo, actualizar la imagen
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => setImage(reader.result);
+            reader.readAsDataURL(file);
+        } else {
+            // Si no hay archivo nuevo, mantener la imagen actual
+            setError(null); // Limpia errores previos si existen
+        }
     };
+    
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -153,7 +161,6 @@ const UpdateProduct = () => {
                         name="image"
                         id="image"
                         type="file"
-                        value={image}
                         onChange={handleChangeFile}
                         accept="image/*"
                     />
