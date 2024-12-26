@@ -55,8 +55,6 @@ const UpdateProduct = () => {
             price: '',
             stock: '',
             description: '',
-            image: '',
-
     
         };
         const form_values_object = extractFormData(form_fields, form_Values);
