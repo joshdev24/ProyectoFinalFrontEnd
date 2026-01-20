@@ -1,125 +1,142 @@
-import React, { useState,  } from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAuthenticatedHeaders, POST } from '../../fetching/http.fetching';
 import { extractFormData } from '../../utils/extractFormData';
+import ENVIROMENT from '../../../enviroment';
 import './CreateProduct.css';
-import { Link } from 'react-router-dom';
-import ENVIROMENT from "../../../enviroment";
 
 const CreateProductScreen = () => {
-    const [image, setImage] = useState('');
-    const [error, setError] = useState('');
-	const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
+    const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
 
-    const handleSubmitNewProduct = async (e) => {
-        e.preventDefault();
-        setError(''); 
-
-        const form_HTML = e.target;
-        const form_Values = new FormData(form_HTML);
-        const form_fields = {
-            title: '',
-            price: '',
-            stock: '',
-            description: '',
-        };
-        const form_values_object = extractFormData(form_fields, form_Values);
-
-        
-        form_values_object.image = image;
-
-       
-        if (!form_values_object.title || !form_values_object.price || !form_values_object.stock || !form_values_object.description ) {
-            setError('All fields are required.');
-            return;
-        }
-
-        setLoading(true); 
-
+    const handleSubmit = async (e) => {
         try {
-            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/products`, {
-                headers: getAuthenticatedHeaders(),
-                body: JSON.stringify(form_values_object)
-            });
+            e.preventDefault();
+            setError(null);
+            setLoading(true);
 
-            if (!response.ok) {
-                setError('Error al crear el producto'); 
-            } 
-			setSuccess('Se ha creado el producto con exito');
+            const form_HTML = e.target;
+            const form_Values = new FormData(form_HTML);
+
+            // Definir campos requeridos
+            const form_fields = {
+                title: '',
+                price: '',
+                stock: '',
+                description: '',
+                category: ''
+            };
+
+            const form_values_object = extractFormData(form_fields, form_Values);
+
+            // Añadir imagen si existe (ya en base64 gracias al onChange)
+            if (image) {
+                form_values_object.image_base_64 = image;
+            } else {
+                // Imagen por defecto si no se sube ninguna
+                form_values_object.image_base_64 = 'https://via.placeholder.com/300';
+            }
+
+            const response = await POST(
+                `${ENVIROMENT.URL_BACKEND}/api/products`,
+                {
+                    headers: getAuthenticatedHeaders(),
+                    body: JSON.stringify(form_values_object)
+                }
+            );
+
+            if (response.ok) {
+                setSuccess(true);
+                setTimeout(() => navigate('/home'), 1500); // Redirigir tras éxito
+            } else {
+                setError(response.message || "Error al crear producto");
+            }
         } catch (error) {
-            console.error(error);
-            setError('Error inesperado'); 
+            setError("Error de conexión");
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
-    const handleChangeFile = (evento) => {
-        const file_found = evento.target.files[0];
-        const FILE_MB_LIMIT = 2;
-
-        if (file_found && file_found.size > FILE_MB_LIMIT * 1024 * 1024) {
-            setError(`Error: The file is too large (limit ${FILE_MB_LIMIT} MB)`);
-            return; 
-        }
-
-        const lector_archivos = new FileReader();
-
-        lector_archivos.onloadend = () => {
-            console.log('File loading completed');
-            setImage(lector_archivos.result);
-        };
-
-        if (file_found) {
-            lector_archivos.readAsDataURL(file_found);
+    const handleChangeImage = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImage(reader.result);
+            };
+            reader.readAsDataURL(file);
         }
     };
 
     return (
-        <>
-        <div className="create-product-container">
-    <form className="create-product-form" onSubmit={handleSubmitNewProduct}>
-        <div className="form-group">
-            <label className="form-label" htmlFor="titulo">Ingrese el título:</label>
-            <input className="form-input" name="title" id="titulo" required />
-        </div>
-        <div className="form-group">
-            <label className="form-label" htmlFor="precio">Ingrese el precio:</label>
-            <input className="form-input" name="price" id="precio" required />
-        </div>
-        <div className="form-group">
-            <label className="form-label" htmlFor="stock">Ingrese el stock:</label>
-            <input className="form-input" name="stock" id="stock" required />
-        </div>
-        <div className="form-group">
-            <label className="form-label" htmlFor="descripcion">Ingrese la descripción:</label>
-            <textarea className="form-textarea" name="description" id="descripcion" required></textarea>
-        </div>
-        <div className="form-group">
-            {image && <img className="selected-image" src={image} alt="Selected" />}
-            <label className="form-label" htmlFor="imagen">Seleccione una imagen:</label>
-            <input
-                className="form-input-file"
-                name="imagen"
-                id="imagen"
-                type="file"
-                onChange={handleChangeFile}
-                accept="image/*"
-            />
-        </div>
-        {error && <p className="error-message">{error}</p>} 
-        {success && <p className="success-message">{success}</p>}
-        <button
-            className="create-button"
-            type="submit"
-            disabled={loading}>
-            {loading ? 'Creating...' : 'Crear producto'}
-        </button>
-        <Link to={`/home`} className="back-to-home-button">Regresar al inicio</Link>
-    </form>
-</div>
+        <div className="create-product-wrapper">
+            <div className="create-product-card">
+                <div className="form-header">
+                    <h1 className="form-title">Nuevo Producto</h1>
+                    <p className="form-subtitle">Añade un nuevo ítem a tu catálogo</p>
+                </div>
 
-       </>
+                <form onSubmit={handleSubmit}>
+                    <div className="glass-form-group">
+                        <label className="glass-label" htmlFor="title">Título del Producto</label>
+                        <input name="title" id="title" className="glass-input" placeholder="Ej. Auriculares Sony" required />
+                    </div>
+
+                    <div className="glass-form-group" style={{ display: 'flex', gap: '15px' }}>
+                        <div style={{ flex: 1 }}>
+                            <label className="glass-label" htmlFor="price">Precio ($)</label>
+                            <input name="price" id="price" type="number" className="glass-input" placeholder="0.00" required />
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <label className="glass-label" htmlFor="stock">Stock</label>
+                            <input name="stock" id="stock" type="number" className="glass-input" placeholder="10" required />
+                        </div>
+                    </div>
+
+                    <div className="glass-form-group">
+                        <label className="glass-label" htmlFor="category">Categoría</label>
+                        <input name="category" id="category" className="glass-input" placeholder="Ej. Tecnología" required />
+                    </div>
+
+                    <div className="glass-form-group">
+                        <label className="glass-label" htmlFor="description">Descripción</label>
+                        <textarea name="description" id="description" className="glass-textarea" placeholder="Detalles del producto..."></textarea>
+                    </div>
+
+                    <div className="glass-form-group">
+                        <label className="glass-label">Imagen del Producto</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleChangeImage}
+                            className="glass-input"
+                            style={{ padding: '10px' }}
+                        />
+                        <div className="image-preview-container">
+                            {image ? (
+                                <img src={image} alt="Preview" className="image-preview" />
+                            ) : (
+                                <span className="no-image-text">Vista previa</span>
+                            )}
+                        </div>
+                    </div>
+
+                    {error && <div className="status-msg error">{error}</div>}
+                    {success && <div className="status-msg success">¡Producto creado con éxito!</div>}
+
+                    <div className="form-actions">
+                        <Link to="/home" className="btn-cancel">Cancelar</Link>
+                        <button type="submit" className="btn-submit" disabled={loading}>
+                            {loading ? 'Guardando...' : 'Publicar Producto'}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     );
 };
 

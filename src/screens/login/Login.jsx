@@ -12,8 +12,8 @@ const Login = () => {
 
     const handleSubmitLoginForm = async (e) => {
         e.preventDefault();
-        setError(''); 
-        setLoading(true); 
+        setError('');
+        setLoading(true);
 
         const form_HTML = e.target;
         const form_Values = new FormData(form_HTML);
@@ -22,7 +22,6 @@ const Login = () => {
             password: ''
         };
         const form_values_object = extractFormData(form_fields, form_Values);
-
 
         if (!form_values_object.email || !form_values_object.password) {
             setError('Por favor, complete todos los campos.');
@@ -39,56 +38,75 @@ const Login = () => {
                 }
             );
 
-            
             if (!response.ok) {
-                setError('Error al iniciar sesión.', error);
+                setError('Credenciales incorrectas');
                 setLoading(false);
                 return;
             }
 
-            
-            console.log('Login Response:', response);
-
             const access_token = response.payload.token;
             if (!access_token) {
-                setError('Error al cargar el token de acceso.');
+                setError('Error al obtener token');
                 setLoading(false);
                 return;
             }
 
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user_info', JSON.stringify(response.payload.user));
-            navigate('/home'); 
+            navigate('/home');
         } catch (error) {
             console.log('Error:', error);
-            setError('Ocurrió un error al intentar iniciar sesión.');
+            setError('Error de conexión');
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
     return (
-        <div className="login-container">
-            <h1 className="login-title">Inicia sesión</h1>
-            <form onSubmit={handleSubmitLoginForm} className="login-form">
-                <div className="input-group">
-                    <label htmlFor="email" className="input-label"></label>
-                    <input name="email" id="email" placeholder="pepe@gmail.com" className="input-field" required />
+        <div className="login-wrapper">
+            <div className="login-card-aurora">
+                <div className="brand-area">
+                    <h1 className="brand-logo text-gradient">Login</h1>
+                    <p className="brand-subtitle">Bienvenido de vuelta</p>
                 </div>
-                <div className="input-group">
-                    <label htmlFor="password" className="input-label"></label>
-                    <input name="password" id="password" type="password" placeholder="Ingrese su contraseña" className="input-field" required />
+
+                <form onSubmit={handleSubmitLoginForm}>
+                    <div className="form-group">
+                        <label className="form-label">Email</label>
+                        <input
+                            name="email"
+                            type="email"
+                            className="glass-input"
+                            placeholder="nombre@ejemplo.com"
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">Contraseña</label>
+                        <input
+                            name="password"
+                            type="password"
+                            className="glass-input"
+                            placeholder="••••••••"
+                            required
+                        />
+                    </div>
+
+                    {error && <div className="status-message status-error">{error}</div>}
+
+                    <button type="submit" className="glass-button" disabled={loading}>
+                        {loading ? 'Ingresando...' : 'Iniciar Sesión'}
+                    </button>
+                </form>
+
+                <div className="auth-footer">
+                    <span>¿No tienes cuenta? <Link to="/register" className="link">Regístrate</Link></span>
+                    <Link to="/forgot-password" style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>
+                        Olvidé mi contraseña
+                    </Link>
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>} 
-                <button type="submit" className="submit-button" disabled={loading}>
-                    {loading ? 'Cargando...' : 'Iniciar sesión'}
-                </button>
-                
-            </form>
-            <itemize className="register-link">
-                <li> Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
-                <li>¿Has olvidado la contraseña? <Link to="/forgot-password">Restablecer</Link></li>
-            </itemize>
+            </div>
         </div>
     );
 };

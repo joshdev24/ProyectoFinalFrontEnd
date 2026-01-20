@@ -1,116 +1,112 @@
-/* Global Styles */
+/* DeleteProduct.css - Aurora Alert Theme */
 
-
-/* Delete Product Container */
-.delete-product-container {
+.delete-wrapper {
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10;
+    position: relative;
+}
+
+.delete-card {
+    background: rgba(40, 20, 20, 0.7);
+    /* Red tinted glass */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 80, 80, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: shake 0.4s ease-out;
+}
+
+.warning-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 80, 80, 0.2);
+    color: #ff4d4d;
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    padding: 20px;
-    border-radius: 15px;
-    font-family: 'Arial', sans-serif;
-    background-color: #121212; /* Fondo oscuro para un look futurista */
-    margin: 0;
-    padding: 0;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(255, 80, 80, 0.4);
 }
 
-/* Title */
-.delete-product-title {
-    font-size: 36px;
-    color: #e30613; /* Rojo TRON */
-    text-shadow: 0 0 5px rgba(227, 6, 19, 0.8), 0 0 10px rgba(227, 6, 19, 0.6);
-    margin-bottom: 10px;
-}
-
-/* Message */
-.delete-product-message {
-    font-size: 18px;
-    color: #ddd;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Success & Error Messages */
-.delete-product-success,
-.delete-product-error {
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-/* Success Message */
-.delete-product-success {
-    background-color: #4caf50; /* Verde para éxito */
-    color: white;
-}
-
-/* Error Message */
-.delete-product-error {
-    background-color: #f44336; /* Rojo para error */
-    color: white;
-}
-
-/* Button */
-.delete-product-button {
-    background-color: #e30613; /* Rojo TRON */
-    color: white;
-    font-size: 18px;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
+.delete-title {
+    font-size: 1.5rem;
+    color: #fff;
     margin-bottom: 15px;
 }
 
-.delete-product-button:hover {
-    background-color: #c0050c; /* Rojo más oscuro */
-    transform: scale(1.05);
+.delete-text {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+    line-height: 1.5;
 }
 
-.delete-product-button:disabled {
-    background-color: #666;
-    cursor: not-allowed;
+.product-preview {
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
 }
 
-/* Loading State */
-.delete-product-button.loading {
-    background-color: #ff5722;
-    cursor: wait;
+.delete-actions {
+    display: flex;
+    gap: 15px;
 }
 
-/* Back to Home Link */
-.back-to-home-link {
-    color: #e30613;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+.btn-danger {
+    flex: 1;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-.back-to-home-link:hover {
-    color: #c0050c;
+.btn-danger:hover {
+    background: #ff6666;
 }
 
-.error,
-.success {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 20px;
+.btn-secondary {
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-/* Optional: Add a glowing animation for a futuristic effect */
-@keyframes glowing {
-    0% { text-shadow: 0 0 5px #e30613, 0 0 10px #e30613, 0 0 15px #e30613, 0 0 20px #e30613; }
-    50% { text-shadow: 0 0 10px #e30613, 0 0 20px #e30613, 0 0 30px #e30613, 0 0 40px #e30613; }
-    100% { text-shadow: 0 0 5px #e30613, 0 0 10px #e30613, 0 0 15px #e30613, 0 0 20px #e30613; }
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.delete-product-title {
-    animation: glowing 1.5s infinite alternate;
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
 }
