@@ -3,84 +3,89 @@ import { Link } from 'react-router-dom'
 import { extractFormData } from '../../utils/extractFormData'
 import { getUnnauthenticatedHeaders, POST } from '../../fetching/http.fetching'
 import ENVIROMENT from '../../../enviroment';
-
 import './forgotPassword.css'
 
-
-
-
 const ForgotPassword = () => {
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState(false);
-    const handleSubmitLoginForm = async (e) => {
-        try {
-            e.preventDefault();
-            const form_HTML = e.target;
-            const form_Values = new FormData(form_HTML);
-            const form_fields = {
-                email: form_Values.get('email') || ''
-            };
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-            if (!form_fields.email) {
-                console.error('Email is required.');
-                return;
-            }
+  const handleSubmitLoginForm = async (e) => {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      setError('');
+      setSuccess(false);
 
-            const form_values_object = extractFormData(form_fields, form_Values);
-            const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
-                headers: getUnnauthenticatedHeaders(),
-                body: JSON.stringify(form_values_object)
-            });
+      const form_HTML = e.target;
+      const form_Values = new FormData(form_HTML);
+      const form_fields = {
+        email: form_Values.get('email') || ''
+      };
 
+      if (!form_fields.email) {
+        console.error('Email is required.');
+        setLoading(false);
+        return;
+      }
 
+      const form_values_object = extractFormData(form_fields, form_Values);
+      const response = await POST(`${ENVIROMENT.URL_BACKEND}/api/auth/forgot-password`, {
+        headers: getUnnauthenticatedHeaders(),
+        body: JSON.stringify(form_values_object)
+      });
 
-            if (response) {
-                setSuccess('Revisa tu correo electrónico para restablecer tu contraseña');
-            }
+      if (response) {
+        setSuccess('Revisa tu correo electrónico para restablecer tu contraseña');
+      }
 
-        } catch (error) {
-            setError('Un error inesperado ocurrio al procesar tu solicitud.');
-        }
-    };
+    } catch (error) {
+      setError('Un error inesperado ocurrió al procesar tu solicitud.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <>
-            <div class="card">
-  <div class="card-overlay"></div>
-  <div class="card-inner">
-    <div class="password-reset-container">
-      <h1 class="password-reset-title">Olvidé mi contraseña</h1>
-      <p class="password-reset-instructions">
-        Enviaremos un token a tu email de usuario con los pasos de restablecimiento de la contraseña.
-      </p>
-      <form class="password-reset-form" onSubmit={handleSubmitLoginForm}>
-        <div class="form-group">
-          <label htmlFor="email" class="form-label">Ingrese su email:</label>
-          <input
-            name="email"
-            id="email"
-            class="form-input"
-            placeholder="pepe@gmail.com"
-            required
-          />
+  return (
+    <div className="forgot-password-container">
+      <div className="forgot-password-card glass-panel">
+        <h1 className="forgot-password-title">Recuperar Contraseña</h1>
+        <p className="forgot-password-instructions">
+          Ingresa tu correo electrónico y te enviaremos las instrucciones para restablecer tu contraseña.
+        </p>
+
+        <form className="forgot-password-form" onSubmit={handleSubmitLoginForm}>
+          <div className="input-group">
+            <label htmlFor="email" className="input-label">Correo Electrónico</label>
+            <input
+              name="email"
+              id="email"
+              type="email"
+              className="glass-input"
+              placeholder="ejemplo@correo.com"
+              required
+            />
+          </div>
+
+          <button type="submit" className="glass-button" disabled={loading}>
+            {loading ? "Enviando..." : "Enviar Instrucciones"}
+          </button>
+
+          <Link to="/reset-password" class="link">
+            Ya tengo un código
+          </Link>
+        </form>
+
+        {error && <div className="status-box error">{error}</div>}
+        {success && <div className="status-box success">{success}</div>}
+
+        <div className="form-links-list">
+          <span>¿Ya tienes cuenta? <Link to="/login" className="link">Inicia Sesión</Link></span>
+          <span>¿No tienes cuenta? <Link to="/register" className="link">Regístrate</Link></span>
         </div>
-        <button type="submit" class="form-button"> Obtener token</button>
-        <br />
-        <Link to="/reset-password" class="reset-button">Restablecer mi contraseña</Link>
-        <ul class="form-links">
-          <li>Si tienes cuenta puedes <Link to="/login">iniciar sesión</Link></li>
-          <li>Si aún no tienes cuenta puedes <Link to="/register">Registrarte</Link></li>
-        </ul>
-      </form>
-      {error && <p class="form-error">{error}</p>}
-      {success && <p class="form-success">{success}</p>}
+      </div>
     </div>
-  </div>
-</div>
-
-            
-        </>
-    );
+  );
 };
 
 export default ForgotPassword
